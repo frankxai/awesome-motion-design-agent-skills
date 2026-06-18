@@ -1,0 +1,11 @@
+node_modules/
+dist/
+out/
+.env
+.env.*
+*.mp4
+*.webm
+*.gif
+*.mov
+*.log
+

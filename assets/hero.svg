@@ -1,0 +1,12 @@
+<svg width="1400" height="360" viewBox="0 0 1400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="360" fill="#0b1020"/>
+  <path d="M0 260C160 186 267 317 428 238C587 160 705 68 879 122C1057 177 1164 300 1400 181V360H0V260Z" fill="#1e293b"/>
+  <path d="M0 236C173 124 299 289 464 184C625 81 743 38 913 88C1082 138 1185 265 1400 138" stroke="#67e8f9" stroke-width="4" stroke-linecap="round"/>
+  <path d="M92 220C195 140 268 255 373 186C479 116 569 111 682 164" stroke="#f9a8d4" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 16"/>
+  <circle cx="464" cy="184" r="10" fill="#67e8f9"/>
+  <circle cx="913" cy="88" r="10" fill="#f9a8d4"/>
+  <circle cx="1186" cy="264" r="8" fill="#fde68a"/>
+  <text x="84" y="116" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800">Motion Design Agent Skills</text>
+  <text x="88" y="162" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="24">Web motion, Remotion video, GIFs, Rive, Lottie, GSAP, Motion, MCP, and agent QA.</text>
+</svg>
+
