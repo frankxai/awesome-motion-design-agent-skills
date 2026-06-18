@@ -1,6 +1,7 @@
 node_modules/
 dist/
 out/
+.agents/
 .env
 .env.*
 *.mp4
@@ -8,4 +9,3 @@ out/
 *.gif
 *.mov
 *.log
-

@@ -56,6 +56,14 @@ npx skills add remotion-dev/skills
 
 Run this in the agent environment where the video work will happen. Then verify the installed path before relying on it in production.
 
+Installed locally on 2026-06-18 for this repo:
+
+```text
+.agents/skills/remotion-best-practices
+```
+
+The installed skill is intentionally not committed to this public repo; keep third-party skill source pinned in `skills-lock.json` and reinstall from the official source when needed.
+
 ## Add MCP Carefully
 
 Recommended:
@@ -76,4 +84,3 @@ Checked on 2026-06-18:
 - `node` is available.
 - `npm` is available.
 - `ffmpeg` is available.
-
