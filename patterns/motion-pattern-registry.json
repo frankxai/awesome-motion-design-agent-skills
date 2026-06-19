@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "updated": "2026-06-19",
+  "patterns": [
+    {
+      "id": "ui-page-reveal",
+      "name": "Page Reveal",
+      "lane": "product-ui",
+      "defaultRuntime": "motion",
+      "useFor": ["landing pages", "dashboards", "settings screens", "article pages"],
+      "avoidFor": ["dense admin tables", "high-frequency tool surfaces"],
+      "tokens": {
+        "durationMs": 320,
+        "staggerMs": 60,
+        "easing": [0.22, 1, 0.36, 1]
+      },
+      "reducedMotion": "Render content immediately with no transform; preserve opacity and hierarchy.",
+      "qa": ["desktop screenshot", "mobile screenshot", "reduced-motion check"]
+    },
+    {
+      "id": "card-hover-lift",
+      "name": "Card Hover Lift",
+      "lane": "product-ui",
+      "defaultRuntime": "motion",
+      "useFor": ["feature cards", "repo cards", "offer cards", "gallery items"],
+      "avoidFor": ["nested cards", "mobile-only tap targets"],
+      "tokens": {
+        "durationMs": 140,
+        "easing": [0.2, 0, 0, 1],
+        "translateY": -4
+      },
+      "reducedMotion": "Use color/border/box-shadow state only.",
+      "qa": ["hover capture", "keyboard focus capture", "mobile no-hover check"]
+    },
+    {
+      "id": "signature-hero-timeline",
+      "name": "Signature Hero Timeline",
+      "lane": "premium-landing",
+      "defaultRuntime": "gsap",
+      "useFor": ["launch pages", "premium brand moments", "scroll story openings"],
+      "avoidFor": ["conversion-critical forms", "pages where speed beats mood"],
+      "tokens": {
+        "durationMs": 900,
+        "holdMs": 300,
+        "easing": "power3.out"
+      },
+      "reducedMotion": "Use a strong static hero frame with all content visible.",
+      "qa": ["desktop video", "mobile video", "loop end state", "reduced-motion still"]
+    },
+    {
+      "id": "scroll-process-explainer",
+      "name": "Scroll Process Explainer",
+      "lane": "premium-landing",
+      "defaultRuntime": "gsap",
+      "useFor": ["workflow explanation", "before-after", "system architecture", "product story"],
+      "avoidFor": ["long articles", "simple lists", "navigation-critical pages"],
+      "tokens": {
+        "sectionMinHeight": "100svh",
+        "scrub": true,
+        "snap": false
+      },
+      "reducedMotion": "Convert to stacked static steps with clear numbering.",
+      "qa": ["scroll start", "scroll midpoint", "scroll end", "keyboard scroll check"]
+    },
+    {
+      "id": "social-hook-loop",
+      "name": "Social Hook Loop",
+      "lane": "video-gif",
+      "defaultRuntime": "remotion",
+      "useFor": ["short demos", "social teasers", "release clips", "docs GIFs"],
+      "avoidFor": ["long-form editing", "unlicensed footage"],
+      "tokens": {
+        "fps": 30,
+        "hookSeconds": 3,
+        "durationSeconds": 8
+      },
+      "reducedMotion": "Provide poster frame and captioned still sequence.",
+      "qa": ["first-frame still", "mp4 render", "gif export", "compression check"]
+    },
+    {
+      "id": "spatial-node-reveal",
+      "name": "Spatial Node Reveal",
+      "lane": "spatial-3d",
+      "defaultRuntime": "three-r3f",
+      "useFor": ["memory palace", "ecosystem graphs", "cosmos maps", "world interfaces"],
+      "avoidFor": ["ordinary content pages", "mobile pages without perf budget"],
+      "tokens": {
+        "cameraEaseMs": 800,
+        "hoverMs": 120,
+        "dprMax": 1.5
+      },
+      "reducedMotion": "Use a static graph/list view with selected node detail.",
+      "qa": ["nonblank canvas pixel check", "desktop screenshot", "mobile screenshot", "performance check"]
+    },
+    {
+      "id": "interactive-vector-state-machine",
+      "name": "Interactive Vector State Machine",
+      "lane": "interactive-asset",
+      "defaultRuntime": "rive",
+      "useFor": ["mascots", "onboarding state", "badges", "interactive brand widgets"],
+      "avoidFor": ["simple decorative loops", "assets without designer ownership"],
+      "tokens": {
+        "stateNames": ["idle", "hover", "active", "success", "error"],
+        "posterRequired": true
+      },
+      "reducedMotion": "Freeze at meaningful state frame and use non-motion feedback.",
+      "qa": ["state transition capture", "poster frame", "fallback check"]
+    },
+    {
+      "id": "portable-vector-loop",
+      "name": "Portable Vector Loop",
+      "lane": "interactive-asset",
+      "defaultRuntime": "lottie",
+      "useFor": ["loaders", "small icon loops", "email/social embeds", "Remotion overlays"],
+      "avoidFor": ["complex app state", "large hero animation"],
+      "tokens": {
+        "durationSeconds": 2,
+        "loop": true,
+        "posterRequired": true
+      },
+      "reducedMotion": "Show poster frame or a CSS-only static icon.",
+      "qa": ["loop seam check", "file size check", "poster frame"]
+    }
+  ]
+}
+
