@@ -14,7 +14,12 @@ Codex can manage the complete preflight and finishing system:
 - ffmpeg GIF, MP4, WebM, poster, and compression exports
 - QA checklists for crop, file size, readability, reduced motion, and provenance
 
-Codex should only submit real third-party video jobs after credentials and access are explicitly available in the environment, user secret store, provider OAuth session, or Vercel project environment.
+Codex should route real third-party video jobs through the safest available authenticated surface:
+
+- logged-in CLI native tools first when they exist
+- provider OAuth/session auth when the CLI owns the generation
+- Vercel AI Gateway when the generation belongs inside a Vercel app
+- direct provider API only when advanced controls or automation require it
 
 ## Current Local Capability Reading
 
@@ -24,9 +29,20 @@ Local commands were found for Grok and Gemini:
 - `gr`
 - `gemini.ps1`
 
+`grok models` confirmed the local Grok CLI is logged in with `grok.com`.
+
+Grok's local `imagine` skill documents these native tool calls:
+
+- `image_gen`: generate a new image from text.
+- `image_edit`: edit or compose from one or more source images.
+- `image_to_video`: animate a source image as frame 1.
+- `reference_to_video`: use only when multiple references are genuinely needed.
+
+For the Grok CLI lane, raw provider keys are not the first blocker. The first blocker is a clean handoff contract: Codex must provide a media job, a source image, a short video prompt, target output path, and QA requirements, then let Grok execute the native tool call.
+
 No direct command was found for `xai`, `veo`, `runway`, `luma`, or `higgsfield`.
 
-The checked environment did not expose these video provider credentials:
+The checked environment did not expose these API credentials, which only matters for direct API lanes:
 
 - `XAI_API_KEY`
 - `GEMINI_API_KEY`
@@ -42,11 +58,31 @@ The checked environment did not expose these video provider credentials:
 - `REPLICATE_API_TOKEN`
 - `VERCEL_OIDC_TOKEN`
 
-So the safe default is **dry-run routing**: create excellent prompts, job specs, and finishing plans; submit only when provider auth is confirmed.
+So the safe default is **CLI-agent routing** for Grok and **dry-run routing** for providers whose CLI/API surface is not authenticated or installed.
 
 ## Recommended Provider Order
 
-### 1. Vercel AI Gateway First For Grok/Veo
+### 1. Grok Build CLI First For Grok Imagine
+
+Use this when Codex is routing generation work to the local logged-in Grok CLI.
+
+Best for:
+
+- source image creation through `image_gen`
+- source image editing/compositing through `image_edit`
+- short image-to-video shots through `image_to_video`
+- iterative social/video experiments where Grok owns the generation and Codex owns the brief, file organization, finishing, and QA
+
+Operational handoff:
+
+1. Codex writes a `media-job.json`.
+2. Codex creates or selects a source image.
+3. Codex writes a short shot prompt.
+4. Grok executes `image_gen`, `image_edit`, or `image_to_video`.
+5. Codex ingests the resulting file or URL.
+6. Codex finishes with Remotion/ffmpeg when exact text, overlays, variants, or compression matter.
+
+### 2. Vercel AI Gateway For App-Native Grok/Veo
 
 Use this when the output supports a Vercel site or web product. It keeps generation closer to the existing hosting and deployment stack.
 
@@ -57,7 +93,7 @@ Best for:
 - quick web-to-media experiments
 - unified model access from a Next.js/Vercel app
 
-### 2. Direct Provider APIs For Advanced Control
+### 3. Direct Provider APIs For Advanced Control
 
 Use direct APIs when provider-specific features matter:
 
@@ -68,7 +104,7 @@ Use direct APIs when provider-specific features matter:
 - Runway: existing video transformation and production editing.
 - Higgsfield: creator/social/ad video variants.
 
-### 3. Starlight Motion Designer MCP After Adapters
+### 4. Starlight Motion Designer MCP After Adapters
 
 Do not make the MCP call raw vendor APIs first. Build a provider adapter layer first, then expose those adapters as tools:
 
@@ -96,8 +132,10 @@ Use Grok Imagine when:
 
 - speed matters
 - the asset is social-first
-- image-to-video is enough
+- image-to-video is enough, especially through the logged-in Grok CLI
 - audio-synced or stylized variants are desired
+
+For the local Grok CLI lane, start video from a strong image. The local `imagine` skill says video starts from an image, so do not ask the CLI for an unsupported text-to-video path unless the tool surface confirms it.
 
 Use Veo when:
 
@@ -157,8 +195,11 @@ Use ffmpeg when:
 
 ## Source Links
 
-- OpenAI Sora video generation: https://developers.openai.com/api/docs/guides/video-generation
+- Local Grok Imagine skill: `C:\Users\frank\.grok\skills\imagine\SKILL.md`
+- xAI Grok Build CLI: https://x.ai/news/grok-build-cli
 - xAI Imagine overview: https://docs.x.ai/developers/model-capabilities/imagine
+- AI SDK xAI provider: https://ai-sdk.dev/providers/ai-sdk-providers/xai
+- OpenAI Sora video generation: https://developers.openai.com/api/docs/guides/video-generation
 - Google Veo in Gemini API: https://ai.google.dev/gemini-api/docs/video
 - Vercel AI Gateway text-to-video: https://vercel.com/docs/ai-gateway/capabilities/video-generation/text-to-video
 - Vercel AI Gateway image-to-video: https://vercel.com/docs/ai-gateway/capabilities/video-generation/image-to-video

@@ -1,10 +1,17 @@
 {
   "version": "2026-06-22",
   "principle": "Use generation providers for pixels and footage, Remotion for exact layout, Playwright for real product capture, and ffmpeg for final delivery.",
-  "defaultMode": "dry-run",
+  "defaultMode": "cli-agent-submit",
   "credentialPolicy": {
     "neverCommitSecrets": true,
     "acceptedSources": ["process-env", "user-secret-store", "vercel-project-env", "provider-oauth-session"],
+    "cliAuthenticatedProviders": {
+      "grok-build-cli": {
+        "authSource": "grok.com login",
+        "localCheck": "grok models",
+        "notes": "Raw provider keys are not required when Grok Build is already logged in and native Imagine tools are available."
+      }
+    },
     "requiredForApiSubmit": {
       "openai-sora": ["OPENAI_API_KEY"],
       "xai-grok-imagine": ["XAI_API_KEY"],
@@ -17,16 +24,22 @@
   },
   "routes": [
     {
+      "intent": "grok-native-image-or-video",
+      "primaryProvider": "grok-build-cli",
+      "fallbackProviders": ["codex-imagegen", "xai-grok-imagine", "remotion"],
+      "reason": "Use Grok Build's native Imagine tools when the CLI is logged in: image_gen for new frames, image_edit for source/reference images, and image_to_video for short animated shots."
+    },
+    {
       "intent": "style-frame",
       "primaryProvider": "codex-imagegen",
-      "fallbackProviders": ["figma", "canva"],
+      "fallbackProviders": ["grok-build-cli", "figma", "canva"],
       "reason": "Still frames are cheaper and clearer than generating motion before visual direction is approved."
     },
     {
       "intent": "fast-social-video",
-      "primaryProvider": "xai-grok-imagine",
-      "fallbackProviders": ["higgsfield", "luma", "remotion"],
-      "reason": "Use Grok Imagine for fast text/image-to-video experiments and social cuts; finish typography in Remotion."
+      "primaryProvider": "grok-build-cli",
+      "fallbackProviders": ["xai-grok-imagine", "higgsfield", "luma", "remotion"],
+      "reason": "Use Grok Build native image_to_video for fast CLI-authenticated social shots; finish typography in Remotion."
     },
     {
       "intent": "premium-cinematic-brand-clip",
@@ -66,7 +79,8 @@
     }
   ],
   "preferredIntegrationOrder": [
-    "Vercel AI Gateway for Grok/Veo when the site already runs on Vercel",
+    "Grok Build CLI native Imagine tools when the task is being routed from Codex into a logged-in CLI session",
+    "Vercel AI Gateway for Grok/Veo when the site already runs on Vercel and the generation belongs inside the app",
     "Provider APIs for Sora, Veo, xAI, Luma, Runway, and Higgsfield when advanced controls are needed",
     "Local MCP wrapper after the provider adapter layer is stable",
     "Manual provider UI only for early creative exploration or unavailable APIs"

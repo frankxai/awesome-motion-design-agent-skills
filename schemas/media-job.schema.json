@@ -99,12 +99,13 @@
       "properties": {
         "mode": {
           "type": "string",
-          "enum": ["dry-run", "manual-submit", "api-submit", "mcp-submit"]
+          "enum": ["dry-run", "cli-agent-submit", "manual-submit", "api-submit", "mcp-submit"]
         },
         "primaryProvider": {
           "type": "string",
           "enum": [
             "codex-imagegen",
+            "grok-build-cli",
             "openai-sora",
             "xai-grok-imagine",
             "google-veo",
@@ -124,6 +125,7 @@
             "type": "string",
             "enum": [
               "codex-imagegen",
+              "grok-build-cli",
               "openai-sora",
               "xai-grok-imagine",
               "google-veo",
@@ -136,6 +138,14 @@
               "canva",
               "figma"
             ]
+          },
+          "default": []
+        },
+        "nativeToolCalls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["image_gen", "image_edit", "image_to_video", "reference_to_video"]
           },
           "default": []
         },
