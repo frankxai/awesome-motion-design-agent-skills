@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/frankxai/awesome-motion-design-agent-skills/schemas/media-job.schema.json",
+  "title": "Motion Media Job",
+  "description": "Provider-agnostic contract for planning, routing, generating, finishing, and QAing AI motion media.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "brand",
+    "surface",
+    "taskType",
+    "brief",
+    "output",
+    "routing",
+    "prompts",
+    "qa",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{2,96}$"
+    },
+    "brand": {
+      "type": "string",
+      "enum": ["frankx", "arcanea", "starlight", "client", "internal"]
+    },
+    "surface": {
+      "type": "string",
+      "enum": [
+        "website-hero",
+        "landing-page",
+        "product-demo",
+        "social-vertical",
+        "social-square",
+        "deck",
+        "docs",
+        "app-ui",
+        "ad",
+        "internal-review"
+      ]
+    },
+    "taskType": {
+      "type": "string",
+      "enum": [
+        "style-frame",
+        "storyboard",
+        "text-to-video",
+        "image-to-video",
+        "video-edit",
+        "web-motion-capture",
+        "remotion-finish",
+        "gif-export",
+        "variant-pack"
+      ]
+    },
+    "brief": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["audience", "objective", "viewerAction", "brandRole"],
+      "properties": {
+        "audience": { "type": "string" },
+        "objective": { "type": "string" },
+        "viewerAction": { "type": "string" },
+        "brandRole": { "type": "string" },
+        "constraints": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": []
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["formats", "aspectRatios", "durationSeconds", "fps"],
+      "properties": {
+        "formats": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["png", "jpg", "webp", "gif", "mp4", "webm", "mov", "frames"] },
+          "minItems": 1
+        },
+        "aspectRatios": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["16:9", "9:16", "1:1", "4:5", "3:2", "custom"] },
+          "minItems": 1
+        },
+        "durationSeconds": { "type": "number", "minimum": 0, "maximum": 60 },
+        "fps": { "type": "integer", "enum": [12, 15, 24, 25, 30, 48, 60] },
+        "hasAudio": { "type": "boolean", "default": false },
+        "fileSizeTargetMb": { "type": "number", "minimum": 0 }
+      }
+    },
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "primaryProvider", "fallbackProviders"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["dry-run", "manual-submit", "api-submit", "mcp-submit"]
+        },
+        "primaryProvider": {
+          "type": "string",
+          "enum": [
+            "codex-imagegen",
+            "openai-sora",
+            "xai-grok-imagine",
+            "google-veo",
+            "luma",
+            "runway",
+            "higgsfield",
+            "remotion",
+            "playwright",
+            "ffmpeg",
+            "canva",
+            "figma"
+          ]
+        },
+        "fallbackProviders": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "codex-imagegen",
+              "openai-sora",
+              "xai-grok-imagine",
+              "google-veo",
+              "luma",
+              "runway",
+              "higgsfield",
+              "remotion",
+              "playwright",
+              "ffmpeg",
+              "canva",
+              "figma"
+            ]
+          },
+          "default": []
+        },
+        "reason": { "type": "string" },
+        "requiresCredential": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": []
+        }
+      }
+    },
+    "sourceAssets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "uri", "rights"],
+        "properties": {
+          "kind": { "type": "string", "enum": ["image", "video", "audio", "figma", "canva", "screenshot", "remotion", "other"] },
+          "uri": { "type": "string" },
+          "rights": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      },
+      "default": []
+    },
+    "prompts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "imagePrompt": { "type": "string" },
+        "videoPrompt": { "type": "string" },
+        "negativePrompt": { "type": "string" },
+        "systemNotes": { "type": "string" }
+      }
+    },
+    "finishing": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "remotionComposition": { "type": "string" },
+        "captions": { "type": "boolean", "default": false },
+        "logoLockup": { "type": "boolean", "default": false },
+        "ffmpegRecipe": { "type": "string" },
+        "posterFrame": { "type": "boolean", "default": true }
+      }
+    },
+    "qa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["checks"],
+      "properties": {
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "first-frame-works-as-still",
+              "target-crop-safe",
+              "text-legible",
+              "audio-intentional",
+              "loop-clean",
+              "reduced-motion-fallback",
+              "file-size-ok",
+              "rights-provenance-complete",
+              "brand-fit",
+              "no-sensitive-data"
+            ]
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["createdBy", "createdAt", "provider", "model", "licenseNotes"],
+      "properties": {
+        "createdBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "provider": { "type": "string" },
+        "model": { "type": "string" },
+        "jobUrl": { "type": "string" },
+        "seed": { "type": ["string", "number"] },
+        "licenseNotes": { "type": "string" },
+        "publicationRisk": { "type": "string", "enum": ["low", "medium", "high"] }
+      }
+    }
+  }
+}

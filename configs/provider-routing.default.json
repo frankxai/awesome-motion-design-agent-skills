@@ -1,0 +1,87 @@
+{
+  "version": "2026-06-22",
+  "principle": "Use generation providers for pixels and footage, Remotion for exact layout, Playwright for real product capture, and ffmpeg for final delivery.",
+  "defaultMode": "dry-run",
+  "credentialPolicy": {
+    "neverCommitSecrets": true,
+    "acceptedSources": ["process-env", "user-secret-store", "vercel-project-env", "provider-oauth-session"],
+    "requiredForApiSubmit": {
+      "openai-sora": ["OPENAI_API_KEY"],
+      "xai-grok-imagine": ["XAI_API_KEY"],
+      "google-veo": ["GEMINI_API_KEY", "GOOGLE_API_KEY"],
+      "luma": ["LUMA_API_KEY"],
+      "runway": ["RUNWAYML_API_SECRET", "RUNWAY_API_KEY"],
+      "higgsfield": ["HIGGSFIELD_KEY_ID", "HIGGSFIELD_KEY_SECRET"],
+      "vercel-ai-gateway": ["VERCEL_OIDC_TOKEN", "VERCEL_TOKEN"]
+    }
+  },
+  "routes": [
+    {
+      "intent": "style-frame",
+      "primaryProvider": "codex-imagegen",
+      "fallbackProviders": ["figma", "canva"],
+      "reason": "Still frames are cheaper and clearer than generating motion before visual direction is approved."
+    },
+    {
+      "intent": "fast-social-video",
+      "primaryProvider": "xai-grok-imagine",
+      "fallbackProviders": ["higgsfield", "luma", "remotion"],
+      "reason": "Use Grok Imagine for fast text/image-to-video experiments and social cuts; finish typography in Remotion."
+    },
+    {
+      "intent": "premium-cinematic-brand-clip",
+      "primaryProvider": "google-veo",
+      "fallbackProviders": ["openai-sora", "luma", "runway"],
+      "reason": "Use Veo or Sora for high-fidelity cinematic clips with audio; use Luma for exploratory variants."
+    },
+    {
+      "intent": "openai-first-video",
+      "primaryProvider": "openai-sora",
+      "fallbackProviders": ["google-veo", "xai-grok-imagine", "luma"],
+      "reason": "Use Sora when OpenAI provenance, prompt workflow, or org access is the preferred lane."
+    },
+    {
+      "intent": "existing-video-edit",
+      "primaryProvider": "runway",
+      "fallbackProviders": ["xai-grok-imagine", "luma", "remotion"],
+      "reason": "Use Runway-style video editing when transforming existing footage; use Remotion for deterministic overlays."
+    },
+    {
+      "intent": "real-product-demo",
+      "primaryProvider": "playwright",
+      "fallbackProviders": ["remotion", "ffmpeg"],
+      "reason": "Product demos should capture the real app first, then package with Remotion and ffmpeg."
+    },
+    {
+      "intent": "exact-layout-explainer",
+      "primaryProvider": "remotion",
+      "fallbackProviders": ["playwright", "ffmpeg"],
+      "reason": "Exact type, UI cards, captions, and data-driven scenes belong in code, not raw video generation."
+    },
+    {
+      "intent": "gif-or-web-export",
+      "primaryProvider": "ffmpeg",
+      "fallbackProviders": ["remotion", "playwright"],
+      "reason": "Final encoding, compression, GIF conversion, and poster extraction should be deterministic."
+    }
+  ],
+  "preferredIntegrationOrder": [
+    "Vercel AI Gateway for Grok/Veo when the site already runs on Vercel",
+    "Provider APIs for Sora, Veo, xAI, Luma, Runway, and Higgsfield when advanced controls are needed",
+    "Local MCP wrapper after the provider adapter layer is stable",
+    "Manual provider UI only for early creative exploration or unavailable APIs"
+  ],
+  "starlightMcpTools": [
+    "create_media_brief",
+    "select_media_provider",
+    "write_image_prompt",
+    "write_video_prompt",
+    "submit_media_job",
+    "poll_media_job",
+    "download_media_asset",
+    "finish_with_remotion",
+    "export_with_ffmpeg",
+    "score_motion_quality",
+    "write_asset_provenance"
+  ]
+}
