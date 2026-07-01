@@ -5,7 +5,7 @@
 <h1 align="center">Awesome Motion Design Agent Skills</h1>
 
 <p align="center">
-  <strong>A curated operating map for AI agents that create web motion, product animation, GIFs, videos, kinetic UI, and motion design systems.</strong>
+  <strong>The curated operating map for AI agents that create product motion, web animation, GIFs, videos, kinetic UI, brand motion systems, and motion QA.</strong>
 </p>
 
 <p align="center">
@@ -15,14 +15,14 @@
 
 ## TL;DR
 
-Motion design is becoming an agentic production stack:
+Motion design is becoming an agentic production stack. The advantage is no longer "can an agent animate something?" The advantage is whether an agent can choose the right motion job, pick the right runtime, preserve accessibility, capture evidence, and ship work that feels intentional instead of generated.
 
 - **Design source**: Figma, Canva, Rive, Lottie, reference boards.
 - **Web motion**: Motion, GSAP, CSS, Anime.js, Theatre.js, Three.js.
 - **Video and GIF output**: Remotion, Playwright capture, ffmpeg, Canva video exports.
-- **Agent layer**: skills, MCP servers, prompt playbooks, visual QA, and reusable animation specs.
+- **Agent layer**: skills, MCP servers, prompt playbooks, visual QA, reusable animation specs, and brand-specific motion agents.
 
-This repo tracks what to install, when to use each tool, and what we should build ourselves.
+This repo tracks what to install, when to use each tool, what to avoid, and what FrankX/Starlight/Arcanea should build ourselves.
 
 ## Start Here
 
@@ -46,7 +46,7 @@ For most FrankX/Arcanea/Starlight work, start here:
 | React UI states | Motion | Best default for component transitions, layout animations, gestures, and Next.js product UI. |
 | High-control web animation | GSAP | Best for timelines, scroll, SVG, motion paths, and crafted landing experiences. |
 | Interactive animation assets | Rive | Strong for state-machine-driven motion that reacts to app state. |
-| Portable vector loops | Lottie | Useful for lightweight loops, loaders, icons, and brand flourishes. |
+| Portable vector loops | Lottie / dotLottie | Useful for lightweight loops, loaders, icons, brand flourishes, compressed bundles, and cross-platform playback. |
 | Programmatic video | Remotion | React-native way to render explainers, demos, social clips, and GIFs. |
 | 3D and immersive scenes | Three.js / React Three Fiber | Use when the scene itself is spatial, not just decorative. |
 | Browser capture and QA | Playwright | Record videos, screenshots, and visual checks from real web pages. |
@@ -55,21 +55,26 @@ For most FrankX/Arcanea/Starlight work, start here:
 ## Install Priority
 
 1. **Keep installed/enabled now**: Figma, Canva, Vercel, Browser, GitHub, image generation.
-2. **Add immediately to motion/video repos**: Remotion skills, Motion, GSAP, Remotion, Playwright, ffmpeg scripts.
-3. **Add for premium/interactive work**: Rive, Lottie, Theatre.js, Three.js.
-4. **Build ourselves**: a Starlight Motion Designer MCP that turns brand tokens, intent, and page state into motion specs, implementation patches, previews, and QA reports.
+2. **Add immediately to motion/video repos**: official Remotion skills, Motion, GSAP, Playwright, ffmpeg scripts.
+3. **Add for premium/interactive work**: Rive, Lottie/dotLottie, Theatre.js, Three.js.
+4. **Study and compose**: LottieFiles motion-design skill, GSAP official AI skills, Remotion skills/MCP, Figma MCP, Canva MCP.
+5. **Build ourselves**: Starlight Motion Designer MCP plus [motion-design-studio](https://github.com/frankxai/motion-design-studio) Codex plugin skills for motion direction, product motion, Starlight motion, [arcanea-claw](https://github.com/frankxai/arcanea-claw) (AI media engine), and [arcanea-studio](https://github.com/frankxai/arcanea-studio) (generative image/video surface).
 
 ## Source Snapshot
 
-Research snapshot collected on 2026-06-18. Important sources:
+Research snapshot refreshed on 2026-06-19. Important sources:
 
 - [Motion docs](https://motion.dev/docs)
 - [GSAP docs](https://gsap.com/docs/v3/)
+- [GSAP official AI skills](https://github.com/greensock/gsap-skills)
 - [GSAP standard license](https://gsap.com/community/standard-license/)
 - [Remotion AI docs](https://www.remotion.dev/docs/ai/)
 - [Remotion agent skills](https://www.remotion.dev/docs/ai/skills)
 - [Remotion MCP](https://www.remotion.dev/docs/ai/mcp)
+- [LottieFiles motion-design skill](https://github.com/LottieFiles/motion-design-skill)
+- [LottieFiles dotLottie web skill](https://github.com/LottieFiles/dotlottie-web/blob/main/SKILL.md)
 - [Figma MCP docs](https://developers.figma.com/docs/figma-mcp-server/)
+- [Figma MCP catalog](https://www.figma.com/mcp-catalog/)
 - [Canva MCP docs](https://www.canva.dev/docs/mcp/)
 - [Rive docs](https://rive.app/docs/editor/state-machine)
 - [Lottie docs](https://lottiefiles.github.io/lottie-docs/)
@@ -80,4 +85,3 @@ Research snapshot collected on 2026-06-18. Important sources:
 ## Relationship To Existing Repos
 
 This repo complements [awesome-design-agent-skills](../awesome-design-agent-skills/README.md). That repo owns general UI design quality. This one owns motion-specific production: choreography, timelines, interaction states, video, GIFs, capture, and motion QA.
-

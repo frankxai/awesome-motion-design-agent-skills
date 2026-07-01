@@ -1,6 +1,6 @@
 # Best Agent Tools For Motion Design
 
-Research snapshot: 2026-06-18.
+Research snapshot: 2026-06-19.
 
 ## Already Valuable In This Codex Environment
 
@@ -38,4 +38,3 @@ Use four agent modes:
 2. **Implementation Agent**: Writes Motion/GSAP/Rive/Lottie/Remotion code.
 3. **Capture Agent**: Uses Playwright/Browser to record screenshots, videos, and GIF source clips.
 4. **Motion QA Agent**: Scores output against timing, accessibility, performance, brand fit, and reduced-motion support.
-
