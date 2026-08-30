@@ -10,6 +10,25 @@ This is an independent, **web-first** catalog. It remains useful if every FrankX
 
 Start with static hierarchy, animate only to clarify state or narrative, provide reduced motion, and verify performance on real devices.
 
+<!-- earned-skill-index:2026-08-30 -->
+
+## Earned agent skills (start here)
+
+Operators get leverage from **about 5–7 named workflows**, not bulk dumps. Hub: [https://github.com/frankxai/awesome-hermes-agent-skills](https://github.com/frankxai/awesome-hermes-agent-skills) · [earned index](https://github.com/frankxai/awesome-hermes-agent-skills/blob/main/docs/EARNED-SKILLS.md) · [safety gate](https://github.com/frankxai/awesome-hermes-agent-skills/blob/main/docs/QUALITY-AND-SAFETY.md).
+
+**Motion-design agent skills**
+
+| Pack | Job |
+| --- | --- |
+| [remotion-dev/skills](https://github.com/remotion-dev/skills) | Official Remotion agent skills |
+| [Orkas-AI/Orkas-VideoStudio](https://github.com/Orkas-AI/Orkas-VideoStudio) | 14-skill video pack with `plan.json` |
+| [garrytan/gstack](https://github.com/garrytan/gstack) | Design / motion QA |
+| [nexu-io/open-design](https://github.com/nexu-io/open-design) | Design + media, Hermes via ACP |
+| [NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector) | Scan before install |
+
+Scan with [NVIDIA SkillSpector](https://github.com/NVIDIA/SkillSpector) before a live profile. Do not install unsigned ZIP/S3 skill blobs or OpenClaw mass dumps.
+
+
 ## Peer directories and standards
 
 [greensock/GSAP](https://github.com/greensock/GSAP) · [remotion-dev/remotion](https://github.com/remotion-dev/remotion)
@@ -64,4 +83,4 @@ Open a PR with a primary URL, one-sentence distinct value, current maintenance e
 
 This monthly pulse queried GitHub repository metadata on **2026-08-03** for identity, approximate stars, archived state, activity, and license posture. `NOASSERTION` means GitHub did not return a standard SPDX identifier; review the repository license before adoption. Counts are dated discovery signals, not rankings. Nothing here is financial, legal, medical, or safety advice.
 
-Maintained as independent, web-first curation by FrankX. Last research pulse: **2026-08-03**.
+Maintained as independent, web-first curation by FrankX. Last research pulse: **2026-08-30**.
