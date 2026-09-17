@@ -1,12 +1,41 @@
-<svg width="1400" height="360" viewBox="0 0 1400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1400" height="360" fill="#0b1020"/>
-  <path d="M0 260C160 186 267 317 428 238C587 160 705 68 879 122C1057 177 1164 300 1400 181V360H0V260Z" fill="#1e293b"/>
-  <path d="M0 236C173 124 299 289 464 184C625 81 743 38 913 88C1082 138 1185 265 1400 138" stroke="#67e8f9" stroke-width="4" stroke-linecap="round"/>
-  <path d="M92 220C195 140 268 255 373 186C479 116 569 111 682 164" stroke="#f9a8d4" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 16"/>
-  <circle cx="464" cy="184" r="10" fill="#67e8f9"/>
-  <circle cx="913" cy="88" r="10" fill="#f9a8d4"/>
-  <circle cx="1186" cy="264" r="8" fill="#fde68a"/>
-  <text x="84" y="116" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800">Motion Design Agent Skills</text>
-  <text x="88" y="162" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="24">Web motion, Remotion video, GIFs, Rive, Lottie, GSAP, Motion, MCP, and agent QA.</text>
+<svg width="1600" height="500" viewBox="0 0 1600 500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Awesome Motion Design Agent Skills</title>
+  <desc id="desc">Curated through the GenCreator 6-Pillar CoE lens • Starlight Swarm • Arcanea Creative Execution • Agentic Passive Income Systems</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="500">
+      <stop stop-color="#1a1a2e"/>
+      <stop offset="0.5" stop-color="#16213e"/>
+      <stop offset="1" stop-color="#0f3460"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="200" y1="100" x2="1420" y2="420">
+      <stop stop-color="#00d4ff"/>
+      <stop offset="0.5" stop-color="#00b4d8"/>
+      <stop offset="1" stop-color="#0077b6"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="500" rx="28" fill="url(#bg)"/>
+  <!-- Motion design waves / keyframes -->
+  <g opacity="0.25" stroke="url(#accent)" stroke-width="2">
+    <path d="M200 380 Q400 280 600 380 Q800 480 1000 380 Q1200 280 1400 380"/>
+    <path d="M250 320 Q450 220 650 320 Q850 420 1050 320 Q1250 220 1450 320"/>
+    <rect x="300" y="260" width="40" height="40" rx="4" fill="#00d4ff" opacity="0.6"/>
+    <rect x="700" y="300" width="30" height="30" rx="4" fill="#00d4ff" opacity="0.6"/>
+    <rect x="1100" y="270" width="35" height="35" rx="4" fill="#00d4ff" opacity="0.6"/>
+  </g>
+  <g filter="url(#glow)">
+    <circle cx="350" cy="280" r="12" fill="#00d4ff"/>
+    <circle cx="750" cy="330" r="10" fill="#00b4d8"/>
+    <circle cx="1150" cy="290" r="11" fill="#0077b6"/>
+  </g>
+  <text x="120" y="220" fill="#f0f4f8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="52" font-weight="800" letter-spacing="-1">Awesome Motion</text>
+  <text x="122" y="285" fill="#e0e7ff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="48" font-weight="700">Design Agent Skills</text>
+  <text x="124" y="340" fill="#a5b4fc" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" letter-spacing="0">Remotion • Lottie • Rive • GSAP • Video Agents • Arcanea</text>
+  <text x="980" y="420" fill="#00d4ff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="600">| GenCreator 6-Pillar</text>
 </svg>
-
