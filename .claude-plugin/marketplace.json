@@ -1,0 +1,25 @@
+{
+  "name": "frankx-motion",
+  "description": "Motion-design agent skills: web motion audit, motion direction, Remotion video, generative media, site motion systems.",
+  "owner": {
+    "name": "FrankX",
+    "url": "https://github.com/frankxai"
+  },
+  "plugins": [
+    {
+      "name": "motion-design-studio",
+      "source": "./",
+      "description": "Five skills: generative-media-director, motion-director, remotion-video-agent, site-motion-excellence-director, web-motion-auditor.",
+      "license": "CC0-1.0",
+      "homepage": "https://github.com/frankxai/awesome-motion-design-agent-skills",
+      "keywords": [
+        "motion",
+        "animation",
+        "remotion",
+        "gsap",
+        "video",
+        "design-qa"
+      ]
+    }
+  ]
+}
