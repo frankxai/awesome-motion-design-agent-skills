@@ -1,6 +1,6 @@
 # Awesome Motion Design Agent Skills
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Stars](https://img.shields.io/github/stars/frankxai/awesome-motion-design-agent-skills?style=flat)](https://github.com/frankxai/awesome-motion-design-agent-skills/stargazers) [![Last commit](https://img.shields.io/github/last-commit/frankxai/awesome-motion-design-agent-skills?style=flat)](https://github.com/frankxai/awesome-motion-design-agent-skills/commits/main)
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Stars](https://img.shields.io/github/stars/frankxai/awesome-motion-design-agent-skills?style=flat)](https://github.com/frankxai/awesome-motion-design-agent-skills) [![Last commit](https://img.shields.io/github/last-commit/frankxai/awesome-motion-design-agent-skills?style=flat)](https://github.com/frankxai/awesome-motion-design-agent-skills/commits/main)
 
 > Web-first resources for interface motion, cinematic web interaction, programmatic video, and motion-design review workflows.
 
