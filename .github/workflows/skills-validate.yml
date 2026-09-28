@@ -1,0 +1,48 @@
+name: Skills Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Validate SKILL.md frontmatter, manifests, and public-safety
+        shell: python
+        run: |
+          import json, pathlib, re, sys
+          errs = []
+          root = pathlib.Path(".")
+          for skill in sorted(root.glob("skills/*/SKILL.md")):
+              text = skill.read_text(encoding="utf-8")
+              m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+              if not m:
+                  errs.append(f"{skill}: missing YAML frontmatter"); continue
+              fm = dict(re.findall(r"^(\w[\w-]*):\s*(.+)$", m.group(1), re.M))
+              name, desc = fm.get("name", "").strip(), fm.get("description", "").strip()
+              if name != skill.parent.name:
+                  errs.append(f"{skill}: name '{name}' != folder '{skill.parent.name}'")
+              if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", name) or len(name) > 64:
+                  errs.append(f"{skill}: name must be kebab-case, <=64 chars")
+              if not desc or len(desc) > 1024:
+                  errs.append(f"{skill}: description missing or >1024 chars")
+          for mf in [".claude-plugin/marketplace.json", ".claude-plugin/plugin.json", "skills-lock.json"]:
+              p = root / mf
+              if p.exists():
+                  try: json.loads(p.read_text(encoding="utf-8"))
+                  except Exception as e: errs.append(f"{mf}: invalid JSON ({e})")
+          leak = re.compile(r"[A-Za-z]:\\Users\\|/Users/[A-Za-z]+/|/home/[a-z]+/")
+          for f in root.rglob("*"):
+              if f.is_file() and f.suffix in {".md", ".json", ".yml", ".yaml"} and ".git" not in f.parts:
+                  for i, line in enumerate(f.read_text(encoding="utf-8", errors="ignore").splitlines(), 1):
+                      if leak.search(line):
+                          errs.append(f"{f}:{i}: private local path")
+          print("\n".join(errs) or "OK: skills, manifests, public-safety")
+          sys.exit(1 if errs else 0)

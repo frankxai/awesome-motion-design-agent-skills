@@ -27,6 +27,7 @@ jobs:
             --timeout=20
             --max-retries=3
             --exclude https://github.com/frankxai/awesome-jarvis
+            --exclude 'releases/(download|tag)/skills-latest'
             './**/*.md'
           fail: true
           jobSummary: true
@@ -48,6 +49,7 @@ jobs:
             --timeout=20
             --max-retries=3
             --exclude https://github.com/frankxai/awesome-jarvis
+            --exclude 'releases/(download|tag)/skills-latest'
             './**/*.md'
           fail: false
           jobSummary: true
