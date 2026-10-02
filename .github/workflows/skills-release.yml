@@ -1,0 +1,36 @@
+name: Skills Release
+
+# Publishes one .zip per skill to the rolling `skills-latest` release so
+# README download links stay stable for Claude.ai / Desktop / Cowork uploads.
+on:
+  push:
+    branches: [main]
+    paths: ["skills/**", ".github/workflows/skills-release.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Package skills
+        run: |
+          mkdir -p dist
+          for d in skills/*/; do
+            n=$(basename "$d")
+            (cd skills && zip -qr "../dist/$n.zip" "$n")
+          done
+          (cd skills && zip -qr ../dist/all-skills.zip .)
+          ls -l dist
+      - name: Publish rolling release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          notes="Rolling build of skills/ from ${GITHUB_SHA::7}. Upload a .zip in Claude's Skills settings, or install from source: npx skills add ${GITHUB_REPOSITORY}"
+          gh release view skills-latest >/dev/null 2>&1 \
+            || gh release create skills-latest --title "Skills (rolling)" --notes "$notes" --latest=false
+          gh release edit skills-latest --notes "$notes"
+          gh release upload skills-latest dist/*.zip --clobber

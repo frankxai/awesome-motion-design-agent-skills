@@ -1,20 +1,28 @@
-# Contributing Standards
+# Contributing
 
-We welcome contributions that align with our core thesis of **verifiable, world-healing, and rigorously-tested agent intelligence**.
+This list earns trust by being small, current, and verifiable. A pull request is welcome when it makes the list more useful to someone choosing a tool tomorrow.
 
-## The Golden Rules
+## An entry qualifies when
 
-1. **No Hallucinated Tooling**: If you submit an agent skill, prompt, or tool, it must be verified to work against a real API or framework.
-2. **Safety First**: Any capability that interfaces with the physical world, live capital, or critical infrastructure must include strict human-in-the-loop approval gates.
-3. **High Signal, Low Noise**: We prefer deeply curated, opinionated lists over exhaustive link dumps. If you add a repository, explain *why* it is the best-in-class choice for that specific layer of the agent OS.
-4. **Formatting**: Ensure your Markdown is clean. If adding to a list, use the existing `<details>` structure to preserve the scannability of the README.
+- It links to the **primary source** — the official repo or docs, not a blog post about it.
+- It does **one job better** than what is already listed, stated in one sentence.
+- It shows **recent maintenance** (commits or releases in the last six months) and a clear license.
+- Risky capabilities — payments, trading, health, autonomous actions — name their **human approval gate**.
 
-## How to Submit
+## Not accepted
 
-1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature/amazing-new-skill`).
-3. Commit your changes (`git commit -m 'feat: Add incredible new skill'`).
-4. Push to the branch (`git push origin feature/amazing-new-skill`).
-5. Open a Pull Request.
+Affiliate or referral links, product pitches, private workflow exports, unverified claims, bulk skill dumps.
 
-Your PR will be reviewed against our strict quality gates. We expect a high standard of engineering and documentation. Thank you for helping build the intelligence layer.
+## Format
+
+```markdown
+- [Name](https://primary-url) - What it does, in one sentence.
+```
+
+Table rows follow the columns already in that section. Keep alphabetical order where the section uses it.
+
+## Checks
+
+Every PR runs the link checker and `skills-validate`. Skills in `skills/` need a folder name equal to the frontmatter `name` (kebab-case) and a description of *when the skill fires*, under 1024 characters.
+
+By contributing you dedicate your contribution to the public domain under [CC0 1.0](LICENSE).

@@ -2,7 +2,7 @@
 
 Date: 2026-06-19
 
-Scope: local repos under `C:\Users\frank\starlight\repos`, focused on FrankX.ai, Arcanea, Starlight Intelligence Systems, and adjacent media/video repos.
+Scope: the maintainer's local repo estate, focused on FrankX.ai, Arcanea, Starlight Intelligence Systems, and adjacent media/video repos.
 
 ## Executive Read
 

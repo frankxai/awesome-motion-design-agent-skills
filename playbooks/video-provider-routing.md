@@ -195,7 +195,6 @@ Use ffmpeg when:
 
 ## Source Links
 
-- Local Grok Imagine skill: `C:\Users\frank\.grok\skills\imagine\SKILL.md`
 - xAI Grok Build CLI: https://x.ai/news/grok-build-cli
 - xAI Imagine overview: https://docs.x.ai/developers/model-capabilities/imagine
 - AI SDK xAI provider: https://ai-sdk.dev/providers/ai-sdk-providers/xai
