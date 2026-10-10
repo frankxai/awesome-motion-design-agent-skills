@@ -89,8 +89,11 @@ Do not install unsigned ZIP/S3 skill blobs or mass-dump skill collections into a
 | [Rive WebAssembly](https://github.com/rive-app/rive-wasm)        | MIT · 970★              | State-machine interactive vector animation runtime.                      |
 | [dotLottie web](https://github.com/LottieFiles/dotlottie-web)    | MIT · 888★              | Modern Lottie player for web UI motion assets.                           |
 | [Phaser](https://github.com/phaserjs/phaser)                     | MIT · 40.4k★            | Real-time web interaction and game-feel patterns.                        |
+| [1human reference client](https://github.com/mdagnolops/1human-reels) | MIT client · checked 2026-10-10 | Discover attributed motion references and retrieve recipes with owner-authorized agent access. |
 | [Agent Skills](https://github.com/agentskills/agentskills)       | Apache-2.0 · 25.8k★     | The open `SKILL.md` standard these skills follow.                        |
 | [skills CLI](https://github.com/vercel-labs/skills)              | MIT · 32.7k★            | Cross-agent installer behind `npx skills add`.                           |
+
+The 1human client serves reference discovery rather than rendering: [public previews](https://reels.1human.tech/) need no account, while recipes, publication and private preferences require owner-approved credentials. The client/examples are MIT; the hosted service, brand and private data are not. Reference licenses remain per creation. Basic participation is free, with a capped beta; this is not a universal importer or evidence of adoption.
 
 <details>
 <summary>Editorial curation lens (optional)</summary>
