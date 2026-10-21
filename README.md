@@ -93,6 +93,7 @@ Do not install unsigned ZIP/S3 skill blobs or mass-dump skill collections into a
 | [Agent Skills](https://github.com/agentskills/agentskills)       | Apache-2.0 · 25.8k★     | The open `SKILL.md` standard these skills follow.                        |
 | [skills CLI](https://github.com/vercel-labs/skills)              | MIT · 32.7k★            | Cross-agent installer behind `npx skills add`.                           |
 | [product-launch-motion](https://github.com/AbubakrChan/product-launch-motion) | MIT · 253★ | Claude Code skill: website URL to a 60 fps launch video with music, SFX and motion blur. Needs local Playwright and ffmpeg. |
+| [AgentsUses: Motion Graphics](https://agentsuses.com/c/motion-graphics/) | Free website · entries re-checked on a schedule | Picks a motion skill before you install it: each entry links the source repo and shows its licence, install path, a starter prompt, an automated safety-scan note and, where available, credited result videos. |
 
 The 1human client serves reference discovery rather than rendering: [public previews](https://reels.1human.tech/) need no account, while recipes, publication and private preferences require owner-approved credentials. The client/examples are MIT; the hosted service, brand and private data are not. Reference licenses remain per creation. Basic participation is free, with a capped beta; this is not a universal importer or evidence of adoption.
 
