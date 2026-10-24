@@ -1,0 +1,18 @@
+{
+  "$schema": "https://frankx.ai/schemas/vis-provenance-sidecar.schema.json",
+  "asset_id": "social-preview-svg",
+  "image_path": "assets/social-preview.svg",
+  "sidecar_path": "assets/social-preview.svg.vis.provenance.json",
+  "source_method": "hand-authored-svg",
+  "provider": "Starlight Visual Engine (SVG)",
+  "model": "hand-authored-svg-v1",
+  "sha256": "423376f1c053f24b1ad484f41770fdac1a8499029d5a593d36449162ab0163fa",
+  "alt": "Vector source for the 1280x640 Motion Design Agent Skills social preview card with cubic-bezier easing curve",
+  "viewport": {
+    "width": 1280,
+    "height": 640
+  },
+  "rights": "CC0-1.0 public domain dedication (first-party repository asset)",
+  "review": "Verified repository asset provenance and SHA-256 digest",
+  "timestamp": "2026-10-24T13:35:00Z"
+}

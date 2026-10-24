@@ -10,7 +10,7 @@
 [![Install: any agent](https://img.shields.io/badge/npx%20skills%20add-any%20agent-000000?style=for-the-badge&logo=npm)](#install) [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://code.claude.com/docs/en/discover-plugins) [![Download for Claude.ai](https://img.shields.io/badge/Claude.ai%20%2F%20Cowork-download%20.zip-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://github.com/frankxai/awesome-motion-design-agent-skills/releases)
 <!-- fleet:install-badges:end -->
 
-> The motion-design stack for AI agents — curated GSAP, Motion, Remotion, Lottie and Rive resources, plus five installable skills that make agents animate with taste.
+> Five installable `SKILL.md` workflows and a curated catalog of GSAP, Motion, Remotion, Rive, Lottie, and 3D tools for AI coding agents in Claude Code, Codex, Cursor, and Copilot.
 
 Every entry links to its primary source and carries a dated pulse. Companion FrankX lists sit at the end, never in front.
 
@@ -19,25 +19,34 @@ Every entry links to its primary source and carries a dated pulse. Companion Fra
 <!-- fleet:install:start -->
 ## Install
 
-Five skills ship in [`skills/`](skills) as open-standard `SKILL.md` folders, so one source feeds every surface.
+Five skills ship in [`skills/`](skills) as open-standard `SKILL.md` folders, verified on fresh checkouts for **Claude Code** and **Codex**.
 
-| Surface                                                                                               | Install                                                                                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Any agent** — Claude Code, Codex, Cursor, Copilot, Gemini CLI and 70+ more via `vercel-labs/skills` | `npx skills add frankxai/awesome-motion-design-agent-skills`                                                                                                                            |
-| One skill, one agent                                                                                  | `npx skills add frankxai/awesome-motion-design-agent-skills --skill web-motion-auditor -a claude-code` (or `codex`, `cursor`, `github-copilot`, `gemini-cli`; add `-g` for global)      |
-| **Claude Code** plugin (all five, auto-updating)                                                      | `/plugin marketplace add frankxai/awesome-motion-design-agent-skills` then `/plugin install motion-design-studio@frankx-motion`                                                         |
-| **Claude.ai · Claude Desktop · Cowork**                                                               | Download a skill `.zip` from the [rolling release](https://github.com/frankxai/awesome-motion-design-agent-skills/releases/tag/skills-latest) and upload it in Claude's Skills settings |
-| **GitHub Copilot** (cloud agent, CLI, VS Code)                                                        | Copy `skills/<name>/` into your repo's `.github/skills/` — or `npx skills add … -a github-copilot`                                                                                      |
-| **Codex**                                                                                             | `npx skills add frankxai/awesome-motion-design-agent-skills -a codex`                                                                                                                   |
+| Surface                                                                                           | Verified install command                                                                                                                                              | Target path                                    |
+| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| **Claude Code** (project-local, all 5 skills)                                                     | `npx --yes skills add frankxai/awesome-motion-design-agent-skills -a claude-code -y`                                                                                  | `./.claude/skills/<name>/SKILL.md`             |
+| **Claude Code** plugin (auto-updating)                                                            | `/plugin marketplace add frankxai/awesome-motion-design-agent-skills` then `/plugin install motion-design-studio@frankx-motion`                                       | Claude Code plugin cache                       |
+| **Codex** (project-local, all 5 skills)                                                           | `npx --yes skills add frankxai/awesome-motion-design-agent-skills -a codex -y`                                                                                        | `./.agents/skills/<name>/SKILL.md`             |
+| **One skill** (`claude-code`, `codex`, `cursor`, `github-copilot`, `gemini-cli`; `-g` for global) | `npx --yes skills add frankxai/awesome-motion-design-agent-skills --skill web-motion-auditor -a claude-code -y`                                                       | `./.claude/skills/web-motion-auditor/SKILL.md` |
+| **Claude.ai · Claude Desktop · Cowork**                                                           | Download a `.zip` from the [rolling release](https://github.com/frankxai/awesome-motion-design-agent-skills/releases/tag/skills-latest) and upload in Skills settings | Uploaded workspace skill                       |
+| **GitHub Copilot** (cloud agent, CLI, VS Code)                                                    | `npx --yes skills add frankxai/awesome-motion-design-agent-skills -a github-copilot -y` (or copy `skills/<name>/` into `.github/skills/`)                             | `./.github/skills/<name>/SKILL.md`             |
 
-Preview with `npx skills add frankxai/awesome-motion-design-agent-skills --list`; verify with `npx skills list`. Scan any third-party pack with `NVIDIA/SkillSpector` before it reaches a live profile.
+Verify on a fresh checkout:
+
+```bash
+npx --yes skills add frankxai/awesome-motion-design-agent-skills --list
+npx --yes skills add frankxai/awesome-motion-design-agent-skills -a claude-code -y
+npx --yes skills add frankxai/awesome-motion-design-agent-skills -a codex -y
+npx --yes skills list
+```
+
+Scan any third-party pack with `NVIDIA/SkillSpector` before it reaches a live profile.
 <!-- fleet:install:end -->
 
 ## Choose your workflow
 
 Five first-party skills, one per job. Read the `SKILL.md`, then install only what the work needs.
 
-| Job                                               | Skill                                                                                | Read without installing                                                                                                           | Zip                                                                                                                                     |
+| Job                                               | Skill                                                                                | Companion spec / rubric                                                                                                           | Zip                                                                                                                                     |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | Product UI motion, stack choice, vector/3D assets | [`motion-director`](skills/motion-director/SKILL.md)                                 | [motion quality rubric](rubrics/motion-quality-rubric.md)                                                                         | [↓](https://github.com/frankxai/awesome-motion-design-agent-skills/releases/download/skills-latest/motion-director.zip)                 |
 | Cinematic site choreography                       | [`site-motion-excellence-director`](skills/site-motion-excellence-director/SKILL.md) | [site motion spec](templates/site-motion/SITE_MOTION_SPEC.md) · [excellence gate](rubrics/site-motion-excellence-gate.md)         | [↓](https://github.com/frankxai/awesome-motion-design-agent-skills/releases/download/skills-latest/site-motion-excellence-director.zip) |
@@ -79,20 +88,39 @@ Do not install unsigned ZIP/S3 skill blobs or mass-dump skill collections into a
 
 ## Curated catalog
 
-| Project                                                          | Pulse snapshot          | Why it is here                                                           |
-| ---------------------------------------------------------------- | ----------------------- | ------------------------------------------------------------------------ |
-| [GSAP](https://github.com/greensock/GSAP)                        | Custom license · 28.7k★ | Timeline-grade JavaScript animation; ScrollTrigger for narrative scroll. |
-| [Motion](https://github.com/motiondivision/motion)               | MIT · 33.8k★            | React/JavaScript animation with layout and gesture primitives.           |
-| [React Three Fiber](https://github.com/pmndrs/react-three-fiber) | MIT · 32.6k★            | Three.js as a React renderer for 3D scenes with fallbacks.               |
-| [Remotion](https://github.com/remotion-dev/remotion)             | Custom license · 60.9k★ | Programmatic video rendered from React.                                  |
-| [Anime.js](https://github.com/juliangarnier/anime)               | MIT · 73.2k★            | Lightweight timeline animation for DOM, SVG and CSS.                     |
-| [Rive WebAssembly](https://github.com/rive-app/rive-wasm)        | MIT · 970★              | State-machine interactive vector animation runtime.                      |
-| [dotLottie web](https://github.com/LottieFiles/dotlottie-web)    | MIT · 888★              | Modern Lottie player for web UI motion assets.                           |
-| [Phaser](https://github.com/phaserjs/phaser)                     | MIT · 40.4k★            | Real-time web interaction and game-feel patterns.                        |
-| [1human reference client](https://github.com/mdagnolops/1human-reels) | MIT client · checked 2026-10-10 | Discover attributed motion references and retrieve recipes with owner-authorized agent access. |
-| [Agent Skills](https://github.com/agentskills/agentskills)       | Apache-2.0 · 25.8k★     | The open `SKILL.md` standard these skills follow.                        |
-| [skills CLI](https://github.com/vercel-labs/skills)              | MIT · 32.7k★            | Cross-agent installer behind `npx skills add`.                           |
-| [product-launch-motion](https://github.com/AbubakrChan/product-launch-motion) | MIT · 253★ | Claude Code skill: website URL to a 60 fps launch video with music, SFX and motion blur. Needs local Playwright and ffmpeg. |
+Grouped into four categories so you can scan on mobile and pick one tool per layer.
+
+### Web and UI animation
+
+| Project                                            | License & pulse         | When to reach for it                                                   |
+| -------------------------------------------------- | ----------------------- | ---------------------------------------------------------------------- |
+| [GSAP](https://github.com/greensock/GSAP)          | Custom license · 28.7k★ | Timeline-grade JavaScript animation and ScrollTrigger choreography.    |
+| [Motion](https://github.com/motiondivision/motion) | MIT · 33.8k★            | React and JavaScript layout, spring, and gesture animation primitives. |
+| [Anime.js](https://github.com/juliangarnier/anime) | MIT · 73.2k★            | Lightweight timeline animation for DOM, SVG, and CSS properties.       |
+| [Phaser](https://github.com/phaserjs/phaser)       | MIT · 40.4k★            | Real-time 2D canvas/WebGL interaction and game-feel state loops.       |
+
+### Programmatic video and 3D scenes
+
+| Project                                                                       | License & pulse         | When to reach for it                                                                     |
+| ----------------------------------------------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------- |
+| [Remotion](https://github.com/remotion-dev/remotion)                          | Custom license · 60.9k★ | Deterministic MP4 and GIF video rendered frame-by-frame from React.                      |
+| [React Three Fiber](https://github.com/pmndrs/react-three-fiber)              | MIT · 32.6k★            | Declarative Three.js scenes in React with static/reduced-motion fallbacks.               |
+| [product-launch-motion](https://github.com/AbubakrChan/product-launch-motion) | MIT · 253★              | Claude Code skill turning a site URL into a 60 fps launch video via Playwright + ffmpeg. |
+
+### Interactive vector runtimes
+
+| Project                                                       | License & pulse | When to reach for it                                              |
+| ------------------------------------------------------------- | --------------- | ----------------------------------------------------------------- |
+| [Rive WebAssembly](https://github.com/rive-app/rive-wasm)     | MIT · 970★      | Interactive state-machine vector animations driven by app state.  |
+| [dotLottie web](https://github.com/LottieFiles/dotlottie-web) | MIT · 888★      | Compact Lottie/dotLottie player for icons and micro-interactions. |
+
+### Agent standards and reference discovery
+
+| Project                                                               | License & pulse                 | When to reach for it                                                                     |
+| --------------------------------------------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------- |
+| [Agent Skills](https://github.com/agentskills/agentskills)            | Apache-2.0 · 25.8k★             | The open `SKILL.md` specification followed by every skill in `skills/`.                  |
+| [skills CLI](https://github.com/vercel-labs/skills)                   | MIT · 32.7k★                    | Cross-agent installer powering `npx skills add` and `npx skills list`.                   |
+| [1human reference client](https://github.com/mdagnolops/1human-reels) | MIT client · checked 2026-10-10 | Discover attributed motion references and retrieve recipes with owner-authorized access. |
 
 The 1human client serves reference discovery rather than rendering: [public previews](https://reels.1human.tech/) need no account, while recipes, publication and private preferences require owner-approved credentials. The client/examples are MIT; the hosted service, brand and private data are not. Reference licenses remain per creation. Basic participation is free, with a capped beta; this is not a universal importer or evidence of adoption.
 
@@ -136,9 +164,8 @@ Companion catalogs. The third-party projects above are this list's primary value
 
 ## Contribution standard
 
-Open a PR with a primary URL, one-sentence distinct value, current maintenance evidence, license posture, and relevant safety/deployment caveat. New skills must pass `skills-validate` (frontmatter name matches folder, description ≤ 1024 chars, no private paths). No affiliate links, private workflow exports, unverified claims, or product pitches in place of a useful third-party resource.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full pull-request checklist. Open a PR with a primary URL, one-sentence distinct value, current maintenance evidence, license posture, and relevant safety or reduced-motion caveat. New skills must pass `skills-validate` (frontmatter `name` matches folder, `description` ≤ 1024 chars, no private paths) and fresh-checkout installation in Claude Code and Codex.
 
 ## Research method
 
-Repository metadata (stars, SPDX license, archived state, last push) was pulled from the GitHub API on **2026-09-28**. "Custom license" means GitHub returned no standard SPDX identifier — read the license before adoption. Counts are dated discovery signals, not rankings. Links are checked on every PR and monthly by [Lychee](.github/workflows/link-checker.yml). Nothing here is financial, legal, medical, or safety advice.
-
+Repository metadata (stars, SPDX license, archived state, last push) was pulled from the GitHub API on **2026-10-24**. "Custom license" means GitHub returned no standard SPDX identifier — read the license before adoption. Counts are dated discovery signals, not rankings. Links are checked on every PR and monthly by [Lychee](.github/workflows/link-checker.yml). Nothing here is financial, legal, medical, or safety advice.

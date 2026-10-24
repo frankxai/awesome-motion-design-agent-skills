@@ -1,0 +1,104 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1040 240) rotate(135) scale(420)">
+      <stop offset="0%" stop-color="#f05a3c" stop-opacity="0.28"/>
+      <stop offset="55%" stop-color="#5e78ff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0b0d12" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="curveGrad" x1="760" y1="390" x2="1150" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5e78ff"/>
+      <stop offset="55%" stop-color="#f05a3c"/>
+      <stop offset="100%" stop-color="#d9ff5a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="#0b0d12"/>
+  <rect width="1280" height="640" fill="url(#glowA)"/>
+
+  <!-- Subtle 40px safe-margin frame -->
+  <rect x="44" y="44" width="1192" height="552" rx="24" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Left column: eyebrow, title, one-line value, install command, agent pills -->
+  <line x1="88" y1="112" x2="128" y2="112" stroke="#f05a3c" stroke-width="2.5"/>
+  <text x="142" y="117" fill="#f05a3c" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" letter-spacing="2">
+    frankxai / awesome-motion-design-agent-skills
+  </text>
+
+  <text x="88" y="202" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="64" font-weight="700" letter-spacing="-2">
+    Motion Design
+  </text>
+  <text x="88" y="274" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="64" font-weight="700" letter-spacing="-2">
+    Agent Skills
+  </text>
+
+  <text x="88" y="334" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="22" font-weight="400">
+    Five installable SKILL.md workflows and curated GSAP, Motion,
+  </text>
+  <text x="88" y="366" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="22" font-weight="400">
+    Remotion, Rive &amp; Lottie references for AI coding agents.
+  </text>
+
+  <!-- Install terminal bar -->
+  <rect x="88" y="408" width="628" height="54" rx="12" fill="#131722" stroke="#ffffff" stroke-opacity="0.14"/>
+  <text x="112" y="441" fill="#d9ff5a" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="600">
+    $ npx skills add frankxai/awesome-motion-design-agent-skills
+  </text>
+
+  <!-- Agent badges -->
+  <g font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="500" fill="#e2e8f0">
+    <rect x="88" y="494" width="132" height="40" rx="20" fill="#151924" stroke="#ffffff" stroke-opacity="0.16"/>
+    <text x="154" y="519" text-anchor="middle">Claude Code</text>
+
+    <rect x="232" y="494" width="92" height="40" rx="20" fill="#151924" stroke="#ffffff" stroke-opacity="0.16"/>
+    <text x="278" y="519" text-anchor="middle">Codex</text>
+
+    <rect x="336" y="494" width="102" height="40" rx="20" fill="#151924" stroke="#ffffff" stroke-opacity="0.16"/>
+    <text x="387" y="519" text-anchor="middle">Copilot</text>
+
+    <rect x="450" y="494" width="96" height="40" rx="20" fill="#151924" stroke="#ffffff" stroke-opacity="0.16"/>
+    <text x="498" y="519" text-anchor="middle">Cursor</text>
+
+    <rect x="558" y="494" width="114" height="40" rx="20" fill="#151924" stroke="#ffffff" stroke-opacity="0.16"/>
+    <text x="615" y="519" text-anchor="middle">CC0-1.0</text>
+  </g>
+
+  <!-- Right column: Motion telemetry & cubic-bezier card -->
+  <rect x="760" y="104" width="428" height="430" rx="20" fill="#111520" stroke="#ffffff" stroke-opacity="0.14"/>
+  <text x="792" y="144" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">
+    choreography · cubic-bezier(0.22, 1, 0.36, 1)
+  </text>
+
+  <!-- Grid inside motion card -->
+  <g stroke="#ffffff" stroke-opacity="0.07" stroke-width="1">
+    <line x1="792" y1="176" x2="1156" y2="176"/>
+    <line x1="792" y1="246" x2="1156" y2="246"/>
+    <line x1="792" y1="316" x2="1156" y2="316"/>
+    <line x1="792" y1="386" x2="1156" y2="386"/>
+    <line x1="883" y1="176" x2="883" y2="386"/>
+    <line x1="974" y1="176" x2="974" y2="386"/>
+    <line x1="1065" y1="176" x2="1065" y2="386"/>
+  </g>
+
+  <!-- Control handle lines -->
+  <line x1="792" y1="386" x2="872" y2="176" stroke="#f05a3c" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <line x1="1156" y1="176" x2="923" y2="176" stroke="#d9ff5a" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+  <!-- Easing curve -->
+  <path d="M 792 386 C 872 176, 923 176, 1156 176" stroke="url(#curveGrad)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="872" cy="176" r="6" fill="#f05a3c"/>
+  <circle cx="923" cy="176" r="6" fill="#d9ff5a"/>
+  <circle cx="792" cy="386" r="5" fill="#5e78ff"/>
+  <circle cx="1156" cy="176" r="5" fill="#d9ff5a"/>
+
+  <!-- Skill stack rows inside card -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#cbd5e1">
+    <rect x="792" y="410" width="364" height="30" rx="6" fill="#171c2b"/>
+    <text x="806" y="430">01 motion-director · GSAP · Motion · Rive</text>
+
+    <rect x="792" y="448" width="364" height="30" rx="6" fill="#171c2b"/>
+    <text x="806" y="468">02 remotion-video-agent · React 60fps MP4</text>
+
+    <rect x="792" y="486" width="364" height="30" rx="6" fill="#171c2b"/>
+    <text x="806" y="506">03 web-motion-auditor · reduced-motion QA</text>
+  </g>
+</svg>

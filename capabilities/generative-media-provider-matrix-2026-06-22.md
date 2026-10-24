@@ -19,7 +19,6 @@ Use generative media for style frames, cinematic scenes, character/world assets,
 | Google Veo / Flow | High-fidelity 8-second video with native audio; 720p/1080p/4K; first/last frame control | Veo 3.1 is available programmatically through Gemini API. | Premium brand scenes, controlled cinematic references, first/last-frame storyboards. |
 | Luma Dream Machine / Ray | Text-to-video, image-to-video, creative-agent workflows | Official Dream Machine API supports image and video jobs with async polling. | Cinematic exploration, concept-to-motion, mood variants. |
 | Runway | Video generation and editing; Gen/Aleph models; API at scale | Runway API supports generative models and video editing with prompts/keyframes. | Production video editing, existing video transformation, enterprise-ready API lane. |
-| Higgsfield | Social/ad video, image/video generation, creator-friendly production | Official JS SDK exists; server-side v2 client uses key credentials and polling. | Trend/social-ad formats, fast creator video tests, commercial social production. |
 | Remotion | Deterministic React video, captions, brand layout, exports | Already present in local estate through AnimeLegends and Starlight/Cosmos. | Final assembly, typography, overlays, lower thirds, explainers, GIF/MP4 variants. |
 | Playwright | Real browser capture | Already present in Arcanea and other local repos. | Capture web motion into screenshots/video for QA and social demos. |
 | ffmpeg | Compression, transcode, GIF/MP4/WebM, palette optimization | Local binary exists; Starlight/Cosmos has ffmpeg MCP package. | Final export and automation layer. |
@@ -36,7 +35,7 @@ Use **Codex imagegen / GPT Image 2** for:
 - character sheets
 - poster frames
 
-Use **Sora / Veo / Grok / Luma / Runway / Higgsfield** for:
+Use **Sora / Veo / Grok / Luma / Runway** for:
 
 - cinematic clips
 - image-to-video animation
@@ -72,7 +71,7 @@ Use **ffmpeg** when:
 For FrankX, Arcanea, and Starlight, do not choose one "winner" video model. Build a routing layer:
 
 - OpenAI imagegen/GPT Image 2 for static visual strategy.
-- Sora/Veo/Grok/Luma/Runway/Higgsfield as generation providers.
+- Sora/Veo/Grok/Luma/Runway as generation providers.
 - Remotion as the deterministic finishing suite.
 - Playwright/ffmpeg as proof and export.
 - Starlight Motion Designer MCP as the orchestration brain.
@@ -93,5 +92,4 @@ For FrankX, Arcanea, and Starlight, do not choose one "winner" video model. Buil
 - Google Veo Gemini API docs: https://ai.google.dev/gemini-api/docs/video
 - Luma Dream Machine API docs: https://docs.lumalabs.ai/docs/api
 - Runway API docs: https://docs.dev.runwayml.com/
-- Higgsfield JS SDK: https://github.com/higgsfield-ai/higgsfield-js
 

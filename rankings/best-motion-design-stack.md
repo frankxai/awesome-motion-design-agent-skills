@@ -11,7 +11,7 @@ Research snapshot: 2026-08-03.
 | [Remotion](https://www.remotion.dev/) + [AI docs](https://www.remotion.dev/docs/ai/) | React-authored MP4/GIF/social video, explainers, programmatic content | Excellent | The strongest bridge between frontend code and generated video. Has official AI docs, skills, and MCP. |
 | [OrkasVideoStudio](https://github.com/Orkas-AI/Orkas-VideoStudio) | End-to-end agent-driven video composition, editing, generation, transcription, and plan-based assembly | Excellent | Use when a coding agent should own the workflow through native skills, CLI, or MCP while preserving an editable `plan.json` timeline. MIT and local-first; the core compose/edit/transcribe path is zero-key, provider generation is BYO-key, npm publishing is pending, and file-changing commands warrant review. |
 | [Playwright](https://playwright.dev/docs/videos) | Capturing real browser motion as screenshots/video for QA and demos | Excellent | Use for regression checks and recording app states before final render/export. |
-| [ffmpeg](https://ffmpeg.org/) | MP4, WebM, GIF conversion, palette optimization, resizing, compression | Excellent | The practical export layer. Already available locally on this machine. |
+| [ffmpeg](https://github.com/FFmpeg/FFmpeg) | MP4, WebM, GIF conversion, palette optimization, resizing, compression | Excellent | The practical export layer. Already available locally on this machine. |
 
 ## Tier 2: Add For Richer Motion Systems
 

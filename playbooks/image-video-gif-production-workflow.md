@@ -74,7 +74,6 @@ ffmpeg -i input.mp4 -vf "fps=15,scale=900:-1:flags=lanczos,split[s0][s1];[s0]pal
    - Grok for fast social/audio-synced clips.
    - Luma for cinematic exploration.
    - Runway for editing/generation pipelines.
-   - Higgsfield for creator/social ad formats.
 4. Select best take.
 5. Finish in Remotion:
    - title
@@ -115,8 +114,8 @@ qa_verdict:
 - Need exact text/layout: Remotion, not raw video generation.
 - Need product UI proof: Playwright capture.
 - Need static visual direction: imagegen/GPT Image 2.
-- Need cinematic clip with audio: Sora, Veo, Grok, Luma, Runway, or Higgsfield.
-- Need social ad variants quickly: Higgsfield/Grok plus Remotion finishing.
+- Need cinematic clip with audio: Sora, Veo, Grok, Luma, or Runway.
+- Need social ad variants quickly: Grok/Veo plus Remotion finishing.
 - Need edited real video: Runway/Aleph-style tools, then Remotion/ffmpeg.
 - Need premium world/mood: Veo/Luma/Sora with imagegen style frames.
 

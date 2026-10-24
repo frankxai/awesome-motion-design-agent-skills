@@ -1,0 +1,18 @@
+{
+  "$schema": "https://frankx.ai/schemas/vis-provenance-sidecar.schema.json",
+  "asset_id": "hero-svg",
+  "image_path": "assets/hero.svg",
+  "sidecar_path": "assets/hero.svg.vis.provenance.json",
+  "source_method": "hand-authored-svg",
+  "provider": "FrankX Studio (SVG)",
+  "model": "hand-authored-svg-v1",
+  "sha256": "d74409603df616b13e00fb0a823369dd30a2485a8049282a05fe8b50190d6042",
+  "alt": "Motion Design Agent Skills vector wave header",
+  "viewport": {
+    "width": 1400,
+    "height": 360
+  },
+  "rights": "CC0-1.0 public domain dedication (first-party repository asset)",
+  "review": "Verified repository asset provenance and SHA-256 digest",
+  "timestamp": "2026-10-24T13:35:00Z"
+}

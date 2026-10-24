@@ -1,6 +1,6 @@
 ---
 name: generative-media-director
-description: Use when planning, prompting, generating, editing, routing, finishing, or QAing AI-created images, GIFs, videos, style frames, image-to-video clips, social ads, cinematic brand assets, motion studies, or multi-provider generative media workflows using Codex imagegen, GPT Image, Sora, Grok Imagine, Veo, Luma, Runway, Higgsfield, Remotion, Playwright, ffmpeg, Figma, Canva, or Vercel.
+description: Use when planning, prompting, generating, editing, routing, finishing, or QAing AI-created images, GIFs, videos, style frames, image-to-video clips, social ads, cinematic brand assets, motion studies, or multi-provider generative media workflows using Codex imagegen, GPT Image, Sora, Grok Imagine, Veo, Luma, Runway, Remotion, Playwright, ffmpeg, Figma, Canva, or Vercel.
 ---
 
 # Generative Media Director
@@ -17,7 +17,7 @@ description: Use when planning, prompting, generating, editing, routing, finishi
 2. Decide the source of truth:
    - product UI: code and browser capture
    - static visual direction: imagegen/GPT Image
-   - cinematic generated clip: Sora, Grok, Veo, Luma, Runway, or Higgsfield
+   - cinematic generated clip: Sora, Grok, Veo, Luma, or Runway
    - exact typography/layout/video package: Remotion
    - export/compression: ffmpeg
 
@@ -40,7 +40,6 @@ description: Use when planning, prompting, generating, editing, routing, finishi
    - Grok Imagine for fast social/audio-synced clips and stylized tests.
    - Luma for cinematic exploration and creative-agent workflows.
    - Runway for production editing and existing-video transformation.
-   - Higgsfield for creator/social/ad variants.
    - Remotion for final deterministic finishing.
 
 7. Finish:

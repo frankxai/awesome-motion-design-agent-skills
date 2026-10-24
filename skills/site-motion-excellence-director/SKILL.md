@@ -29,7 +29,7 @@ Use this skill before adding substantial motion to a website or app.
 - Use Lottie/dotLottie for portable non-interactive vector loops.
 - Use Three.js only when 3D is central and visually verified.
 - Use Remotion for rendered video, social variants, product explainers, and exact text/layout in media.
-- Use Grok/imagegen/Veo/Sora/Luma/Runway/Higgsfield only as source generation, then finish and QA in context.
+- Use Grok/imagegen/Veo/Sora/Luma/Runway only as source generation, then finish and QA in context.
 
 ## Taste Rules
 
