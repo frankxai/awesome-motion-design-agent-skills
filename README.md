@@ -93,6 +93,7 @@ Do not install unsigned ZIP/S3 skill blobs or mass-dump skill collections into a
 | [Agent Skills](https://github.com/agentskills/agentskills)       | Apache-2.0 · 25.8k★     | The open `SKILL.md` standard these skills follow.                        |
 | [skills CLI](https://github.com/vercel-labs/skills)              | MIT · 32.7k★            | Cross-agent installer behind `npx skills add`.                           |
 | [product-launch-motion](https://github.com/AbubakrChan/product-launch-motion) | MIT · 253★ | Claude Code skill: website URL to a 60 fps launch video with music, SFX and motion blur. Needs local Playwright and ffmpeg. |
+| [DESIGN:OS SVG Animation](https://github.com/jangtrinh/design-os-svg-animation) | PolyForm Shield 1.0.0 (source-available) · 7★ · checked 2026-10-28 | Agent skill + CLI for deterministic SVG motion on an integer-frame virtual clock, compiled to 1080p 60 fps video and checked by a 10-gate verifier. Runs locally, zero telemetry. |
 
 The 1human client serves reference discovery rather than rendering: [public previews](https://reels.1human.tech/) need no account, while recipes, publication and private preferences require owner-approved credentials. The client/examples are MIT; the hosted service, brand and private data are not. Reference licenses remain per creation. Basic participation is free, with a capped beta; this is not a universal importer or evidence of adoption.
 
