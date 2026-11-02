@@ -126,7 +126,10 @@ test("essential explanations and source routes survive without JavaScript", asyn
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto("/");
-  await expect(page.getByText("JavaScript is needed for interactive previews", { exact: false })).toBeVisible();
+  // Playwright excludes noscript descendants from text selectors (microsoft/playwright#32542).
+  const fallbackNotice = page.locator("noscript > p");
+  await expect(fallbackNotice).toBeVisible();
+  await expect(fallbackNotice).toContainText("JavaScript is needed for interactive previews");
   await expect(page.getByText("Give attention a path.", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "View composition source" })).toBeVisible();
   const poster = page.locator(".video-poster");
