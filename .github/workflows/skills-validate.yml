@@ -7,6 +7,11 @@ on:
     branches: [main]
     paths: ["**.md", "**.json", "**.yml", "**.yaml", "scripts/**", "tests/**"]
   workflow_dispatch:
+    inputs:
+      verify_gallery:
+        description: Build, render, and browser-test the motion lab
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -58,3 +63,10 @@ jobs:
                           errs.append(f"{f}:{i}: private local path")
           print("\n".join(errs) or "OK: skills, manifests, public-safety")
           sys.exit(1 if errs else 0)
+
+  motion_lab:
+    needs: validate
+    if: github.event_name == 'workflow_dispatch' && inputs.verify_gallery
+    uses: ./.github/workflows/motion-lab-verify.yml
+    permissions:
+      contents: read

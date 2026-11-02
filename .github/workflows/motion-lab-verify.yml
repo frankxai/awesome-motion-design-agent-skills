@@ -1,0 +1,70 @@
+name: Motion lab verification
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ["examples/motion-lab/**", ".github/workflows/motion-lab-verify.yml"]
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: motion-lab-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: examples/motion-lab
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      MOTION_SOURCE_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+      NEXT_PUBLIC_SOURCE_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: examples/motion-lab/package-lock.json
+      - name: Install the locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Validate inputs, export metadata, types, and production build
+        run: |
+          npm test
+          npm run build
+          npm run typecheck
+      - name: Prepare the isolated browser and metadata tools
+        run: |
+          npx playwright install --with-deps chromium
+          command -v ffprobe
+          python3 -m pip install --disable-pip-version-check jsonschema==4.26.0
+          echo "REMOTION_BROWSER_EXECUTABLE=$(node -e 'process.stdout.write(require("playwright").chromium.executablePath())')" >> "$GITHUB_ENV"
+      - name: Render and validate the video and still
+        run: |
+          npm run render
+          npm run render
+      - name: Exercise desktop, phone, keyboard, interruption, persistence, and export
+        run: npm run test:e2e
+      - name: Verify the asset provenance and checksums
+        if: always()
+        run: python3 scripts/verify-provenance.py
+      - name: Save exact-revision review artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: motion-lab-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            examples/motion-lab/output/
+            examples/motion-lab/playwright-report/
+            examples/motion-lab/test-results/
+          retention-days: 1
+          if-no-files-found: warn
