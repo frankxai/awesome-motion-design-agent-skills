@@ -1,6 +1,6 @@
 # Skill verification
 
-Author: Codex. Created 2 November 2026. Revision 2.
+Author: Codex. Created 2 November 2026. Revision 3.
 Review state: package checks run locally; independent review and motion-output benchmarks pending.
 
 These skills provide instructions. They do not include a browser, motion runtime,
@@ -58,9 +58,16 @@ Publishing additionally requires `main` and either a main push or an explicit
 manual `publish` input. Feature-branch runs cannot publish.
 
 Publication runs separately with write permission and rechecks the archive hashes.
-It skips a source revision superseded by newer main before publication. Runs are
-serialized per branch and are not canceled during an upload. The rolling URL is
-mutable; retain its downloaded provenance and hashes when reproducing an install.
+When main has advanced, it compares complete Git trees for the skills, bundled
+canonical sources, release workflow, verifier, publication policy and regression
+tests. A README-only advance can still publish the unchanged packaged inputs;
+the provenance keeps the actual packaged commit. Changed release inputs supersede
+the older package, and the matching push filter schedules a replacement run.
+Incomplete trees or API failures block publication. Regression cases exercise
+README-only commits, changes/removals, file modes and unavailable tree data, and
+keep the push filter aligned with the comparison policy.
+Runs are serialized per branch and are not canceled during an upload. The rolling
+URL is mutable; retain its downloaded provenance and hashes when reproducing an install.
 
 ## Verify installation separately
 
