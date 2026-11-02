@@ -3,8 +3,9 @@
 
 import argparse
 import io
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
+import stat
 import sys
 import tempfile
 from urllib.parse import unquote, urlsplit
@@ -35,6 +36,10 @@ def validate_payload(folder):
     if not entry.is_file() or entry.is_symlink():
         return [f"{folder.name}: missing regular SKILL.md"]
     text = entry.read_text(encoding="utf-8")
+    for bundle in BUNDLED_REFERENCES:
+        skill, reference = bundle.split("/", 1)
+        if skill == folder.name and not (folder / reference).is_file():
+            errors.append(f"{folder.name}: missing required reference: {reference}")
     frontmatter = re.match(r"^---\n(.*?)\n---\n", text, re.S)
     if not frontmatter:
         errors.append(f"{folder.name}: missing frontmatter")
@@ -104,12 +109,53 @@ def validate_repository(root):
     return errors
 
 
+def validate_release_archives(root, archives):
+    """Check actual release bytes without extracting untrusted ZIP paths."""
+    errors = []
+    names = SKILLS | {"all-skills"}
+    found = {p.stem for p in archives.glob("*.zip")}
+    if found != names:
+        errors.append(f"release archive inventory differs: missing={sorted(names - found)}, extra={sorted(found - names)}")
+    for name in sorted(names & found):
+        folders = SKILLS if name == "all-skills" else {name}
+        expected = {
+            f"{skill}/{file.relative_to(root / 'skills' / skill).as_posix()}": file.read_bytes()
+            for skill in folders for file in (root / "skills" / skill).rglob("*") if file.is_file()
+        }
+        try:
+            with zipfile.ZipFile(archives / f"{name}.zip") as package:
+                members = package.infolist()
+                files = [item for item in members if not item.is_dir()]
+                paths = [item.filename for item in files]
+                if len(paths) != len(set(paths)):
+                    errors.append(f"{name}.zip: duplicate member paths")
+                for item in members:
+                    path = PurePosixPath(item.filename)
+                    if path.is_absolute() or ".." in path.parts or "\\" in item.filename or ":" in item.filename:
+                        errors.append(f"{name}.zip: unsafe member path: {item.filename}")
+                    mode = stat.S_IFMT(item.external_attr >> 16)
+                    if mode not in ({0, stat.S_IFDIR} if item.is_dir() else {0, stat.S_IFREG}):
+                        errors.append(f"{name}.zip: non-regular member: {item.filename}")
+                actual = set(paths)
+                if actual != set(expected):
+                    errors.append(f"{name}.zip: payload differs: missing={sorted(set(expected) - actual)}, extra={sorted(actual - set(expected))}")
+                for item in files:
+                    if item.filename in expected and (item.file_size != len(expected[item.filename]) or package.read(item) != expected[item.filename]):
+                        errors.append(f"{name}.zip: content differs from source: {item.filename}")
+        except (OSError, RuntimeError, NotImplementedError, zipfile.BadZipFile) as error:
+            errors.append(f"{name}.zip: cannot read archive: {error}")
+    return errors
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--archives", type=Path, help="Also verify the six actual ZIPs produced for release")
     args = parser.parse_args()
     errors = validate_repository(args.root.resolve())
-    print("\n".join(errors) if errors else "OK: five standalone skill ZIP payloads and four canonical reference copies")
+    if args.archives:
+        errors.extend(validate_release_archives(args.root.resolve(), args.archives.resolve()))
+    print("\n".join(errors) if errors else "OK: five standalone skill payloads, four canonical references" + (", and six actual release archives" if args.archives else ""))
     return bool(errors)
 
 
