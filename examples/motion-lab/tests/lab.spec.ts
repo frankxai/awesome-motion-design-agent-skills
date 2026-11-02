@@ -9,9 +9,11 @@ const captureRoot = "output/captures";
 async function capture(page: Page, name: string) {
   await mkdir(captureRoot, { recursive: true });
   const file = `${captureRoot}/${name}.png`;
+  await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: file, animations: "disabled" });
-  const prompt = `Capture the Motion lab at ${page.viewportSize()?.width}x${page.viewportSize()?.height}, state ${name}, from source revision ${process.env.GITHUB_SHA || "local"}.`;
-  await writeFile(`${file}.vis.provenance.json`, JSON.stringify(makeProvenance({ file, prompt, provider: "Playwright", tool: "@playwright/test", toolVersion: "1.64.1", mediaType: "image", hash: createHash("sha256").update(await readFile(file)).digest("hex"), sourceRevision: process.env.GITHUB_SHA || null, settings: { viewport: page.viewportSize(), state: name }, reviewState: "visual inspection pending" }), null, 2) + "\n");
+  const sourceRevision = process.env.MOTION_SOURCE_REVISION || process.env.GITHUB_SHA || null;
+  const prompt = `Capture the Motion lab at ${page.viewportSize()?.width}x${page.viewportSize()?.height}, state ${name}, from source revision ${sourceRevision || "local"}.`;
+  await writeFile(`${file}.vis.provenance.json`, JSON.stringify(makeProvenance({ file, prompt, provider: "Playwright", tool: "@playwright/test", toolVersion: "1.64.1", mediaType: "image", hash: createHash("sha256").update(await readFile(file)).digest("hex"), sourceRevision, settings: { viewport: page.viewportSize(), state: name }, reviewState: "visual inspection pending" }), null, 2) + "\n");
 }
 
 async function noHorizontalOverflow(page: Page) {
@@ -22,6 +24,8 @@ test("desktop supports keyboard, interruption, sequence selection, and source ac
   const errors: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
   await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
+  expect(await page.evaluate(() => document.fonts.check('500 16px "Onest Variable"'))).toBe(true);
   await expect(page.getByRole("heading", { name: "Try the motion. Keep the source." })).toBeVisible();
   await noHorizontalOverflow(page);
   await capture(page, "desktop");
@@ -53,6 +57,7 @@ test("desktop supports keyboard, interruption, sequence selection, and source ac
   await page.locator("#sequence").scrollIntoViewIfNeeded();
   await capture(page, "desktop-sequence");
   await expect(page.getByRole("link", { name: "View source", exact: true }).first()).toHaveAttribute("href", /components\/InterfaceStudy\.tsx$/);
+  if (process.env.MOTION_SOURCE_REVISION) await expect(page.getByRole("link", { name: "View source", exact: true }).first()).toHaveAttribute("href", new RegExp(process.env.MOTION_SOURCE_REVISION));
   await expect(page.getByRole("link", { name: "FrankX field notes" })).toHaveAttribute("href", /utm_campaign=motion-skills/);
   expect(errors).toEqual([]);
 });
@@ -85,6 +90,19 @@ test("a corrupt saved brief is preserved until the user resets it", async ({ pag
   await page.getByRole("button", { name: "Reset saved brief" }).click();
   await expect(page.getByRole("alert")).toHaveCount(0);
   expect(await page.evaluate(key => JSON.parse(localStorage.getItem(key)!).version, storageKey)).toBe(1);
+});
+
+test("a failed lazy preview preserves the brief and still-frame fallback", async ({ page }) => {
+  await page.goto("/#video");
+  await page.evaluate(() => document.fonts.ready);
+  await page.getByLabel("Product name", { exact: true }).fill("Recoverable preview");
+  await page.route("**/_next/static/chunks/**", route => route.abort("failed"));
+  await page.getByRole("button", { name: "Load video preview" }).click();
+  await expect(page.getByRole("alert")).toContainText("Your brief is intact");
+  await expect(page.getByLabel("Product name", { exact: true })).toHaveValue("Recoverable preview");
+  await capture(page, "preview-load-failure");
+  await page.getByRole("button", { name: "Show still frame" }).click();
+  await expect(page.getByRole("alert")).toHaveCount(0);
 });
 
 test("phone touch layout and reduced motion preserve the controls and content", async ({ browser }) => {

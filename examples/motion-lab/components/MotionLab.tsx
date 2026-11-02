@@ -4,7 +4,7 @@ import { MotionConfig } from "motion/react";
 import { InterfaceStudy } from "./InterfaceStudy";
 import { SequenceStudy } from "./SequenceStudy";
 import { VideoStudy } from "./VideoStudy";
-import { SOURCE_ROOT } from "../lib/brief";
+import { SOURCE_ROOT } from "../lib/source";
 
 export function MotionLab() {
   return <MotionConfig reducedMotion="user">
@@ -30,7 +30,7 @@ export function MotionLab() {
       <VideoStudy />
       <section className="closing shell" aria-labelledby="next-step">
         <div><h2 id="next-step">Take one useful piece.</h2><p>Install a skill for the job in front of you, or adapt an example in your own project.</p></div>
-        <div className="closing-links"><a href={`${SOURCE_ROOT}#install`}>Install a skill</a><a href="https://www.frankx.ai/newsletter?utm_source=github&utm_medium=motion-lab&utm_campaign=motion-skills">FrankX field notes</a></div>
+        <div className="closing-links"><a href={`${SOURCE_ROOT}#install`}>Install a skill</a><a href="https://www.frankx.ai/newsletter?utm_source=github&utm_medium=referral&utm_campaign=motion-skills&utm_content=motion-lab">FrankX field notes</a></div>
       </section>
     </main>
     <footer className="site-footer shell"><p>Open examples from the FrankX motion skills repository.</p><a href={`${SOURCE_ROOT}/blob/main/LICENSE`}>Source and license</a></footer>

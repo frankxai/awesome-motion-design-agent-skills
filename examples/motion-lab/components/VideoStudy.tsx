@@ -1,13 +1,20 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { Component, useEffect, useRef, useState, type ReactNode } from "react";
 import { useReducedMotion } from "motion/react";
-import { DEFAULT_BRIEF, VIDEO, parseBrief, sourceFile, type LaunchBrief } from "../lib/brief";
+import { DEFAULT_BRIEF, VIDEO, parseBrief, type LaunchBrief } from "../lib/brief";
+import { sourceFile } from "../lib/source";
 import { LaunchFrame } from "../video/LaunchVideo";
 
 const Preview = dynamic(() => import("./VideoPreview"), { ssr: false, loading: () => <div className="preview-loading" role="status">Loading the video controls…</div> });
 const STORAGE_KEY = "motion-skills-launch-brief-v1";
+
+class PreviewBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() { return this.state.failed ? this.props.fallback : this.props.children; }
+}
 
 function Poster({ brief }: { brief: LaunchBrief }) {
   const root = useRef<HTMLDivElement>(null);
@@ -96,7 +103,7 @@ export function VideoStudy() {
     <div className="section-intro"><div><h2 id="video-heading">Your words. The same eight seconds.</h2><p>Edit a real composition, then take its inputs and source.</p></div><span className="runtime">Remotion</span></div>
     <div className="video-workbench">
       <div className="video-output">
-        {showPreview ? <Preview brief={previewBrief} /> : <Poster brief={previewBrief} />}
+        {showPreview ? <PreviewBoundary fallback={<><Poster brief={previewBrief} /><p className="form-message" role="alert">The video preview could not load. Your brief is intact; return to the still frame or use the included renderer.</p></>}><Preview brief={previewBrief} /></PreviewBoundary> : <Poster brief={previewBrief} />}
         <div className="video-controls"><span>1920 × 1080 · 30 fps · 8 seconds</span><button type="button" className="quiet-button" onClick={() => setShowPreview(current => !current)}>{showPreview ? "Show still frame" : "Load video preview"}</button></div>
         {reduce && <p className="preference-note">Reduced motion is on. The preview uses a gentle fade and keeps positions still.</p>}
         <details className="render-instructions"><summary>Render the MP4 on your machine</summary><p>Save the downloaded brief in this example’s folder, install its dependencies, then run:</p><pre><code>npm run render -- motion-brief.json</code></pre><p>The renderer checks the export before replacing the latest receipt. Previous exports remain available.</p></details>

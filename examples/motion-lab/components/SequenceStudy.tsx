@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import gsap from "gsap";
-import { sourceFile } from "../lib/brief";
+import { sourceFile } from "../lib/source";
 
 const steps = [
   { name: "Brief", title: "Start with the job.", detail: "Name the audience, message, and one action the viewer should understand." },

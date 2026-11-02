@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { sourceFile } from "../lib/brief";
+import { sourceFile } from "../lib/source";
 
 export function InterfaceStudy() {
   const [expanded, setExpanded] = useState(false);
