@@ -17,7 +17,6 @@ export function MotionLab() {
       <a className="header-source" href={SOURCE_ROOT}>GitHub</a>
     </header>
     <main>
-      <noscript><p className="shell">JavaScript is needed for interactive previews and downloads. The explanations, source links, and render instructions remain available.</p></noscript>
       <section className="hero shell" aria-labelledby="page-title">
         <div className="hero-copy">
           <h1 id="page-title">Try the motion.<br /><span>Keep the source.</span></h1>

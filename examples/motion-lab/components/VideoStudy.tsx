@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Component, useEffect, useRef, useState, type ReactNode } from "react";
+import { Component, useEffect, useState, type ReactNode } from "react";
 import { useReducedMotion } from "motion/react";
 import { DEFAULT_BRIEF, VIDEO, parseBrief, type LaunchBrief } from "../lib/brief";
 import { sourceFile } from "../lib/source";
@@ -17,16 +17,10 @@ class PreviewBoundary extends Component<{ children: ReactNode; fallback: ReactNo
 }
 
 function Poster({ brief }: { brief: LaunchBrief }) {
-  const root = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(640);
-  useEffect(() => {
-    if (!root.current) return;
-    const observer = new ResizeObserver(entries => setWidth(entries[0].contentRect.width));
-    observer.observe(root.current);
-    return () => observer.disconnect();
-  }, []);
-  return <div className="video-poster" ref={root} role="img" aria-label={`${brief.product}. ${brief.headline.replaceAll("\n", " ")}. ${brief.detail}`}>
-    <div aria-hidden="true" style={{ transform: `scale(${width / VIDEO.width})`, transformOrigin: "top left" }}><LaunchFrame frame={200} brief={brief} /></div>
+  return <div className="video-poster" role="img" aria-label={`${brief.product}. ${brief.headline.replaceAll("\n", " ")}. ${brief.detail}`}>
+    <svg viewBox={`0 0 ${VIDEO.width} ${VIDEO.height}`} aria-hidden="true" focusable="false">
+      <foreignObject width={VIDEO.width} height={VIDEO.height}><LaunchFrame frame={200} brief={brief} /></foreignObject>
+    </svg>
   </div>;
 }
 

@@ -29,7 +29,7 @@ test("desktop supports keyboard, interruption, sequence selection, and source ac
   await expect(page.getByRole("heading", { name: "Try the motion. Keep the source." })).toBeVisible();
   await noHorizontalOverflow(page);
   await capture(page, "desktop");
-  const toggle = page.getByRole("button", { name: "Show delivery details" });
+  const toggle = page.locator('button[aria-controls="delivery-details"]');
   await toggle.focus();
   expect(await toggle.evaluate(element => getComputedStyle(element).outlineStyle)).not.toBe("none");
   await page.keyboard.press("Enter");
@@ -79,16 +79,16 @@ test("brief edits survive reload and download the actual render inputs", async (
   await capture(page, "desktop-video");
   await page.getByLabel("Headline", { exact: true }).fill("");
   await page.getByRole("button", { name: "Download render inputs" }).click();
-  await expect(page.getByRole("alert")).toContainText("headline");
+  await expect(page.locator("#video").getByRole("alert")).toContainText("headline");
 });
 
 test("a corrupt saved brief is preserved until the user resets it", async ({ page }) => {
   await page.addInitScript(key => localStorage.setItem(key, "broken JSON"), storageKey);
   await page.goto("/#video");
-  await expect(page.getByRole("alert")).toContainText("saved data has been kept");
+  await expect(page.locator("#video").getByRole("alert")).toContainText("saved data has been kept");
   expect(await page.evaluate(key => localStorage.getItem(key), storageKey)).toBe("broken JSON");
   await page.getByRole("button", { name: "Reset saved brief" }).click();
-  await expect(page.getByRole("alert")).toHaveCount(0);
+  await expect(page.locator("#video").getByRole("alert")).toHaveCount(0);
   expect(await page.evaluate(key => JSON.parse(localStorage.getItem(key)!).version, storageKey)).toBe(1);
 });
 
@@ -98,11 +98,11 @@ test("a failed lazy preview preserves the brief and still-frame fallback", async
   await page.getByLabel("Product name", { exact: true }).fill("Recoverable preview");
   await page.route("**/_next/static/chunks/**", route => route.abort("failed"));
   await page.getByRole("button", { name: "Load video preview" }).click();
-  await expect(page.getByRole("alert")).toContainText("Your brief is intact");
+  await expect(page.locator("#video").getByRole("alert")).toContainText("Your brief is intact");
   await expect(page.getByLabel("Product name", { exact: true })).toHaveValue("Recoverable preview");
   await capture(page, "preview-load-failure");
   await page.getByRole("button", { name: "Show still frame" }).click();
-  await expect(page.getByRole("alert")).toHaveCount(0);
+  await expect(page.locator("#video").getByRole("alert")).toHaveCount(0);
 });
 
 test("phone touch layout and reduced motion preserve the controls and content", async ({ browser }) => {
@@ -123,12 +123,20 @@ test("phone touch layout and reduced motion preserve the controls and content", 
 });
 
 test("essential explanations and source routes survive without JavaScript", async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false });
+  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto("/");
   await expect(page.getByText("JavaScript is needed for interactive previews", { exact: false })).toBeVisible();
   await expect(page.getByText("Give attention a path.", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "View composition source" })).toBeVisible();
+  const poster = page.locator(".video-poster");
+  await poster.scrollIntoViewIfNeeded();
+  const frame = poster.locator(".launch-frame");
+  const posterSize = await poster.boundingBox();
+  const frameSize = await frame.boundingBox();
+  expect(frameSize!.width).toBeLessThanOrEqual(posterSize!.width);
+  expect(frameSize!.width).toBeGreaterThan(posterSize!.width - 4);
+  await capture(page, "mobile-without-javascript");
   await noHorizontalOverflow(page);
   await context.close();
 });
