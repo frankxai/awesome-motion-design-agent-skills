@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T15:40:00Z",
+  "title": "Design system: Motion lab",
+  "author": "Codex",
+  "revision": 1,
+  "reviewState": "Implementation record; independent design review pending",
+  "sources": ["app/globals.css", "components/", "video/LaunchVideo.tsx", "DESIGN.md"],
+  "extensions": {
+    "shadows": [
+      { "name": "paper-sheet", "value": "0 12px 35px rgb(20 35 20 / 12%)", "purpose": "Separate the paper sheet from its pale green canvas." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "State transitions settle without overshoot." },
+      { "name": "disclosure", "value": "220ms", "purpose": "Pointer-driven reveal; zero duration for keyboard or reduced motion." },
+      { "name": "sequence", "value": "550ms", "purpose": "Move the emphasis between readable steps; zero duration for keyboard or reduced motion." }
+    ],
+    "breakpoints": [{ "name": "phone", "value": "700px" }, { "name": "compact", "value": "1000px" }]
+  },
+  "components": [
+    {
+      "name": "Primary button", "kind": "button", "refersTo": "button-primary",
+      "description": "Download the validated render inputs.",
+      "html": "<button class=\"ds-primary\">Download render inputs</button>",
+      "css": ".ds-primary{font:600 16px 'Onest Variable',sans-serif;color:#101211;background:#ef765c;border:1px solid #ef765c;border-radius:6px;padding:14px 20px;min-height:48px;cursor:pointer}.ds-primary:focus-visible{outline:2px solid #ef765c;outline-offset:5px}"
+    },
+    {
+      "name": "Quiet button", "kind": "button", "description": "Load or dismiss the video controls.",
+      "html": "<button class=\"ds-quiet\">Load video preview</button>",
+      "css": ".ds-quiet{font:400 14px 'Onest Variable',sans-serif;min-height:44px;border:0;background:transparent;color:#f6f3ed;padding:8px 0;text-decoration:underline;text-underline-offset:5px;cursor:pointer}.ds-quiet:focus-visible{outline:2px solid #ef765c;outline-offset:5px}"
+    },
+    {
+      "name": "Text field", "kind": "input", "refersTo": "input", "description": "Editable brief text with a persistent label.",
+      "html": "<label class=\"ds-label\" for=\"ds-product\">Product name</label><input class=\"ds-input\" id=\"ds-product\" value=\"Motion design agent skills\" />",
+      "css": ".ds-label{display:block;color:#f6f3ed;font:400 13px 'Onest Variable',sans-serif;margin-bottom:9px}.ds-input{box-sizing:border-box;width:100%;padding:12px 14px;border:1px solid #596052;border-radius:6px;background:#191d1a;color:#f6f3ed;font:400 16px/1.5 'Onest Variable',sans-serif;caret-color:#ef765c}.ds-input:focus-visible{outline:2px solid #ef765c;outline-offset:5px}"
+    },
+    {
+      "name": "Example navigation", "kind": "nav", "description": "Links to the three studies.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Examples\"><a href=\"#interface\">Interface</a><a href=\"#sequence\">Sequence</a><a href=\"#video\">Video</a></nav>",
+      "css": ".ds-nav{display:flex;gap:24px}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;color:#bcc2b9;font:400 14px 'Onest Variable',sans-serif;text-decoration:none}.ds-nav a:focus-visible{outline:2px solid #ef765c;outline-offset:5px}"
+    },
+    {
+      "name": "Runtime label", "kind": "chip", "description": "Non-interactive technology attribution.",
+      "html": "<span class=\"ds-runtime\">Motion</span>",
+      "css": ".ds-runtime{display:inline-block;color:#bcc2b9;font:400 13px 'Onest Variable',sans-serif;border:1px solid #3d443d;padding:7px 12px;border-radius:20px;white-space:nowrap}"
+    }
+  ],
+  "narrative": {
+    "overview": "The examples use a dark workspace, a paper interface study, and coral controls. The existing repository banner supplies the visual context. This record describes the example app and does not replace the repository's identity.",
+    "dos": ["Do preserve readable content before motion begins.", "Do keep source links beside each example.", "Do preserve focus, touch, interruption, and reduced-motion behavior when editing."],
+    "donts": ["Don't treat a screenshot or a source scan as an independent release approval.", "Don't extend the video font exception into the app's visual identity."]
+  }
+}
