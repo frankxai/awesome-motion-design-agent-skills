@@ -1,6 +1,6 @@
 # Skill verification
 
-Author: Codex. Created 2 November 2026. Revision 1.
+Author: Codex. Created 2 November 2026. Revision 2.
 Review state: package checks run locally; independent review and motion-output benchmarks pending.
 
 These skills provide instructions. They do not include a browser, motion runtime,
@@ -25,7 +25,9 @@ agent profile, and the check needs no network access or third-party packages.
 
 The regression cases reject missing references, links outside the skill folder,
 encoded traversal, machine-specific links, invalid skill names, and stale bundled
-copies. External documentation links remain the existing Link Checker's job.
+copies. Required reference files are checked even when instructions name them as
+inline code instead of Markdown links. External documentation links remain the
+existing Link Checker's job.
 The check does not execute instructions, grade taste, or prove installer behavior
 for every supported harness.
 
@@ -33,6 +35,32 @@ The site spec and rubrics remain canonical under `templates/` and `rubrics/`.
 When changing them, copy the exact bytes to the corresponding `references/`
 folders identified in `BUNDLED_REFERENCES` in the verifier. CI rejects drift.
 Each skill can then be installed or uploaded alone without needing the repo root.
+
+## Check the actual release ZIPs
+
+After packaging the five individual archives and `all-skills.zip` into `dist/`, run:
+
+```bash
+python scripts/verify-skill-packages.py --archives dist
+```
+
+This compares the actual archive inventory, paths, and file bytes against the
+current source. It rejects missing references, changed content, duplicate paths,
+traversal, symlinks, and a missing archive. It reads ZIP members without extracting
+their paths. Use one individual skill ZIP for a single-skill upload;
+`all-skills.zip` contains the collection for distribution.
+
+The release workflow checks source and regression cases before packaging, then
+checks the actual ZIPs before creating its artifact. The artifact includes
+`SHA256SUMS` and `release-provenance.json`, which bind all six archives and their
+payload files to the source commit. A manual run prepares artifacts by default.
+Publishing additionally requires `main` and either a main push or an explicit
+manual `publish` input. Feature-branch runs cannot publish.
+
+Publication runs separately with write permission and rechecks the archive hashes.
+It skips a source revision superseded by newer main before publication. Runs are
+serialized per branch and are not canceled during an upload. The rolling URL is
+mutable; retain its downloaded provenance and hashes when reproducing an install.
 
 ## Verify installation separately
 

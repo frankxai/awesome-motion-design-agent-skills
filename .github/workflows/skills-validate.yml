@@ -2,6 +2,7 @@ name: Skills Validate
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     paths: ["**.md", "**.json", "**.yml", "**.yaml", "scripts/**", "tests/**"]
   push:
     branches: [main]
