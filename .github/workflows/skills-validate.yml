@@ -2,18 +2,30 @@ name: Skills Validate
 
 on:
   pull_request:
+    paths: ["**.md", "**.json", "**.yml", "**.yaml", "scripts/**", "tests/**"]
   push:
     branches: [main]
+    paths: ["**.md", "**.json", "**.yml", "**.yaml", "scripts/**", "tests/**"]
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: skills-validate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
+      - name: Verify standalone skill packages and regression cases
+        run: |
+          python3 scripts/verify-skill-packages.py
+          python3 -m unittest discover -s tests -p 'test_*.py' -v
       - name: Validate SKILL.md frontmatter, manifests, and public-safety
         shell: python
         run: |
