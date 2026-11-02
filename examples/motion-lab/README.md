@@ -45,6 +45,8 @@ is still required. Repeating an unchanged successful job can reuse its checked
 video; a failed replacement keeps the previous output and latest receipt.
 
 The browser provides editing and playback; MP4 encoding uses the included renderer.
+The interface self-hosts [Onest](https://fontsource.org/fonts/onest) from the pinned
+Fontsource package under OFL-1.1. The video uses a portable system-font stack.
 There is no generated footage, speech, or external asset service. Runtime packages
 have their own licenses; check [Remotion's current license](https://www.remotion.dev/license)
 for your intended use.

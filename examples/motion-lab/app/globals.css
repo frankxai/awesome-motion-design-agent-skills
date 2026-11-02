@@ -1,3 +1,5 @@
+@import "@fontsource-variable/onest";
+
 :root {
   color-scheme: dark;
   --ground: #101211;
@@ -14,7 +16,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-padding-top: 32px; }
-body { margin: 0; background: var(--ground); color: var(--ink); font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: "Onest Variable", sans-serif; -webkit-font-smoothing: antialiased; }
 button, input, textarea { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 button { cursor: pointer; }

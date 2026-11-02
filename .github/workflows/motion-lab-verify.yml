@@ -44,18 +44,21 @@ jobs:
           npm run typecheck
       - name: Prepare the isolated browser and metadata tools
         run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
           npx playwright install --with-deps chromium
           command -v ffprobe
           python3 -m pip install --disable-pip-version-check jsonschema==4.26.0
           echo "REMOTION_BROWSER_EXECUTABLE=$(node -e 'process.stdout.write(require("playwright").chromium.executablePath())')" >> "$GITHUB_ENV"
       - name: Render and validate the video and still
+        id: render
         run: |
           npm run render
           npm run render
       - name: Exercise desktop, phone, keyboard, interruption, persistence, and export
         run: npm run test:e2e
       - name: Verify the asset provenance and checksums
-        if: always()
+        if: always() && steps.render.outcome == 'success'
         run: python3 scripts/verify-provenance.py
       - name: Save exact-revision review artifacts
         if: always()
