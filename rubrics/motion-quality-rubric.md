@@ -26,4 +26,3 @@ Score each category 0-3.
 - Scroll hijacking that breaks expected browser behavior.
 - No `prefers-reduced-motion` handling.
 - Decorative 3D that slows the page without explaining anything.
-
