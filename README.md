@@ -95,8 +95,11 @@ Do not install unsigned ZIP/S3 skill blobs or mass-dump skill collections into a
 | [product-launch-motion](https://github.com/AbubakrChan/product-launch-motion) | MIT · 253★                      | Claude Code skill: website URL to a 60 fps launch video with music, SFX and motion blur. Needs local Playwright and ffmpeg.                                        |
 | [launch-film](https://github.com/EminBudak/launch-film)                       | MIT · 0★                        | Agent skill: a website or App Store link to a 20 to 40 second launch film made from the site's own logo files, colors and headline. Needs local Chrome and ffmpeg. |
 | [lookbk-skills](https://github.com/SHARPLEE00/lookbk-skills)                  | MIT · checked 2026-11-05        | Eight `SKILL.md` skills that render locally, including a kinetic title video and an 8-bit promo built on HyperFrames and GSAP. No AI model or API key needed.      |
+| [Valmera MCP](https://github.com/ABO3SKRALMASAOODI/valmera-mcp)               | MIT · checked 2026-11-06        | Three agent skills for footage edits, shorts and recorded website demos through a hosted MCP service. Review a rendered preview before export.                     |
 
 The 1human client serves reference discovery rather than rendering: [public previews](https://reels.1human.tech/) need no account, while recipes, publication and private preferences require owner-approved credentials. The client/examples are MIT; the hosted service, brand and private data are not. Reference licenses remain per creation. Basic participation is free, with a capped beta; this is not a universal importer or evidence of adoption.
+
+Valmera’s [website-demo skill](https://github.com/ABO3SKRALMASAOODI/valmera-mcp/blob/main/skills/website-demo-video/SKILL.md) covers public visitor flows or approved screen recordings. Editing runs on the hosted service and requires authentication and a paid plan; the MIT license covers the plugin and skill source, not the hosted editor. The skills require an approved scope before billable work and a reviewed preview before final export. [Worked trim-and-reframe export](https://valmera.io/examples/trim-and-reframe) · [current release](https://github.com/ABO3SKRALMASAOODI/valmera-mcp/releases/tag/claude-v1.0.2).
 
 <details>
 <summary>Editorial curation lens (optional)</summary>
