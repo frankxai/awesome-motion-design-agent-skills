@@ -5,17 +5,31 @@ name: Skills Release
 on:
   push:
     branches: [main]
-    paths: ["skills/**", ".github/workflows/skills-release.yml"]
+    paths: ["skills/**", ".github/workflows/skills-release.yml", "scripts/verify-skill-packages.py", "scripts/release-policy.py", "tests/**", "rubrics/motion-quality-rubric.md", "rubrics/site-motion-excellence-gate.md", "templates/site-motion/SITE_MOTION_SPEC.md"]
   workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish verified assets (main only; otherwise prepare artifacts)
+        type: boolean
+        default: false
 
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: skills-release-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  release:
+  package:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
+      - name: Verify source payloads and regression cases
+        run: |
+          python3 scripts/verify-skill-packages.py
+          python3 -m unittest discover -s tests -p 'test_*.py' -v
       - name: Package skills
         run: |
           mkdir -p dist
@@ -24,13 +38,63 @@ jobs:
             (cd skills && zip -qr "../dist/$n.zip" "$n")
           done
           (cd skills && zip -qr ../dist/all-skills.zip .)
-          ls -l dist
-      - name: Publish rolling release
+      - name: Verify actual archives and record their source
+        run: |
+          python3 scripts/verify-skill-packages.py --archives dist
+          python3 - <<'PY'
+          import datetime, hashlib, json, os, pathlib
+          root = pathlib.Path(".")
+          hashes = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(root.glob("dist/*.zip"))}
+          (root / "dist/SHA256SUMS").write_text("".join(f"{value}  {name}\n" for name, value in hashes.items()))
+          record = {
+              "schemaVersion": 1,
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "sourceRevision": os.environ["GITHUB_SHA"],
+              "createdAt": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              "archives": hashes,
+              "payloadFiles": {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(root.glob("skills/**/*")) if p.is_file()},
+              "verification": "Source payloads, regression tests, and actual archive content passed; no native harness activation or output-quality score is asserted.",
+          }
+          (root / "dist/release-provenance.json").write_text(json.dumps(record, indent=2) + "\n")
+          PY
+      - uses: actions/upload-artifact@v7
+        with:
+          name: skills-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  release:
+    needs: package
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.publish)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: skills-${{ github.sha }}
+          path: dist
+      - name: Compare packaged release inputs with current main
+        id: release_scope
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          notes="Rolling build of skills/ from ${GITHUB_SHA::7}. Upload a .zip in Claude's Skills settings, or install from source: npx skills add ${GITHUB_REPOSITORY}"
+          current=$(gh api "repos/${GITHUB_REPOSITORY}/commits/main" --jq .sha)
+          python3 scripts/release-policy.py --repository "$GITHUB_REPOSITORY" --packaged "$GITHUB_SHA" --current "$current" >> "$GITHUB_OUTPUT"
+      - name: Publish rolling release
+        if: steps.release_scope.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          cd dist && sha256sum --check SHA256SUMS && cd ..
+          notes="Verified rolling skill packages from ${GITHUB_SHA}. Source: https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}. SHA256SUMS and release-provenance.json identify the actual archive bytes and payload files. Upload one skill ZIP in Claude's Skills settings, or install from source: npx skills add ${GITHUB_REPOSITORY}"
           gh release view skills-latest >/dev/null 2>&1 \
             || gh release create skills-latest --title "Skills (rolling)" --notes "$notes" --latest=false
           gh release edit skills-latest --notes "$notes"
-          gh release upload skills-latest dist/*.zip --clobber
+          gh release upload skills-latest dist/*.zip dist/SHA256SUMS dist/release-provenance.json --clobber

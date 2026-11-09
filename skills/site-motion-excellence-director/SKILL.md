@@ -29,7 +29,7 @@ Use this skill before adding substantial motion to a website or app.
 - Use Lottie/dotLottie for portable non-interactive vector loops.
 - Use Three.js only when 3D is central and visually verified.
 - Use Remotion for rendered video, social variants, product explainers, and exact text/layout in media.
-- Use Grok/imagegen/Veo/Sora/Luma/Runway/Higgsfield only as source generation, then finish and QA in context.
+- Discover the session's actual image/video tools before choosing a generator. Check current provider documentation, access, cost, and rights; finish and QA the result in context. A provider name here is not proof of availability or authorization to spend.
 
 ## Taste Rules
 
@@ -44,9 +44,21 @@ Use this skill before adding substantial motion to a website or app.
 
 ## Required Spec
 
-Use `templates/site-motion/SITE_MOTION_SPEC.md` for substantial site motion.
+Use the bundled [site motion spec](references/site-motion-spec.md) for substantial site motion.
 
-Use `rubrics/site-motion-excellence-gate.md` before handoff.
+Use the bundled [site motion excellence gate](references/site-motion-excellence-gate.md) before handoff. Both files are included when this skill is installed alone.
+
+## Interaction and recovery
+
+- Preserve native reading, scrolling, focus, and touch behavior. Required content must remain available when JavaScript or a media request fails.
+- Define what happens on repeated clicks, reverse scroll, route changes, resize, hidden tabs, and preference changes. Dispose timelines, observers, and listeners when their owner unmounts.
+- Gate hover effects by pointer capability. Provide visible focus and immediate keyboard actions.
+- Reduced motion must preserve the full story in reading order. Do not initialize expensive scroll or 3D effects merely to disable them afterward.
+- Use current [Motion](https://motion.dev/docs), [GSAP](https://gsap.com/docs/v3/), or [Three.js](https://threejs.org/docs/) documentation for the runtime actually installed. Reuse the site's dependencies and tokens.
+
+## Evidence
+
+Record the exact revision, desktop and phone widths, keyboard/touch observations, reduced-motion result, interrupted-transition result, and inspected video/frame sequence. Distinguish code review, automated checks, emulated input, physical-device checks, and untested behavior. Do not award an excellence score when the visual evidence is missing.
 
 ## Output Shape
 
