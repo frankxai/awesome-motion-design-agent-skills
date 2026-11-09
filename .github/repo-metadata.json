@@ -1,0 +1,35 @@
+{
+  "name": "awesome-motion-design-agent-skills",
+  "description": "Five installable SKILL.md workflows and a curated catalog of GSAP, Motion, Remotion, Rive, Lottie, and 3D tools for AI coding agents in Claude Code, Codex, Cursor, and Copilot.",
+  "homepage": "https://github.com/frankxai/awesome-motion-design-agent-skills",
+  "socialPreviewImage": "assets/banner.png",
+  "socialPreviewSource": "assets/social-preview.svg",
+  "socialPreviewDimensions": {
+    "width": 1280,
+    "height": 640
+  },
+  "topics": [
+    "agent-skills",
+    "ai-agents",
+    "animation",
+    "awesome",
+    "awesome-list",
+    "claude-code",
+    "claude-skills",
+    "codex",
+    "framer-motion",
+    "github-copilot",
+    "gsap",
+    "lottie",
+    "mcp",
+    "motion-design",
+    "remotion",
+    "rive",
+    "scroll-animation",
+    "threejs",
+    "video-generation",
+    "web-animation"
+  ],
+  "applyCommand": "gh repo edit frankxai/awesome-motion-design-agent-skills --description \"Five installable SKILL.md workflows and a curated catalog of GSAP, Motion, Remotion, Rive, Lottie, and 3D tools for AI coding agents in Claude Code, Codex, Cursor, and Copilot.\" --add-topic agent-skills,ai-agents,animation,awesome,awesome-list,claude-code,claude-skills,codex,framer-motion,github-copilot,gsap,lottie,mcp,motion-design,remotion,rive,scroll-animation,threejs,video-generation,web-animation",
+  "socialPreviewVector": "assets/social-preview.svg"
+}

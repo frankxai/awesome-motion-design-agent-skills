@@ -1,0 +1,18 @@
+{
+  "$schema": "https://frankx.ai/schemas/vis-provenance-sidecar.schema.json",
+  "asset_id": "hero-png",
+  "image_path": "assets/hero.png",
+  "sidecar_path": "assets/hero.png.vis.provenance.json",
+  "source_method": "first-party-illustration",
+  "provider": "FrankX Studio",
+  "model": "first-party-hero-v1",
+  "sha256": "41d3a3495b72afb0e6d470945108f1ff80e44d1779ae8875081764782cbb8133",
+  "alt": "Motion Design Agent Skills keyframe and easing curve illustration",
+  "viewport": {
+    "width": 1024,
+    "height": 1024
+  },
+  "rights": "CC0-1.0 public domain dedication (first-party repository asset)",
+  "review": "Verified repository asset provenance and SHA-256 digest",
+  "timestamp": "2026-10-24T13:35:00Z"
+}

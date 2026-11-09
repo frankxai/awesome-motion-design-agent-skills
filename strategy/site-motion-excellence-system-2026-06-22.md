@@ -114,7 +114,7 @@ Use for social, launch trailers, explainers, GIFs, product demos, and reusable c
 
 Runtime:
 
-- imagegen/Grok/Veo/Sora/Luma/Runway/Higgsfield for generated source material
+- imagegen/Grok/Veo/Sora/Luma/Runway for generated source material
 - Remotion for exact typography, captions, cards, layout, and variants
 - ffmpeg for packaging
 

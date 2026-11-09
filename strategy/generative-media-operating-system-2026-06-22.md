@@ -19,7 +19,6 @@ They build a pipeline:
 9. QA
 10. provenance and learning
 
-The local estate already has the ingredients. The missing piece is a single system that routes work across imagegen, Sora/Grok/Veo/Luma/Runway/Higgsfield, Remotion, Playwright, ffmpeg, and brand design systems.
 
 ## Correct Model Language
 
@@ -87,7 +86,6 @@ Use provider routing:
 - Grok Imagine: fast image/video/social clips, especially stylized or audio-synced variants.
 - Luma: cinematic exploration and creative-agent workflows.
 - Runway: production editing and existing-video transformation.
-- Higgsfield: creator/social/ad video formats and campaign variants.
 
 ### 4. Deterministic Finishing Layer
 
@@ -140,7 +138,7 @@ Use Playwright for:
 ### Cinematic Brand Clip
 
 1. Generate key style frame with imagegen/GPT Image 2.
-2. Generate motion with Sora/Veo/Grok/Luma/Runway/Higgsfield.
+2. Generate motion with Sora/Veo/Grok/Luma/Runway.
 3. Select best take.
 4. Finish with Remotion overlays/captions.
 5. Export with ffmpeg.

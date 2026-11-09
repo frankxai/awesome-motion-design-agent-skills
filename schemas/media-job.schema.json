@@ -24,7 +24,13 @@
     },
     "brand": {
       "type": "string",
-      "enum": ["frankx", "arcanea", "starlight", "client", "internal"]
+      "enum": [
+        "frankx",
+        "arcanea",
+        "starlight",
+        "client",
+        "internal"
+      ]
     },
     "surface": {
       "type": "string",
@@ -58,15 +64,30 @@
     "brief": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["audience", "objective", "viewerAction", "brandRole"],
+      "required": [
+        "audience",
+        "objective",
+        "viewerAction",
+        "brandRole"
+      ],
       "properties": {
-        "audience": { "type": "string" },
-        "objective": { "type": "string" },
-        "viewerAction": { "type": "string" },
-        "brandRole": { "type": "string" },
+        "audience": {
+          "type": "string"
+        },
+        "objective": {
+          "type": "string"
+        },
+        "viewerAction": {
+          "type": "string"
+        },
+        "brandRole": {
+          "type": "string"
+        },
         "constraints": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "default": []
         }
       }
@@ -74,32 +95,90 @@
     "output": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["formats", "aspectRatios", "durationSeconds", "fps"],
+      "required": [
+        "formats",
+        "aspectRatios",
+        "durationSeconds",
+        "fps"
+      ],
       "properties": {
         "formats": {
           "type": "array",
-          "items": { "type": "string", "enum": ["png", "jpg", "webp", "gif", "mp4", "webm", "mov", "frames"] },
+          "items": {
+            "type": "string",
+            "enum": [
+              "png",
+              "jpg",
+              "webp",
+              "gif",
+              "mp4",
+              "webm",
+              "mov",
+              "frames"
+            ]
+          },
           "minItems": 1
         },
         "aspectRatios": {
           "type": "array",
-          "items": { "type": "string", "enum": ["16:9", "9:16", "1:1", "4:5", "3:2", "custom"] },
+          "items": {
+            "type": "string",
+            "enum": [
+              "16:9",
+              "9:16",
+              "1:1",
+              "4:5",
+              "3:2",
+              "custom"
+            ]
+          },
           "minItems": 1
         },
-        "durationSeconds": { "type": "number", "minimum": 0, "maximum": 60 },
-        "fps": { "type": "integer", "enum": [12, 15, 24, 25, 30, 48, 60] },
-        "hasAudio": { "type": "boolean", "default": false },
-        "fileSizeTargetMb": { "type": "number", "minimum": 0 }
+        "durationSeconds": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 60
+        },
+        "fps": {
+          "type": "integer",
+          "enum": [
+            12,
+            15,
+            24,
+            25,
+            30,
+            48,
+            60
+          ]
+        },
+        "hasAudio": {
+          "type": "boolean",
+          "default": false
+        },
+        "fileSizeTargetMb": {
+          "type": "number",
+          "minimum": 0
+        }
       }
     },
     "routing": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["mode", "primaryProvider", "fallbackProviders"],
+      "required": [
+        "mode",
+        "primaryProvider",
+        "fallbackProviders"
+      ],
       "properties": {
         "mode": {
           "type": "string",
-          "enum": ["dry-run", "cli-agent-submit", "manual-submit", "api-submit", "mcp-submit"]
+          "enum": [
+            "dry-run",
+            "cli-agent-submit",
+            "manual-submit",
+            "api-submit",
+            "mcp-submit"
+          ]
         },
         "primaryProvider": {
           "type": "string",
@@ -111,7 +190,6 @@
             "google-veo",
             "luma",
             "runway",
-            "higgsfield",
             "remotion",
             "playwright",
             "ffmpeg",
@@ -131,7 +209,6 @@
               "google-veo",
               "luma",
               "runway",
-              "higgsfield",
               "remotion",
               "playwright",
               "ffmpeg",
@@ -145,14 +222,23 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["image_gen", "image_edit", "image_to_video", "reference_to_video"]
+            "enum": [
+              "image_gen",
+              "image_edit",
+              "image_to_video",
+              "reference_to_video"
+            ]
           },
           "default": []
         },
-        "reason": { "type": "string" },
+        "reason": {
+          "type": "string"
+        },
         "requiresCredential": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "default": []
         }
       }
@@ -162,12 +248,34 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["kind", "uri", "rights"],
+        "required": [
+          "kind",
+          "uri",
+          "rights"
+        ],
         "properties": {
-          "kind": { "type": "string", "enum": ["image", "video", "audio", "figma", "canva", "screenshot", "remotion", "other"] },
-          "uri": { "type": "string" },
-          "rights": { "type": "string" },
-          "notes": { "type": "string" }
+          "kind": {
+            "type": "string",
+            "enum": [
+              "image",
+              "video",
+              "audio",
+              "figma",
+              "canva",
+              "screenshot",
+              "remotion",
+              "other"
+            ]
+          },
+          "uri": {
+            "type": "string"
+          },
+          "rights": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
         }
       },
       "default": []
@@ -176,27 +284,50 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "imagePrompt": { "type": "string" },
-        "videoPrompt": { "type": "string" },
-        "negativePrompt": { "type": "string" },
-        "systemNotes": { "type": "string" }
+        "imagePrompt": {
+          "type": "string"
+        },
+        "videoPrompt": {
+          "type": "string"
+        },
+        "negativePrompt": {
+          "type": "string"
+        },
+        "systemNotes": {
+          "type": "string"
+        }
       }
     },
     "finishing": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "remotionComposition": { "type": "string" },
-        "captions": { "type": "boolean", "default": false },
-        "logoLockup": { "type": "boolean", "default": false },
-        "ffmpegRecipe": { "type": "string" },
-        "posterFrame": { "type": "boolean", "default": true }
+        "remotionComposition": {
+          "type": "string"
+        },
+        "captions": {
+          "type": "boolean",
+          "default": false
+        },
+        "logoLockup": {
+          "type": "boolean",
+          "default": false
+        },
+        "ffmpegRecipe": {
+          "type": "string"
+        },
+        "posterFrame": {
+          "type": "boolean",
+          "default": true
+        }
       }
     },
     "qa": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["checks"],
+      "required": [
+        "checks"
+      ],
       "properties": {
         "checks": {
           "type": "array",
@@ -222,16 +353,47 @@
     "provenance": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["createdBy", "createdAt", "provider", "model", "licenseNotes"],
+      "required": [
+        "createdBy",
+        "createdAt",
+        "provider",
+        "model",
+        "licenseNotes"
+      ],
       "properties": {
-        "createdBy": { "type": "string" },
-        "createdAt": { "type": "string", "format": "date-time" },
-        "provider": { "type": "string" },
-        "model": { "type": "string" },
-        "jobUrl": { "type": "string" },
-        "seed": { "type": ["string", "number"] },
-        "licenseNotes": { "type": "string" },
-        "publicationRisk": { "type": "string", "enum": ["low", "medium", "high"] }
+        "createdBy": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "jobUrl": {
+          "type": "string"
+        },
+        "seed": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "licenseNotes": {
+          "type": "string"
+        },
+        "publicationRisk": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
       }
     }
   }

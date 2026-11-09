@@ -40,7 +40,7 @@ Grok's local `imagine` skill documents these native tool calls:
 
 For the Grok CLI lane, raw provider keys are not the first blocker. The first blocker is a clean handoff contract: Codex must provide a media job, a source image, a short video prompt, target output path, and QA requirements, then let Grok execute the native tool call.
 
-No direct command was found for `xai`, `veo`, `runway`, `luma`, or `higgsfield`.
+No direct command was found for `xai`, `veo`, `runway`, or `luma`.
 
 The checked environment did not expose these API credentials, which only matters for direct API lanes:
 
@@ -51,9 +51,6 @@ The checked environment did not expose these API credentials, which only matters
 - `RUNWAYML_API_SECRET`
 - `RUNWAY_API_KEY`
 - `LUMA_API_KEY`
-- `HIGGSFIELD_API_KEY`
-- `HIGGSFIELD_KEY_ID`
-- `HIGGSFIELD_KEY_SECRET`
 - `FAL_KEY`
 - `REPLICATE_API_TOKEN`
 - `VERCEL_OIDC_TOKEN`
@@ -102,7 +99,6 @@ Use direct APIs when provider-specific features matter:
 - Google Veo: high-fidelity cinematic video, native audio, first/last-frame workflows.
 - Luma: cinematic exploration and creative-agent motion workflows.
 - Runway: existing video transformation and production editing.
-- Higgsfield: creator/social/ad video variants.
 
 ### 4. Starlight Motion Designer MCP After Adapters
 
@@ -161,11 +157,6 @@ Use Runway when:
 - editing existing footage is the core task
 - a production video workflow is more important than a raw generated clip
 
-Use Higgsfield when:
-
-- the deliverable is creator/social/ad format
-- the project needs trend-aware commercial variants
-
 Use Remotion when:
 
 - exact text, layout, UI, captions, and brand lockups matter
@@ -204,4 +195,3 @@ Use ffmpeg when:
 - Vercel AI Gateway image-to-video: https://vercel.com/docs/ai-gateway/capabilities/video-generation/image-to-video
 - Luma API: https://docs.lumalabs.ai/docs/api
 - Runway API: https://docs.dev.runwayml.com/
-- Higgsfield JS SDK: https://github.com/higgsfield-ai/higgsfield-js

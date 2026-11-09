@@ -1,0 +1,18 @@
+{
+  "$schema": "https://frankx.ai/schemas/vis-provenance-sidecar.schema.json",
+  "asset_id": "banner-png",
+  "image_path": "assets/banner.png",
+  "sidecar_path": "assets/banner.png.vis.provenance.json",
+  "source_method": "deterministic-svg-render",
+  "provider": "Starlight Fleet Standard v2 Banner",
+  "model": "fleet-banner-v2",
+  "sha256": "d822785d45ccb6fa79ba688c52fbb816dc45d99884918e5f38555285f96cb9da",
+  "alt": "Awesome Motion Design Agent Skills \u2014 Interface motion, cinematic web and programmatic video \u2014 installable in one line",
+  "viewport": {
+    "width": 1280,
+    "height": 640
+  },
+  "rights": "CC0-1.0 public domain dedication (first-party repository asset)",
+  "review": "Verified repository asset provenance and SHA-256 digest",
+  "timestamp": "2026-10-24T13:35:00Z"
+}
