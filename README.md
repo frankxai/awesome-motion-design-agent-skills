@@ -7,7 +7,9 @@
 [![Stars](https://img.shields.io/github/stars/frankxai/awesome-motion-design-agent-skills?style=flat)](https://github.com/frankxai/awesome-motion-design-agent-skills) [![Last commit](https://img.shields.io/github/last-commit/frankxai/awesome-motion-design-agent-skills?style=flat)](https://github.com/frankxai/awesome-motion-design-agent-skills/commits/main) [![License: CC0](https://img.shields.io/badge/license-CC0--1.0-lightgrey?style=flat)](LICENSE)
 
 <!-- fleet:install-badges:start -->
+
 [![Install: any agent](https://img.shields.io/badge/npx%20skills%20add-any%20agent-000000?style=for-the-badge&logo=npm)](#install) [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://code.claude.com/docs/en/discover-plugins) [![Download for Claude.ai](https://img.shields.io/badge/Claude.ai%20%2F%20Cowork-download%20.zip-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://github.com/frankxai/awesome-motion-design-agent-skills/releases)
+
 <!-- fleet:install-badges:end -->
 
 > Five installable `SKILL.md` workflows and a curated catalog of GSAP, Motion, Remotion, Rive, Lottie, and 3D tools for AI coding agents in Claude Code, Codex, Cursor, and Copilot.
@@ -17,6 +19,7 @@ Every entry links to its primary source and carries a dated pulse. Companion Fra
 **Doctrine:** static hierarchy first. Animate only to clarify state or narrative. Design the reduced-motion path — don't just disable it. Verify on real devices.
 
 <!-- fleet:install:start -->
+
 ## Install
 
 Five skills ship in [`skills/`](skills) as open-standard `SKILL.md` folders, verified on fresh checkouts for **Claude Code** and **Codex**.
@@ -40,6 +43,7 @@ npx --yes skills list
 ```
 
 Scan any third-party pack with `NVIDIA/SkillSpector` before it reaches a live profile.
+
 <!-- fleet:install:end -->
 
 ## Choose your workflow
@@ -88,24 +92,24 @@ Do not install unsigned ZIP/S3 skill blobs or mass-dump skill collections into a
 
 ## Curated catalog
 
-| Project                                                                       | Pulse snapshot                  | Why it is here                                                                                                                                                     |
-| ----------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [GSAP](https://github.com/greensock/GSAP)                                     | Custom license · 28.7k★         | Timeline-grade JavaScript animation; ScrollTrigger for narrative scroll.                                                                                           |
-| [Motion](https://github.com/motiondivision/motion)                            | MIT · 33.8k★                    | React/JavaScript animation with layout and gesture primitives.                                                                                                     |
-| [React Three Fiber](https://github.com/pmndrs/react-three-fiber)              | MIT · 32.6k★                    | Three.js as a React renderer for 3D scenes with fallbacks.                                                                                                         |
-| [Remotion](https://github.com/remotion-dev/remotion)                          | Custom license · 60.9k★         | Programmatic video rendered from React.                                                                                                                            |
-| [Anime.js](https://github.com/juliangarnier/anime)                            | MIT · 73.2k★                    | Lightweight timeline animation for DOM, SVG and CSS.                                                                                                               |
-| [Rive WebAssembly](https://github.com/rive-app/rive-wasm)                     | MIT · 970★                      | State-machine interactive vector animation runtime.                                                                                                                |
-| [dotLottie web](https://github.com/LottieFiles/dotlottie-web)                 | MIT · 888★                      | Modern Lottie player for web UI motion assets.                                                                                                                     |
-| [Phaser](https://github.com/phaserjs/phaser)                                  | MIT · 40.4k★                    | Real-time web interaction and game-feel patterns.                                                                                                                  |
-| [1human reference client](https://github.com/mdagnolops/1human-reels)         | MIT client · checked 2026-10-10 | Discover attributed motion references and retrieve recipes with owner-authorized agent access.                                                                     |
-| [Agent Skills](https://github.com/agentskills/agentskills)                    | Apache-2.0 · 25.8k★             | The open `SKILL.md` standard these skills follow.                                                                                                                  |
-| [skills CLI](https://github.com/vercel-labs/skills)                           | MIT · 32.7k★                    | Cross-agent installer behind `npx skills add`.                                                                                                                     |
-| [product-launch-motion](https://github.com/AbubakrChan/product-launch-motion) | MIT · 253★                      | Claude Code skill: website URL to a 60 fps launch video with music, SFX and motion blur. Needs local Playwright and ffmpeg.                                        |
-| [launch-film](https://github.com/EminBudak/launch-film)                       | MIT · 0★                        | Agent skill: a website or App Store link to a 20 to 40 second launch film made from the site's own logo files, colors and headline. Needs local Chrome and ffmpeg. |
-| [lookbk-skills](https://github.com/SHARPLEE00/lookbk-skills)                  | MIT · checked 2026-11-05        | Eight `SKILL.md` skills that render locally, including a kinetic title video and an 8-bit promo built on HyperFrames and GSAP. No AI model or API key needed.      |
+| Project                                                                         | Pulse snapshot                                                | Why it is here                                                                                                                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [GSAP](https://github.com/greensock/GSAP)                                       | Custom license · 28.7k★                                       | Timeline-grade JavaScript animation; ScrollTrigger for narrative scroll.                                                                                                               |
+| [Motion](https://github.com/motiondivision/motion)                              | MIT · 33.8k★                                                  | React/JavaScript animation with layout and gesture primitives.                                                                                                                         |
+| [React Three Fiber](https://github.com/pmndrs/react-three-fiber)                | MIT · 32.6k★                                                  | Three.js as a React renderer for 3D scenes with fallbacks.                                                                                                                             |
+| [Remotion](https://github.com/remotion-dev/remotion)                            | Custom license · 60.9k★                                       | Programmatic video rendered from React.                                                                                                                                                |
+| [Anime.js](https://github.com/juliangarnier/anime)                              | MIT · 73.2k★                                                  | Lightweight timeline animation for DOM, SVG and CSS.                                                                                                                                   |
+| [Rive WebAssembly](https://github.com/rive-app/rive-wasm)                       | MIT · 970★                                                    | State-machine interactive vector animation runtime.                                                                                                                                    |
+| [dotLottie web](https://github.com/LottieFiles/dotlottie-web)                   | MIT · 888★                                                    | Modern Lottie player for web UI motion assets.                                                                                                                                         |
+| [Phaser](https://github.com/phaserjs/phaser)                                    | MIT · 40.4k★                                                  | Real-time web interaction and game-feel patterns.                                                                                                                                      |
+| [1human reference client](https://github.com/mdagnolops/1human-reels)           | MIT client · checked 2026-10-10                               | Discover attributed motion references and retrieve recipes with owner-authorized agent access.                                                                                         |
+| [Agent Skills](https://github.com/agentskills/agentskills)                      | Apache-2.0 · 25.8k★                                           | The open `SKILL.md` standard these skills follow.                                                                                                                                      |
+| [skills CLI](https://github.com/vercel-labs/skills)                             | MIT · 32.7k★                                                  | Cross-agent installer behind `npx skills add`.                                                                                                                                         |
+| [product-launch-motion](https://github.com/AbubakrChan/product-launch-motion)   | MIT · 253★                                                    | Claude Code skill: website URL to a 60 fps launch video with music, SFX and motion blur. Needs local Playwright and ffmpeg.                                                            |
+| [launch-film](https://github.com/EminBudak/launch-film)                         | MIT · 0★                                                      | Agent skill: a website or App Store link to a 20 to 40 second launch film made from the site's own logo files, colors and headline. Needs local Chrome and ffmpeg.                     |
+| [lookbk-skills](https://github.com/SHARPLEE00/lookbk-skills)                    | MIT · checked 2026-11-05                                      | Eight `SKILL.md` skills that render locally, including a kinetic title video and an 8-bit promo built on HyperFrames and GSAP. No AI model or API key needed.                          |
 | [DESIGN:OS SVG Animation](https://github.com/jangtrinh/design-os-svg-animation) | PolyForm Shield 1.0.0 (source-available) · checked 2026-11-08 | Free agent skill + CLI for deterministic SVG motion on an integer-frame virtual clock, compiled to 1080p 60 fps video and checked by a 10-gate verifier. Runs locally, zero telemetry. |
-| [vawe](https://github.com/Vandit1604/vawe)                                     | Apache-2.0 · 7★                 | Render one HTML page (CSS, Web Animations, SVG, canvas, three.js) to a deterministic MP4 in headless Chrome. Ships agent skills.                                  |
+| [vawe](https://github.com/Vandit1604/vawe)                                      | Apache-2.0 · 7★                                               | Render one HTML page (CSS, Web Animations, SVG, canvas, three.js) to a deterministic MP4 in headless Chrome. Ships agent skills.                                                       |
 
 The 1human client serves reference discovery rather than rendering: [public previews](https://reels.1human.tech/) need no account, while recipes, publication and private preferences require owner-approved credentials. The client/examples are MIT; the hosted service, brand and private data are not. Reference licenses remain per creation. Basic participation is free, with a capped beta; this is not a universal importer or evidence of adoption.
 
@@ -134,6 +138,7 @@ This lens is editorial, not an endorsement or a claim that a project satisfies e
 </details>
 
 <!-- fleet:ecosystem:start -->
+
 ## Explore the FrankX Awesome Ecosystem
 
 Companion catalogs. The third-party projects above are this list's primary value.
@@ -145,6 +150,7 @@ Companion catalogs. The third-party projects above are this list's primary value
 **Capital** — [agentic income](https://github.com/frankxai/awesome-agentic-income) · [investor](https://github.com/frankxai/awesome-investor-agent-skills) · [wealth](https://github.com/frankxai/awesome-wealth-agent-skills) · [payments](https://github.com/frankxai/awesome-payment-agent-skills)
 
 **Mind & cosmos** — [mind](https://github.com/frankxai/awesome-mind-agent-skills) · [manifestation](https://github.com/frankxai/awesome-manifestation-skills) · [cosmos](https://github.com/frankxai/awesome-cosmos-ai-agents)
+
 <!-- fleet:ecosystem:end -->
 
 ## Contribution standard
