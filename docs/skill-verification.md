@@ -136,3 +136,5 @@ enforce an agent's judgment or establish product demand.
 | Visual production | [Interactive easing study and two renderers](../examples/easing-study/README.md), with frame, timing and export checks. |
 
 Native Claude Code also [expanded all five explicit slash commands](../evals/explicit-dispatch/README.md) into their full source-matching instruction bodies at its model request boundary. The plain prompt expanded none. The local endpoint supplied a fixed response, so these six invocations test dispatch without provider inference.
+
+The proposed five updated entrypoints were retested at `c6026dc9629368d7c1996fb6812e74fad152003a`. All 25 installer cells copied their expected files. The same 15 scoped removals retained the shared copy. All five appeared in each of the three native discovery checks. Claude Code expanded each of the five explicitly requested bodies and the control expanded zero.
