@@ -1,0 +1,37 @@
+{
+  "id": "web-motion-auditor/interrupted-close-v1",
+  "skill": "web-motion-auditor",
+  "input": {
+    "prompt": "Review the supplied drawer implementation before release. Identify two behavior defects, explain how to reproduce each, propose the smallest fixes, and state which findings require browser verification. You have source only.",
+    "files": {
+      "drawer.js": "export function setDrawerOpen(panel, open) {\n  if (open) {\n    panel.hidden = false\n    panel.classList.add('open')\n  } else {\n    panel.classList.remove('open')\n    setTimeout(() => { panel.hidden = true }, 300)\n  }\n}\n",
+      "drawer.css": ".drawer { transform: translateX(100%); transition: transform 300ms ease; }\n.drawer.open { transform: translateX(0); }\n"
+    }
+  },
+  "review": {
+    "protocol": "Give the model only input, with identical runtime, tools, and sampling settings across conditions. Run once without the skill and once with the pinned skill. Blind the reviewer to the condition. Record model version, skill commit, output, score and elapsed time. Rotate the order across reruns. A single case is a regression check.",
+    "criteria": [
+      {
+        "id": "stale-close",
+        "pass": "Identifies the outstanding close timer. Close and reopen within 300 ms; the old callback can hide the reopened drawer."
+      },
+      {
+        "id": "timer-fix",
+        "pass": "Cancels the pending close on reopen or checks that the close callback still belongs to the latest transition for this panel. The fix handles independent drawer instances."
+      },
+      {
+        "id": "motion-preference",
+        "pass": "Identifies the unconditional sliding transition; asks to test with reduced motion enabled and disabled, and gives an immediate or non-translating state change for the reduced path."
+      },
+      {
+        "id": "timing-consistency",
+        "pass": "Explains how hiding or focusability follows the chosen reduced-motion path without leaving a visible or interactive closing surface waiting on the normal 300 ms timeout."
+      },
+      {
+        "id": "evidence",
+        "pass": "Cites concrete source locations, labels runtime verification pending, and makes no claims of observed frame rate, successful keyboard behavior, or browser/device execution."
+      }
+    ],
+    "pass_rule": "Award one point per satisfied criterion. Pass at 5/5. Record each unmet criterion. Reject any report that fabricates a browser observation."
+  }
+}
