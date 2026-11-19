@@ -62,4 +62,4 @@ Record the exact revision, desktop and phone widths, keyboard/touch observations
 
 ## Output Shape
 
-Return: motion thesis, first-read diagnosis, still-frame verdict, motion map, runtime choice, reduced-motion plan, implementation tasks, QA proof required, and excellence score.
+Deliver the motion map, runtime choice, reduced-motion design and evidence per tested condition. Tie each visual judgment to a viewport and frame or interaction. Leave unobserved dimensions open.

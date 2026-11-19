@@ -1,0 +1,36 @@
+{
+  "fixture": "web-motion-auditor/interrupted-close-v1",
+  "sourceSha256": "79d304de799b3eaf88e502ada767ccfdb9b84538560a1be350e98a47b41cf26c",
+  "chromium": "153.0.8010.0",
+  "playwright": "1.62.0",
+  "observations": {
+    "upstream": {
+      "no-preference": {
+        "transitionDuration": "0.3s",
+        "reopenedPanelVisible": false,
+        "otherPanelClosed": true,
+        "closingPanelInertOrHiddenImmediately": false
+      },
+      "reduce": {
+        "transitionDuration": "0.3s",
+        "reopenedPanelVisible": false,
+        "otherPanelClosed": true,
+        "closingPanelInertOrHiddenImmediately": false
+      }
+    },
+    "referenceRepair": {
+      "no-preference": {
+        "transitionDuration": "0.3s",
+        "reopenedPanelVisible": true,
+        "otherPanelClosed": true,
+        "closingPanelInertOrHiddenImmediately": true
+      },
+      "reduce": {
+        "transitionDuration": "0s",
+        "reopenedPanelVisible": true,
+        "otherPanelClosed": true,
+        "closingPanelInertOrHiddenImmediately": true
+      }
+    }
+  }
+}

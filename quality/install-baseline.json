@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "dimension": "installer-roundtrip",
+  "sourceRevision": "e7dc6e2e728c918ffcea5edb2d7c94e2a6f7785d",
+  "observedAt": "2026-11-19T03:00:26.352809+00:00",
+  "installerVersion": "1.9.0",
+  "profileSha256": "cc0fbc50974d941d9c041cfe2afba1ff9daf0da85575c05838e6d9086768208f",
+  "results": [
+    {
+      "skill": "generative-media-director",
+      "target": "claude-code",
+      "fileCount": 1,
+      "entrypointSha256": "66bdf29d1944d7ab3d58d84a679d4dccfe1f1475ae7b8a9f0ce110d25768ded4",
+      "payload": "pass",
+      "scopedRemoval": "pass",
+      "projectClean": true,
+      "status": "pass"
+    },
+    {
+      "skill": "motion-director",
+      "target": "claude-code",
+      "fileCount": 2,
+      "entrypointSha256": "c388511f3c11402c11a54b149f3fa315d36448e08fe49ecf276fb909d8ba0d90",
+      "payload": "pass",
+      "scopedRemoval": "pass",
+      "projectClean": true,
+      "status": "pass"
+    },
+    {
+      "skill": "remotion-video-agent",
+      "target": "claude-code",
+      "fileCount": 1,
+      "entrypointSha256": "7a6c13f0b1f9215a43082fd155c87e8a93303af619b7f33186a192997261be42",
+      "payload": "pass",
+      "scopedRemoval": "pass",
+      "projectClean": true,
+      "status": "pass"
+    },
+    {
+      "skill": "site-motion-excellence-director",
+      "target": "claude-code",
+      "fileCount": 3,
+      "entrypointSha256": "eee70c63133246bc70609c28159a39277bc00e14e741351aaff37137232f7bbc",
+      "payload": "pass",
+      "scopedRemoval": "pass",
+      "projectClean": true,
+      "status": "pass"
+    },
+    {
+      "skill": "web-motion-auditor",
+      "target": "claude-code",
+      "fileCount": 2,
+      "entrypointSha256": "ef20142e0e2caf2a1631621749d27b4d49d69c2ef5ac8150c5e47a06c9bb769b",
+      "payload": "pass",
+      "scopedRemoval": "pass",
+      "projectClean": true,
+      "status": "pass"
+    },
+    {
+      "skill": "generative-media-director",
+      "target": "codex",
+      "fileCount": 1,
+      "entrypointSha256": "66bdf29d1944d7ab3d58d84a679d4dccfe1f1475ae7b8a9f0ce110d25768ded4",
+      "payload": "pass",
+      "scopedRemoval": "pass",
+      "projectClean": true,
+      "status": "pass"
+    },
+    {
+      "skill": "motion-director",
+      "target": "codex",
+      "fileCount": 2,
+      "entrypointSha256": "c388511f3c11402c11a54b149f3fa315d36448e08fe49ecf276fb909d8ba0d90",
+      "payload": "pass",
+      "scopedRemoval": "pass",
+      "projectClean": true,
+      "status": "pass"
+    },
+    {
+      "skill": "remotion-video-agent",
+      "target": "codex",
+      "fileCount": 1,
+      "entrypointSha256": "7a6c13f0b1f9215a43082fd155c87e8a93303af619b7f33186a192997261be42",
+      "payload": "pass",
+      "scopedRemoval": "pass",
+      "projectClean": true,
+      "status": "pass"
+    },
+    {
+      "skill": "site-motion-excellence-director",
+      "target": "codex",
+      "fileCount": 3,
+      "entrypointSha256": "eee70c63133246bc70609c28159a39277bc00e14e741351aaff37137232f7bbc",
+      "payload": "pass",
+      "scopedRemoval": "pass",
+      "projectClean": true,
+      "status": "pass"
+    },
+    {
+      "skill": "web-motion-auditor",
+      "target": "codex",
+      "fileCount": 2,
+      "entrypointSha256": "ef20142e0e2caf2a1631621749d27b4d49d69c2ef5ac8150c5e47a06c9bb769b",
+      "payload": "pass",
+      "scopedRemoval": "pass",
+      "projectClean": true,
+      "status": "pass"
+    },
+    {
+      "skill": "generative-media-director",
+      "target": "github-copilot",
+      "fileCount": 1,
+      "entrypointSha256": "66bdf29d1944d7ab3d58d84a679d4dccfe1f1475ae7b8a9f0ce110d25768ded4",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "motion-director",
+      "target": "github-copilot",
+      "fileCount": 2,
+      "entrypointSha256": "c388511f3c11402c11a54b149f3fa315d36448e08fe49ecf276fb909d8ba0d90",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "remotion-video-agent",
+      "target": "github-copilot",
+      "fileCount": 1,
+      "entrypointSha256": "7a6c13f0b1f9215a43082fd155c87e8a93303af619b7f33186a192997261be42",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "site-motion-excellence-director",
+      "target": "github-copilot",
+      "fileCount": 3,
+      "entrypointSha256": "eee70c63133246bc70609c28159a39277bc00e14e741351aaff37137232f7bbc",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "web-motion-auditor",
+      "target": "github-copilot",
+      "fileCount": 2,
+      "entrypointSha256": "ef20142e0e2caf2a1631621749d27b4d49d69c2ef5ac8150c5e47a06c9bb769b",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "generative-media-director",
+      "target": "gemini-cli",
+      "fileCount": 1,
+      "entrypointSha256": "66bdf29d1944d7ab3d58d84a679d4dccfe1f1475ae7b8a9f0ce110d25768ded4",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "motion-director",
+      "target": "gemini-cli",
+      "fileCount": 2,
+      "entrypointSha256": "c388511f3c11402c11a54b149f3fa315d36448e08fe49ecf276fb909d8ba0d90",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "remotion-video-agent",
+      "target": "gemini-cli",
+      "fileCount": 1,
+      "entrypointSha256": "7a6c13f0b1f9215a43082fd155c87e8a93303af619b7f33186a192997261be42",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "site-motion-excellence-director",
+      "target": "gemini-cli",
+      "fileCount": 3,
+      "entrypointSha256": "eee70c63133246bc70609c28159a39277bc00e14e741351aaff37137232f7bbc",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "web-motion-auditor",
+      "target": "gemini-cli",
+      "fileCount": 2,
+      "entrypointSha256": "ef20142e0e2caf2a1631621749d27b4d49d69c2ef5ac8150c5e47a06c9bb769b",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "generative-media-director",
+      "target": "opencode",
+      "fileCount": 1,
+      "entrypointSha256": "66bdf29d1944d7ab3d58d84a679d4dccfe1f1475ae7b8a9f0ce110d25768ded4",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "motion-director",
+      "target": "opencode",
+      "fileCount": 2,
+      "entrypointSha256": "c388511f3c11402c11a54b149f3fa315d36448e08fe49ecf276fb909d8ba0d90",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "remotion-video-agent",
+      "target": "opencode",
+      "fileCount": 1,
+      "entrypointSha256": "7a6c13f0b1f9215a43082fd155c87e8a93303af619b7f33186a192997261be42",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "site-motion-excellence-director",
+      "target": "opencode",
+      "fileCount": 3,
+      "entrypointSha256": "eee70c63133246bc70609c28159a39277bc00e14e741351aaff37137232f7bbc",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    },
+    {
+      "skill": "web-motion-auditor",
+      "target": "opencode",
+      "fileCount": 2,
+      "entrypointSha256": "ef20142e0e2caf2a1631621749d27b4d49d69c2ef5ac8150c5e47a06c9bb769b",
+      "payload": "pass",
+      "scopedRemoval": "residue",
+      "projectClean": true,
+      "status": "fail"
+    }
+  ]
+}

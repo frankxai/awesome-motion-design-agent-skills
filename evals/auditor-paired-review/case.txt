@@ -1,0 +1,21 @@
+Review this standalone fragment for a detail preview. For each finding give a reproducer, cause, precise repair, and a way to verify it. State the limits of your evidence. Maximum 230 words.
+
+<button id="trigger" aria-expanded="false">Details</button>
+<section id="panel" hidden><button id="closeBtn">Close</button></section>
+<style>
+#panel {transition: transform 240ms, opacity 240ms}
+#panel.leaving {transform: translateX(100%); opacity: 0}
+</style>
+<script>
+function show() {
+  panel.hidden = false; panel.classList.remove('leaving');
+  trigger.setAttribute('aria-expanded','true'); closeBtn.focus();
+}
+function dismiss() {
+  panel.classList.add('leaving');
+  trigger.setAttribute('aria-expanded','false');
+  setTimeout(() => {panel.hidden = true; trigger.focus()}, 240);
+}
+trigger.onclick = show;
+closeBtn.onclick = dismiss;
+</script>

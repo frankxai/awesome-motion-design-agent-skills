@@ -1,0 +1,566 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2, ONNX quint8 AVX2",
+  "modelFiles": {
+    "model_quint8_avx2.onnx": "b941bf19f1f1283680f449fa6a7336bb5600bdcd5f84d10ddc5cd72218a0fd21",
+    "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+  },
+  "onnxruntime": "1.23.2",
+  "tokenizers": "0.22.2",
+  "skillsRevision": "e7dc6e2e728c918ffcea5edb2d7c94e2a6f7785d",
+  "fixtureRevision": "1cb5265957ff724cde8bda38c649261d778c9fba",
+  "comparison": "Same five candidates and prompts, unit-normalized mean pooling, cosine top one. Name only vs name plus shipped description. No abstention.",
+  "summary": {
+    "should_trigger": {
+      "prompts": 30,
+      "nameTop1IsLabeledSkill": 17,
+      "descriptionTop1IsLabeledSkill": 22
+    },
+    "should_not_trigger": {
+      "prompts": 30,
+      "nameTop1IsLabeledSkill": 8,
+      "descriptionTop1IsLabeledSkill": 7
+    }
+  },
+  "cases": [
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_trigger",
+      "index": 0,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_trigger",
+      "index": 1,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_trigger",
+      "index": 2,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_trigger",
+      "index": 3,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_trigger",
+      "index": 4,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_trigger",
+      "index": 5,
+      "predicted": {
+        "name": "generative-media-director",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_not_trigger",
+      "index": 0,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_not_trigger",
+      "index": 1,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_not_trigger",
+      "index": 2,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_not_trigger",
+      "index": 3,
+      "predicted": {
+        "name": "generative-media-director",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_not_trigger",
+      "index": 4,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "generative-media-director",
+      "label": "should_not_trigger",
+      "index": 5,
+      "predicted": {
+        "name": "generative-media-director",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_trigger",
+      "index": 0,
+      "predicted": {
+        "name": "motion-director",
+        "description": "motion-director"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_trigger",
+      "index": 1,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_trigger",
+      "index": 2,
+      "predicted": {
+        "name": "motion-director",
+        "description": "site-motion-excellence-director"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_trigger",
+      "index": 3,
+      "predicted": {
+        "name": "generative-media-director",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_trigger",
+      "index": 4,
+      "predicted": {
+        "name": "motion-director",
+        "description": "motion-director"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_trigger",
+      "index": 5,
+      "predicted": {
+        "name": "generative-media-director",
+        "description": "motion-director"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_not_trigger",
+      "index": 0,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_not_trigger",
+      "index": 1,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_not_trigger",
+      "index": 2,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_not_trigger",
+      "index": 3,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_not_trigger",
+      "index": 4,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "motion-director",
+      "label": "should_not_trigger",
+      "index": 5,
+      "predicted": {
+        "name": "generative-media-director",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_trigger",
+      "index": 0,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_trigger",
+      "index": 1,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_trigger",
+      "index": 2,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_trigger",
+      "index": 3,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_trigger",
+      "index": 4,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_trigger",
+      "index": 5,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_not_trigger",
+      "index": 0,
+      "predicted": {
+        "name": "motion-director",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_not_trigger",
+      "index": 1,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_not_trigger",
+      "index": 2,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_not_trigger",
+      "index": 3,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_not_trigger",
+      "index": 4,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "remotion-video-agent",
+      "label": "should_not_trigger",
+      "index": 5,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_trigger",
+      "index": 0,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_trigger",
+      "index": 1,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "site-motion-excellence-director"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_trigger",
+      "index": 2,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "site-motion-excellence-director"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_trigger",
+      "index": 3,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "site-motion-excellence-director"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_trigger",
+      "index": 4,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "site-motion-excellence-director"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_trigger",
+      "index": 5,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_not_trigger",
+      "index": 0,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_not_trigger",
+      "index": 1,
+      "predicted": {
+        "name": "generative-media-director",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_not_trigger",
+      "index": 2,
+      "predicted": {
+        "name": "generative-media-director",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_not_trigger",
+      "index": 3,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_not_trigger",
+      "index": 4,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "site-motion-excellence-director"
+      }
+    },
+    {
+      "expectedSkill": "site-motion-excellence-director",
+      "label": "should_not_trigger",
+      "index": 5,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_trigger",
+      "index": 0,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_trigger",
+      "index": 1,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "site-motion-excellence-director"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_trigger",
+      "index": 2,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_trigger",
+      "index": 3,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_trigger",
+      "index": 4,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_trigger",
+      "index": 5,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_not_trigger",
+      "index": 0,
+      "predicted": {
+        "name": "motion-director",
+        "description": "motion-director"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_not_trigger",
+      "index": 1,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "remotion-video-agent"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_not_trigger",
+      "index": 2,
+      "predicted": {
+        "name": "remotion-video-agent",
+        "description": "generative-media-director"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_not_trigger",
+      "index": 3,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_not_trigger",
+      "index": 4,
+      "predicted": {
+        "name": "web-motion-auditor",
+        "description": "web-motion-auditor"
+      }
+    },
+    {
+      "expectedSkill": "web-motion-auditor",
+      "label": "should_not_trigger",
+      "index": 5,
+      "predicted": {
+        "name": "site-motion-excellence-director",
+        "description": "site-motion-excellence-director"
+      }
+    }
+  ]
+}

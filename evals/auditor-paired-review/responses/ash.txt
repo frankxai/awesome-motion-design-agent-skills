@@ -1,0 +1,7 @@
+1. **Reopening loses to a stale close.** Open Details, click Close, then click Details again within 240 ms. The first timeout hides the reopened panel and moves focus to Details while `aria-expanded` remains `true`. Track the pending close, cancel it in `show()`, and make repeated dismissals idempotent. Verify that after 300 ms the reopened panel is visible, Details reports expanded, and Close retains focus.
+
+2. **Focus stays in a panel announced as collapsed.** Activate Close with Enter and hold the key. During the exit, Close remains focused and actionable, so repeated activations can queue more timers. Move focus to Details at dismissal, set the panel `inert` during its exit, and clear `inert` before focusing Close on reopening. Verify with Tab and held Enter that the exiting panel cannot receive focus or schedule another close.
+
+3. **Motion preference and completion timing are uncoupled.** Enable reduced motion and dismiss the panel. The slide still runs. Changing only the CSS duration also leaves hiding tied to 240 ms. Disable the transition under `prefers-reduced-motion: reduce` and hide immediately on that path. Otherwise finish on the panel’s own `opacity` transition end, with a cancellation guard and fallback. Verify immediate dismissal under reduced motion and correct completion after changing the normal duration.
+
+These findings come from static inspection. Browser and assistive-technology behavior remain untested.

@@ -39,13 +39,5 @@ Read the current [Motion documentation](https://motion.dev/docs) or [GSAP docume
 
 ## Output Shape
 
-Return:
-
-- Motion goal
-- Recommended stack
-- Choreography
-- Timing/easing tokens
-- Reduced-motion path
-- Implementation notes
-- QA checklist
+Deliver the implemented interaction or a handoff with the chosen stack, timing and reduced-motion behavior. State the user action the motion supports. For frequently repeated controls, compare with the immediate state change before keeping the animation.
 

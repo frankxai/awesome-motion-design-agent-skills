@@ -1,0 +1,7 @@
+1. **High — reopening can hide the active panel (lines 8–15).** Open, close, then click Details within 240 ms. The previous timeout hides the reopened panel and steals focus while `aria-expanded` remains `true`. Cancel pending close work in `show()` and make `dismiss()` idempotent. Verify with rapid close–open–close–open input. After 300 ms, the panel should be visible, expanded, and focused on Close.
+
+2. **Medium — collapse leaves focus on a disappearing control (lines 12–15).** Activate Close by keyboard and immediately press Tab. The trigger announces collapse while Close remains focusable. Return focus to Details and make the panel `inert` at dismissal start. Clear `inert` when reopening. Verify that Tab skips the exiting panel and that completion never redirects focus after the user moves on.
+
+3. **Medium — reduced-motion preferences have no effect (lines 4–5, 15).** Enable reduced motion and dismiss. The CSS still requests a full-width slide, and the timer imposes a 240 ms delay. Disable the transition for that preference and hide immediately. For animated exits, finalize on the panel’s own `opacity` transition end with a cancellable fallback. Verify immediate collapse under reduced motion and complete exits under normal motion.
+
+Source review only. No revision, URL, or running preview was supplied. Browser focus behavior, touch input, and frame timing remain unverified.

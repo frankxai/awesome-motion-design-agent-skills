@@ -34,7 +34,8 @@ description: Use when creating or editing Remotion videos, programmatic explaine
 
 ## QA
 
-- No text cut off.
+- Measure each delivered file with a media probe: dimensions, stream duration, frame count, codec, and audio presence when required. Verify a full decode and retain the command. A successful render process alone cannot certify the delivered file.
+- Inspect each target ratio independently for text cutoffs and safe margins.
 - No scene timing dead air.
 - Motion supports the script.
 - Assets are licensed or owned.

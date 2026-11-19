@@ -1,0 +1,52 @@
+{
+  "amber": {
+    "diagnoses_stale_callback": true,
+    "diagnoses_exit_focus_issue": true,
+    "diagnoses_full_motion_preference_issue": true,
+    "diagnoses_js_disabled_availability_issue": false,
+    "correct_verification_for_all_first_three": true,
+    "overclaims_executed_evidence": false
+  },
+  "ash": {
+    "diagnoses_stale_callback": true,
+    "diagnoses_exit_focus_issue": true,
+    "diagnoses_full_motion_preference_issue": true,
+    "diagnoses_js_disabled_availability_issue": false,
+    "correct_verification_for_all_first_three": true,
+    "overclaims_executed_evidence": false,
+    "caveat": "The exit-focus check targets repeated activation and Tab. It does not explicitly test that the timer preserves focus after the user moves on."
+  },
+  "elm": {
+    "diagnoses_stale_callback": true,
+    "diagnoses_exit_focus_issue": true,
+    "diagnoses_full_motion_preference_issue": true,
+    "diagnoses_js_disabled_availability_issue": false,
+    "correct_verification_for_all_first_three": true,
+    "overclaims_executed_evidence": false
+  },
+  "flint": {
+    "diagnoses_stale_callback": true,
+    "diagnoses_exit_focus_issue": true,
+    "diagnoses_full_motion_preference_issue": true,
+    "diagnoses_js_disabled_availability_issue": true,
+    "correct_verification_for_all_first_three": true,
+    "overclaims_executed_evidence": false,
+    "caveat": "Escape dismissal is an optional enhancement for this disclosure. The tab-order check covers the exit interval but does not explicitly check focus again at timeout."
+  },
+  "jade": {
+    "diagnoses_stale_callback": true,
+    "diagnoses_exit_focus_issue": true,
+    "diagnoses_full_motion_preference_issue": true,
+    "diagnoses_js_disabled_availability_issue": false,
+    "correct_verification_for_all_first_three": true,
+    "overclaims_executed_evidence": false
+  },
+  "opal": {
+    "diagnoses_stale_callback": true,
+    "diagnoses_exit_focus_issue": true,
+    "diagnoses_full_motion_preference_issue": true,
+    "diagnoses_js_disabled_availability_issue": true,
+    "correct_verification_for_all_first_three": true,
+    "overclaims_executed_evidence": false
+  }
+}

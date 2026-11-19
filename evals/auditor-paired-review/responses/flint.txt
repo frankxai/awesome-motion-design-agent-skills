@@ -1,0 +1,8 @@
+| Severity | Reproduce and cause | Repair and verification |
+|---|---|---|
+| High | Open → Close → Details within 240 ms. The pending `dismiss()` timer hides the reopened panel and steals focus. `aria-expanded` stays `true`. | Cancel pending close work in `show()`. Guard close completion with the current state and use a single cancellable fallback for `transitionend`. Repeat the sequence, wait 300 ms, and verify the panel is visible, Details is expanded, and Close has focus. |
+| Medium | Activate Close, then immediately press Tab or Shift+Tab. During the exit, the trigger reports collapsed while the fading panel still accepts focus. Escape also has no handler. | Return focus to Details at dismissal, make the panel inert during exit, and clear `inert` on reopening. Route Escape from the open panel through `dismiss()`. Verify keyboard dismissal and immediate tab order. |
+| Medium | Enable reduced motion and close the panel. The CSS still requests a full-width slide, and the timer enforces the delay. | Under `prefers-reduced-motion: reduce`, suppress the transform and transition, and finish dismissal synchronously. Verify immediate hiding and focus restoration. |
+| Medium | Disable JavaScript. Details cannot reveal the hidden section. | Use native `<details>/<summary>` or render content visible until enhancement initializes. Verify access with scripting disabled. |
+
+Evidence is limited to the supplied fragment. Runtime behavior, touch interaction, viewport overflow, and frame timing remain unverified.

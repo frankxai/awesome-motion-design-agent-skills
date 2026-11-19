@@ -30,17 +30,10 @@ jobs:
         run: |
           python3 scripts/verify-skill-packages.py
           python3 -m unittest discover -s tests -p 'test_*.py' -v
-      - name: Package skills
+      - name: Build and verify reproducible release archives
+        run: python3 scripts/verify-skill-packages.py --build dist
+      - name: Record source and archive digests
         run: |
-          mkdir -p dist
-          for d in skills/*/; do
-            n=$(basename "$d")
-            (cd skills && zip -qr "../dist/$n.zip" "$n")
-          done
-          (cd skills && zip -qr ../dist/all-skills.zip .)
-      - name: Verify actual archives and record their source
-        run: |
-          python3 scripts/verify-skill-packages.py --archives dist
           python3 - <<'PY'
           import datetime, hashlib, json, os, pathlib
           root = pathlib.Path(".")

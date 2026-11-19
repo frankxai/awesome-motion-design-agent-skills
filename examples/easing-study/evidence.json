@@ -1,0 +1,138 @@
+{
+  "measuredOn": "2026-11-19",
+  "sourceFiles": {
+    "study.js": "194068cb63f865be5ec90faa98fbb2aac3c055186fb34d2393961daf245b3a4d",
+    "index.html": "27e06a03d99d45262508d6c0a317448402b55a0b32dbd752069616ead1498aac",
+    "render.py": "3707a50c7e17bcc7494176716f105e5d1f09ad4c6391d60a04628f58a9097c0a",
+    "check.py": "34897765e8e191dd66488de8f0e39ea4577fed23f8269d8a271d7a9943ea7995",
+    "check_film.py": "151a9366813ec2d6d35731d46a39c4c747ff75ee6832cb199ff2e795b75aaf0e"
+  },
+  "environment": {
+    "node": "24.22.1",
+    "chromium": "153.0.8010.0",
+    "python": "3.12",
+    "playwright": "1.62.0",
+    "ffmpeg": "7.1.5",
+    "remotion": "4.0.487",
+    "hyperframes": "0.9.69",
+    "gsap": "3.13.0",
+    "workers": 1
+  },
+  "provenance": {
+    "graphics": "Original formula-derived vectors",
+    "font": "System sans-serif and monospace, rendered to pixels",
+    "audio": "Silent by design",
+    "mediaProviderCalls": 0
+  },
+  "recipe": {
+    "durationSeconds": 9,
+    "fps": 24,
+    "formats": [
+      "1280x720",
+      "720x1280"
+    ],
+    "codec": "H.264",
+    "RemotionPreset": "CRF 17",
+    "HyperFramesPreset": "looks"
+  },
+  "files": [
+    {
+      "engine": "remotion",
+      "layout": "landscape",
+      "render_seconds": 28.19,
+      "width": 1280,
+      "height": 720,
+      "frames": 216,
+      "codec": "h264",
+      "bytes": 579385,
+      "file": "easing-landscape.mp4",
+      "decoded_samples": 18,
+      "max_error_px": 0.84,
+      "sha256": "8c811d2c6580751d1b45607e157ed46e67380b18cb77d261f3db79bd7ee2f45b"
+    },
+    {
+      "engine": "hyperframes",
+      "layout": "landscape",
+      "render_seconds": 16.76,
+      "width": 1280,
+      "height": 720,
+      "frames": 216,
+      "codec": "h264",
+      "bytes": 218390,
+      "file": "easing-hyperframes.mp4",
+      "decoded_samples": 18,
+      "max_error_px": 0.84,
+      "sha256": "17e548d71892d3efb744a5a60f2bc15ddc5bd4d3ba5fd256bc7c60dde6d73062"
+    },
+    {
+      "engine": "hyperframes",
+      "layout": "portrait",
+      "render_seconds": 15.37,
+      "width": 720,
+      "height": 1280,
+      "frames": 216,
+      "codec": "h264",
+      "bytes": 220030,
+      "file": "easing-portrait.mp4",
+      "decoded_samples": 18,
+      "max_error_px": 1.1,
+      "sha256": "f46eaa2de9643647aa0a6d0b7e98783853b17dde58fb43cb533265cce78bda86"
+    },
+    {
+      "engine": "remotion",
+      "layout": "portrait",
+      "render_seconds": 25.1,
+      "width": 720,
+      "height": 1280,
+      "frames": 216,
+      "codec": "h264",
+      "bytes": 581209,
+      "file": "easing-remotion-portrait.mp4",
+      "decoded_samples": 18,
+      "max_error_px": 1.27,
+      "sha256": "bc45680a03b31964c48a5c2a2c8558c21689d5a60082077d5578daf47921f874"
+    }
+  ],
+  "encodedSsim": {
+    "landscape": 0.988616,
+    "portrait": 0.990798
+  },
+  "browser": {
+    "browser": "153.0.8010.0",
+    "checks": [
+      "desktop",
+      "keyboard",
+      "interruption",
+      "live reduced motion",
+      "touch emulation",
+      "mobile width",
+      "JavaScript off"
+    ],
+    "desktop_raf_intervals": 60,
+    "median_interval_ms": 16.7,
+    "max_interval_ms": 49.9
+  },
+  "review": {
+    "viewports": [
+      320,
+      390,
+      768,
+      1366
+    ],
+    "found": [
+      "Focus moved to body when a live motion preference removed the focused play button.",
+      "Small-screen axis labels were difficult to read."
+    ],
+    "repair": [
+      "Handoff to selected radio.",
+      "Enlarge narrow-screen axis labels."
+    ],
+    "retested": true
+  },
+  "limitations": [
+    "Local single-host, one render per final engine-layout pair",
+    "One Chromium engine; touch emulated; no physical-device frame-rate evidence",
+    "Different encoding presets",
+    "No paired model baseline or human aesthetic score"
+  ]
+}
