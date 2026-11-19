@@ -1,0 +1,9 @@
+1. **High · Reopening can hide the active panel.** Open, close, then reopen within 240 ms. The first `dismiss()` timeout still sets `hidden` and focuses the trigger, leaving `aria-expanded="true"` on a hidden panel. Store the timeout ID, cancel it in `show()`, and ignore duplicate dismissals. Verify that rapid close–open–close–open leaves the panel visible and Close focused after all timers expire.
+
+2. **Medium · Closing can steal keyboard focus.** Activate Close, then press Tab during the fade. The panel remains interactive after `aria-expanded` becomes false, and the timeout moves focus again. In `dismiss()`, focus the trigger immediately, mark the panel `inert`, and let completion only hide it. Clear `inert` in `show()`. Verify that Tab skips exiting content and that focus stays at its new destination.
+
+3. **Medium · Reduced motion still slides the panel.** Enable reduced motion and dismiss. The CSS always applies a full-width translation, and JavaScript always waits 240 ms. Disable the transition and translation under `prefers-reduced-motion: reduce`, then hide synchronously on that path. Verify immediate dismissal with the preference enabled.
+
+4. **Medium · Details depend on JavaScript.** Disable JavaScript and select Details. The hidden section has no native opener. Use `<details><summary>Details</summary>…</details>` as the baseline. Verify keyboard and touch access with scripting disabled.
+
+Source review only. Runtime behavior, device performance, and assistive-technology output remain unverified.

@@ -46,6 +46,8 @@ Scan any third-party pack with `NVIDIA/SkillSpector` before it reaches a live pr
 
 <!-- fleet:install:end -->
 
+[Explore the interactive easing study](examples/easing-study/README.md) · [Inspect the measured skill evidence](docs/skill-verification.md#november-19-verification)
+
 ## Choose your workflow
 
 Five first-party skills, one per job. Read the `SKILL.md`, then install only what the work needs.

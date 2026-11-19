@@ -28,7 +28,7 @@ Open the matching `SKILL.md` first so you only install what your workflow needs:
 - [`skills/remotion-video-agent/SKILL.md`](./skills/remotion-video-agent/SKILL.md)
 - [`skills/generative-media-director/SKILL.md`](./skills/generative-media-director/SKILL.md)
 
-## 3. Install for Claude Code or Codex (verified on a fresh checkout)
+## 3. Install for Claude Code or Codex
 
 ### Claude Code (project-local → `./.claude/skills/<skill>/SKILL.md`)
 
@@ -58,6 +58,8 @@ Other supported `-a` agent targets include `github-copilot`, `cursor`, `gemini-c
 npx --yes skills list
 ls -1 .claude/skills .agents/skills
 ```
+
+See the [dated install and removal matrix](quality/README.md) and [native discovery results](evals/native-discovery/README.md) before updating a shared workspace. With installer 1.9.0, a target-specific removal can leave files discoverable through the shared `.agents/skills` directory.
 
 ## 5. If you only want the reference guides
 

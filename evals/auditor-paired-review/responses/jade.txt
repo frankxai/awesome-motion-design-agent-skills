@@ -1,0 +1,7 @@
+1. **Reopening can close the panel again.** Click Details, click Close, then click Details again within 240 ms. The first dismissal’s timer hides the reopened panel and moves focus to the trigger. Store and cancel the pending timer in `show()`, and make repeated dismissals idempotent. Verify by reopening after 100 ms and waiting past the original deadline. The panel should remain visible, `aria-expanded` should be `true`, and Close should retain focus.
+
+2. **The closing panel remains interactive.** Click Close and inspect focus immediately. The trigger reports `aria-expanded="false"` while focus remains on a button that can still receive input. Move focus to the trigger at dismissal, set the panel `inert` during its exit, and clear `inert` before focusing Close on reopening. Verify that Tab skips the closing panel and that exit completion preserves focus if the user has moved elsewhere.
+
+3. **Reduced-motion preferences have no effect.** Emulate `prefers-reduced-motion: reduce` and dismiss the panel. The unconditional transition still slides it across its full width. Disable the transition under that media query and finish dismissal immediately in that mode. Verify that the panel becomes hidden without movement or a 240 ms wait.
+
+These findings come from static inspection. The reproduction steps are proposed checks.

@@ -1,0 +1,17 @@
+{
+  "sourceRoot": ".",
+  "skills": [
+    "skills/generative-media-director",
+    "skills/motion-director",
+    "skills/remotion-video-agent",
+    "skills/site-motion-excellence-director",
+    "skills/web-motion-auditor"
+  ],
+  "targets": [
+    "claude-code",
+    "codex",
+    "github-copilot",
+    "gemini-cli",
+    "opencode"
+  ]
+}

@@ -123,3 +123,16 @@ needs measured output before it becomes a public claim.
 Sources inspected on 2 November 2026. Recheck version-dependent advice before
 implementation. The GitHub workflows validate structure and links; they do not
 enforce an agent's judgment or establish product demand.
+
+## November 19 verification
+
+| Evidence | Observation |
+| --- | --- |
+| Published assets | Six rolling ZIPs from source `5ed4c726b307a1780be5c821dea9e8733cbc12db` matched SHA256SUMS and all expected source bytes. The rolling tag resolved to `bad1685e6c1e08001a3b7375eae02770a5dfbd35` at inspection. Use the provenance inside the release assets to identify their source. |
+| Rebuild | Run `python scripts/verify-skill-packages.py --build /tmp/motion-zips-new` with an unused destination. Source validation runs before packaging. Stored ZIP entries use a fixed order and timestamp. The test changes checkout times, verifies each archive and compares all six hashes. |
+| Installation | [Real installer matrix](../quality/README.md) and [native runtime discovery](../evals/native-discovery/README.md). |
+| Routing | [Sixty labeled cases evaluated with a local encoder](../evals/metadata-routing/README.md). |
+| Auditing | [Three paired reviews](../evals/auditor-paired-review/README.md) and [a separately replayed browser defect](../evals/drawer-probe/README.md). |
+| Visual production | [Interactive easing study and two renderers](../examples/easing-study/README.md), with frame, timing and export checks. |
+
+Native Claude Code also [expanded all five explicit slash commands](../evals/explicit-dispatch/README.md) into their full source-matching instruction bodies at its model request boundary. The plain prompt expanded none. The local endpoint supplied a fixed response, so these six invocations test dispatch without provider inference.

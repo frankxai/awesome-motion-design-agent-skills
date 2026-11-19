@@ -1,0 +1,7 @@
+1. **Reopening can close the panel again.** Click Details → Close → Details within 240 ms. `show()` restores the panel, but the first dismissal’s timer still hides it and moves focus to Details, leaving `aria-expanded="true"`. Store the timer ID, cancel it on reopen, and make repeated dismissals idempotent. Verify after 300 ms that the reopened panel is visible, Close has focus, and Details reports expanded.
+
+2. **Focus stays inside a panel announced as collapsed.** Activate Close with the keyboard. During the exit transition, Close retains focus and accepts another activation even as it fades. Move focus to Details at dismissal, make the exiting panel `inert`, and remove `inert` on reopen before focusing Close. Remove the timer’s focus call so it cannot steal focus after the user tabs away. Verify that immediate Tab navigation skips the exiting panel and focus stays at its new destination after 240 ms.
+
+3. **Reduced-motion preferences have no effect.** Enable reduced motion and dismiss the panel. The unconditional transition still slides it sideways. Disable the transition under `prefers-reduced-motion: reduce` and complete dismissal synchronously in that mode. Verify `panel.hidden` is true immediately on dismissal with reduced motion enabled and that ordinary dismissal still animates.
+
+These findings follow from static inspection. Browser, keyboard, and assistive-technology behavior remain untested.
