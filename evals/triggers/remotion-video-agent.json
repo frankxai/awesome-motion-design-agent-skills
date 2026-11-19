@@ -1,0 +1,19 @@
+{
+  "skill": "remotion-video-agent",
+  "should_trigger": [
+    "Build a Remotion composition for a 20-second product demo at 1920x1080.",
+    "Make a vertical 1080x1920 social cutdown of our launch video using React.",
+    "Our Remotion render shows the wrong font in the final MP4. Help me fix it.",
+    "Create a reusable React video template that takes a title and three bullet points as input props.",
+    "Export a short GIF preview from this Remotion project for the README.",
+    "Write a programmatic explainer video with animated captions synced to a voiceover track."
+  ],
+  "should_not_trigger": [
+    "Generate a cinematic drone shot of mountains with Runway.",
+    "Animate the dropdown menu on our settings page.",
+    "Review the scroll effects on our homepage for performance.",
+    "Edit this wedding video in Premiere Pro.",
+    "Choose an easing curve for our toast notifications.",
+    "Write a React component that fetches a list of users."
+  ]
+}

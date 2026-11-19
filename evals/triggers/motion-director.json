@@ -1,0 +1,19 @@
+{
+  "skill": "motion-director",
+  "should_trigger": [
+    "Should this onboarding animation be built with GSAP, Motion, or Lottie?",
+    "Design an easing and timing system for our product's modals, toasts and page transitions.",
+    "Plan the choreography for a staggered card entrance on the pricing page, including the reduced-motion version.",
+    "Our designer handed us a Rive file and a Lottie file for the same icon. Which runtime fits a React app?",
+    "Define motion tokens (durations, easings, distances) for our design system.",
+    "Pick a stack for a 3D product turntable on the landing page with a static fallback."
+  ],
+  "should_not_trigger": [
+    "Render this Remotion composition to a 1080x1920 MP4.",
+    "Review our site's existing scroll animations for jank and accessibility problems.",
+    "Generate a 6-second Veo clip of a sunrise over a city for an ad.",
+    "Fix the TypeScript error in our checkout form.",
+    "Write a blog post about the history of Disney's 12 principles of animation.",
+    "Set up ffmpeg to convert WAV files to MP3."
+  ]
+}

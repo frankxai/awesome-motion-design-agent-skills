@@ -1,0 +1,19 @@
+{
+  "skill": "generative-media-director",
+  "should_trigger": [
+    "Which video model should I use for a 5-second image-to-video product shot: Veo, Runway or Luma?",
+    "Write prompts for a set of four consistent style frames for a brand campaign, then turn the best one into a short clip.",
+    "Plan a multi-provider workflow to generate, upscale, and finish a social ad with captions.",
+    "This AI-generated video has flickering hands. How do I fix it or route it to a better model?",
+    "Turn this generated clip into a looping GIF under 5 MB for a landing page.",
+    "QA these AI-generated images for brand consistency and artifacts before we publish."
+  ],
+  "should_not_trigger": [
+    "Build a Remotion template that renders our changelog as a video.",
+    "Review the hover states on our pricing cards.",
+    "Pick between GSAP and Motion for page transitions.",
+    "Remove the background from this product photo in Photoshop.",
+    "Write a SQL query that counts signups per week.",
+    "Explain how diffusion models work at a high level for a school report."
+  ]
+}

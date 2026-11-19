@@ -1,0 +1,19 @@
+{
+  "skill": "web-motion-auditor",
+  "should_trigger": [
+    "Review the animations on this page and tell me what feels janky or slow.",
+    "Check whether our site respects prefers-reduced-motion everywhere.",
+    "Our scroll effect drops frames on mid-range Android phones. Audit it.",
+    "Capture a GIF of the new checkout transition and check it for motion polish before release.",
+    "Audit the loading states and skeleton animations in our Next.js dashboard.",
+    "Are these hover and focus transitions consistent across the app?"
+  ],
+  "should_not_trigger": [
+    "Design a motion system for a brand-new product from scratch.",
+    "Render this Remotion composition at 60 FPS.",
+    "Generate a hero video with Sora.",
+    "Audit our site's SEO meta tags.",
+    "Review this pull request for security issues.",
+    "Make the logo bigger on the homepage."
+  ]
+}
