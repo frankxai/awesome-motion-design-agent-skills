@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contributing guide
+    url: https://github.com/frankxai/awesome-motion-design-agent-skills/blob/main/CONTRIBUTING.md
+    about: What qualifies for the catalog and how installable skills are checked.

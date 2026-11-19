@@ -1,0 +1,59 @@
+name: Suggest a tool or skill pack
+description: Propose a motion tool, agent skill, or MCP server for the curated catalog.
+title: "Add: <tool name>"
+labels: ["catalog"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Entries must link to the primary source, have a clear license, and show activity in the last six months. A pull request is welcome too; see CONTRIBUTING.md for the table format.
+  - type: input
+    id: repo
+    attributes:
+      label: Primary source URL
+      description: The official GitHub repository or specification. No blog posts, wrappers or affiliate links.
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Catalog category
+      options:
+        - Web and UI animation
+        - Programmatic video and 3D scenes
+        - Interactive vector runtimes
+        - Agent standards and reference discovery
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: SPDX identifier, or "Custom license".
+      placeholder: MIT
+    validations:
+      required: true
+  - type: textarea
+    id: job
+    attributes:
+      label: One-sentence job
+      description: When to reach for it, and what it does better than the entries already listed.
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: What it needs to run
+      description: Local binaries (ffmpeg, Chrome, Playwright), API keys, paid services, or network access.
+      placeholder: Node 22 and local Chrome. No API key.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I am the author or a maintainer of this tool, or I have said so below if not.
+        - label: It has a commit or release in the last six months.
+        - label: It has a working install or usage example in its README.
