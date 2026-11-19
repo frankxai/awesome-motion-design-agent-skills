@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signup modal</title>
+  <style>
+    body { margin: 0; font: 17px/1.5 system-ui, sans-serif; }
+    .backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, .45); display: none; place-items: center; }
+    .backdrop.open { display: grid; }
+    .dialog { background: #fff; padding: 2rem; border-radius: 14px; width: min(28rem, 90vw); transform: scale(.92); opacity: 0; transition: transform .35s, opacity .35s; }
+    .backdrop.visible .dialog { transform: none; opacity: 1; }
+    button:focus { outline: none; }
+  </style>
+</head>
+<body>
+  <main style="padding: 3rem 1.5rem;">
+    <h1>Join the beta</h1>
+    <button id="open">Sign up</button>
+  </main>
+  <div class="backdrop" id="backdrop">
+    <div class="dialog" id="dialog">
+      <h2>Create your account</h2>
+      <label>Email <input type="email" id="email"></label>
+      <button id="close">Close</button>
+    </div>
+  </div>
+  <script>
+    const backdrop = document.getElementById("backdrop");
+    function openModal() {
+      backdrop.classList.add("open");
+      setTimeout(() => backdrop.classList.add("visible"), 20);
+    }
+    function closeModal() {
+      backdrop.classList.remove("visible");
+      setTimeout(() => backdrop.classList.remove("open"), 350);
+    }
+    document.getElementById("open").addEventListener("click", openModal);
+    document.getElementById("close").addEventListener("click", closeModal);
+  </script>
+</body>
+</html>

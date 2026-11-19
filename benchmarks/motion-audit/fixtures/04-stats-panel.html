@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stats panel</title>
+  <style>
+    body { margin: 0; font: 17px/1.5 system-ui, sans-serif; }
+    .tabs button { padding: .6rem 1rem; }
+    .panel { padding: 2rem 1.5rem; }
+    .counter { font-size: 3rem; font-variant-numeric: tabular-nums; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .5s, transform .5s; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { transition: none; transform: none; } }
+  </style>
+</head>
+<body>
+  <nav class="tabs" role="tablist">
+    <button data-tab="stats" role="tab">Stats</button>
+    <button data-tab="about" role="tab">About</button>
+  </nav>
+  <section class="panel" id="panel"></section>
+  <script>
+    const panel = document.getElementById("panel");
+
+    function mountStats() {
+      panel.innerHTML = `<p class="counter" id="counter">0</p><p class="reveal">Requests served today</p>`;
+      const counter = document.getElementById("counter");
+      let n = 0;
+      function tick() {
+        n += 137;
+        counter.textContent = n.toLocaleString();
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => e.isIntersecting && e.target.classList.add("in"));
+      });
+      panel.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      window.addEventListener("resize", () => { counter.style.fontSize = innerWidth < 500 ? "2rem" : "3rem"; });
+    }
+
+    function mountAbout() {
+      panel.innerHTML = `<p>We count requests. That is all.</p>`;
+    }
+
+    document.querySelectorAll("[data-tab]").forEach((b) => b.addEventListener("click", () => {
+      b.dataset.tab === "stats" ? mountStats() : mountAbout();
+    }));
+    mountStats();
+  </script>
+</body>
+</html>

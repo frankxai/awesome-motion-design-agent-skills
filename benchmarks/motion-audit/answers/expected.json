@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "note": "Answer key. Never give this directory to the agent under test. 'anchor' is a unique substring of the fixture; the scorer turns it into a line number, so the key survives edits elsewhere in the file. 'required' defects count toward recall; 'optional' ones are real but minor, so reporting them neither helps recall nor hurts precision.",
+  "categories": ["reduced-motion", "performance", "interruption", "cleanup", "touch", "keyboard"],
+  "defects": [
+    {"id": "d01a", "fixture": "01-hero-entrance.html", "level": "required", "accept": ["reduced-motion"], "anchor": "@keyframes rise", "why": "80px rise plus scale on load with no prefers-reduced-motion path."},
+    {"id": "d01b", "fixture": "01-hero-entrance.html", "level": "required", "accept": ["reduced-motion"], "anchor": "window.scrollY * 0.6", "why": "Scroll parallax ignores the user's reduced-motion preference."},
+    {"id": "d01c", "fixture": "01-hero-entrance.html", "level": "required", "accept": ["reduced-motion", "keyboard"], "anchor": "autoplay muted loop", "why": "Looping background video with no pause control (WCAG 2.2.2) and no reduced-motion handling."},
+    {"id": "d01d", "fixture": "01-hero-entrance.html", "level": "required", "accept": ["performance"], "anchor": "window.addEventListener(\"scroll\"", "why": "Non-passive scroll handler writes style on every event without requestAnimationFrame."},
+
+    {"id": "d02a", "fixture": "02-feature-cards.html", "level": "required", "accept": ["performance"], "anchor": "transition: top .3s, width .3s", "why": "Hover animates layout properties top and width instead of transform."},
+    {"id": "d02b", "fixture": "02-feature-cards.html", "level": "required", "accept": ["performance"], "anchor": "will-change: transform, opacity, top, width", "why": "Permanent will-change on 24 cards, including layout properties."},
+    {"id": "d02c", "fixture": "02-feature-cards.html", "level": "required", "accept": ["performance"], "anchor": "const box = card.getBoundingClientRect()", "why": "Layout thrash: reads geometry and writes width per card inside a scroll handler."},
+    {"id": "d02d", "fixture": "02-feature-cards.html", "level": "required", "accept": ["touch", "keyboard"], "anchor": ".card:hover .more { opacity: 1; }", "why": "'Learn more' is only visible on hover: invisible on touch and when focused by keyboard."},
+    {"id": "d02e", "fixture": "02-feature-cards.html", "level": "optional", "accept": ["performance"], "anchor": "progress.style.width", "why": "Progress bar animates width rather than scaleX."},
+
+    {"id": "d03a", "fixture": "03-modal.html", "level": "required", "accept": ["interruption"], "anchor": "setTimeout(() => backdrop.classList.remove(\"open\"), 350)", "why": "Uncancelled timeouts: open, close, reopen within 350 ms leaves the modal hidden or half-visible."},
+    {"id": "d03b", "fixture": "03-modal.html", "level": "required", "accept": ["keyboard"], "anchor": "function openModal()", "why": "Focus is not moved into the dialog or returned on close; no Escape; no dialog role.", "window": 5},
+    {"id": "d03c", "fixture": "03-modal.html", "level": "required", "accept": ["keyboard"], "anchor": "button:focus { outline: none; }", "why": "Removes the visible focus indicator."},
+    {"id": "d03d", "fixture": "03-modal.html", "level": "optional", "accept": ["reduced-motion"], "anchor": "transition: transform .35s, opacity .35s", "why": "Small scale transition without a reduced-motion branch."},
+
+    {"id": "d04a", "fixture": "04-stats-panel.html", "level": "required", "accept": ["cleanup"], "anchor": "function tick()", "why": "requestAnimationFrame loop is never cancelled; each remount starts another loop that keeps writing to a detached node."},
+    {"id": "d04b", "fixture": "04-stats-panel.html", "level": "required", "accept": ["cleanup"], "anchor": "const io = new IntersectionObserver", "why": "Observer is never disconnected; a new one is created on every mount."},
+    {"id": "d04c", "fixture": "04-stats-panel.html", "level": "required", "accept": ["cleanup"], "anchor": "window.addEventListener(\"resize\"", "why": "Resize listener added on every mount and never removed."},
+    {"id": "d04d", "fixture": "04-stats-panel.html", "level": "required", "accept": ["reduced-motion"], "anchor": "n += 137", "why": "Counter changes forever with no stop, pause, or reduced-motion path (WCAG 2.2.2)."},
+
+    {"id": "d05a", "fixture": "05-carousel.html", "level": "required", "accept": ["touch"], "anchor": "html, body { margin: 0; touch-action: none;", "why": "touch-action: none on the whole page blocks scrolling and pinch zoom on touch devices."},
+    {"id": "d05b", "fixture": "05-carousel.html", "level": "required", "accept": ["touch"], "anchor": ".carousel:hover .controls { opacity: 1; }", "why": "Controls appear only on hover."},
+    {"id": "d05c", "fixture": "05-carousel.html", "level": "required", "accept": ["keyboard"], "anchor": "<div class=\"dot\" data-i=\"0\">", "why": "Dots are divs with click handlers: not focusable, no names, unusable by keyboard."},
+    {"id": "d05d", "fixture": "05-carousel.html", "level": "required", "accept": ["reduced-motion", "interruption"], "anchor": "setInterval(() => go(index + 1), 3000)", "why": "Auto-rotation never pauses (hover, focus, swipe, reduced motion) and has no stop control."},
+
+    {"id": "d06a", "fixture": "06-faq.html", "level": "optional", "accept": ["reduced-motion", "performance", "interruption"], "anchor": ".answer { opacity: 0;", "why": "Control page. The fade never actually runs when <details> opens; noting that is accurate, not a defect."}
+  ]
+}
