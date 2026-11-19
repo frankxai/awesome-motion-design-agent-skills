@@ -1,0 +1,19 @@
+{
+  "skill": "site-motion-excellence-director",
+  "should_trigger": [
+    "Turn our rough idea of a cinematic scroll story for the homepage into an implementation-ready motion spec.",
+    "Plan the full-site motion system for our Next.js marketing site: hero, section reveals, route transitions.",
+    "We want the new landing page to feel premium like a product launch site. Specify the scroll choreography and its reduced-motion path.",
+    "Integrate these generated hero videos into the site with poster frames, lazy loading and a motion budget.",
+    "Audit the motion across every page of our Vercel site and write a prioritized plan to raise it to launch quality.",
+    "Choose between CSS scroll-driven animations and GSAP ScrollTrigger for a long-form story page."
+  ],
+  "should_not_trigger": [
+    "Make a 30-second Remotion explainer video from this script.",
+    "Write alt text for the images on our about page.",
+    "Generate three style frames with GPT Image for a social ad.",
+    "Our button hover is janky on Safari. What is wrong with this one CSS transition?",
+    "Deploy the site to Vercel and add a custom domain.",
+    "Summarize this article about web performance."
+  ]
+}

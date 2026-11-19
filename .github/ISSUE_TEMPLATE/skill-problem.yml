@@ -1,0 +1,55 @@
+name: Skill problem
+description: One of the five first-party skills failed to install, did not trigger, or gave wrong guidance.
+title: "<skill>: <short problem>"
+labels: ["skill"]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill
+      options:
+        - motion-director
+        - site-motion-excellence-director
+        - remotion-video-agent
+        - generative-media-director
+        - web-motion-auditor
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What went wrong
+      options:
+        - Install failed
+        - Skill did not trigger when it should have
+        - Skill triggered when it should not have
+        - Guidance was wrong or outdated
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: harness
+    attributes:
+      label: Agent
+      options:
+        - Claude Code
+        - Claude.ai / Claude Desktop / Cowork (zip upload)
+        - Codex
+        - GitHub Copilot
+        - Cursor
+        - Gemini CLI
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: install
+    attributes:
+      label: Install command you ran
+      placeholder: npx --yes skills add frankxai/awesome-motion-design-agent-skills -a claude-code -y
+  - type: textarea
+    id: details
+    attributes:
+      label: What you asked, what happened, what you expected
+      description: For trigger problems, paste the exact prompt. It may become a test case in evals/triggers/.
+    validations:
+      required: true

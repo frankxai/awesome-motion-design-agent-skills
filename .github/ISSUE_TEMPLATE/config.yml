@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contributing guide
+    url: https://github.com/frankxai/awesome-motion-design-agent-skills/blob/main/CONTRIBUTING.md
+    about: What qualifies for the catalog and how installable skills are checked.
+  - name: Questions and ideas
+    url: https://github.com/frankxai/awesome-motion-design-agent-skills/discussions/categories/q-a
+    about: How-to questions, tool suggestions you're unsure about, and general discussion.
+  - name: Show what you made
+    url: https://github.com/frankxai/awesome-motion-design-agent-skills/discussions/45
+    about: Share work made with these skills. What failed is as useful as what worked.

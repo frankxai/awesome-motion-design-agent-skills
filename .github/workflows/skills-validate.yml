@@ -26,6 +26,7 @@ jobs:
       - name: Verify standalone skill packages and regression cases
         run: |
           python3 scripts/verify-skill-packages.py
+          python3 scripts/verify-trigger-evals.py
           python3 -m unittest discover -s tests -p 'test_*.py' -v
       - name: Validate SKILL.md frontmatter, manifests, and public-safety
         shell: python

@@ -44,6 +44,8 @@ Each skill lives in `skills/<skill-name>/SKILL.md` and follows the open [`agents
    - **Verification checklist** (frame budget, mobile layout, accessibility).
 3. **Manifest sync:**
    - If adding a new first-party skill folder under `skills/`, update `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `README.md`, and `GETTING_STARTED.md`.
+4. **Trigger eval cases:**
+   - Every skill has `evals/triggers/<skill-name>.json` with at least six prompts that should fire it and six that should not. Good negatives are near misses that belong to a sibling skill. CI checks the cases with `python3 scripts/verify-trigger-evals.py`; it does not yet run them against a model.
 
 ---
 

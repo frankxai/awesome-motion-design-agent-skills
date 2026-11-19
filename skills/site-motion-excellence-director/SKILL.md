@@ -1,6 +1,6 @@
 ---
 name: site-motion-excellence-director
-description: Use when planning, auditing, specifying, implementing, or improving premium website/app motion across FrankX, Arcanea, Starlight, or Vercel/Next.js sites. Use for motion design systems, site choreography, scroll motion, generated media integration, runtime selection, reduced-motion planning, visual QA, and turning rough motion ideas into implementation-ready specs.
+description: Use when planning, auditing, specifying, implementing, or improving premium website or app motion, including Next.js and Vercel sites. Use for motion design systems, site choreography, scroll motion, generated media integration, runtime selection, reduced-motion planning, visual QA, and turning rough motion ideas into implementation-ready specs.
 ---
 
 # Site Motion Excellence Director
