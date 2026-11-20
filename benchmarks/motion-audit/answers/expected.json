@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "note": "Answer key. Never give this directory to the agent under test. 'anchor' is a unique substring of the fixture; the scorer turns it into a line number, so the key survives edits elsewhere in the file. 'required' defects count toward recall; 'optional' ones are real but minor, so reporting them neither helps recall nor hurts precision.",
+  "schemaVersion": 2,
+  "note": "Answer key. Never give this directory to the agent under test. 'anchor' is a substring that must match exactly one line of the fixture, or a list of them when the fix can reasonably go in more than one place; the scorer turns anchors into line numbers, so the key survives edits elsewhere in the file. 'required' defects count toward recall; 'optional' ones are real but minor, so reporting them neither helps recall nor hurts precision.",
   "categories": ["reduced-motion", "performance", "interruption", "cleanup", "touch", "keyboard"],
   "defects": [
     {"id": "d01a", "fixture": "01-hero-entrance.html", "level": "required", "accept": ["reduced-motion"], "anchor": "@keyframes rise", "why": "80px rise plus scale on load with no prefers-reduced-motion path."},
@@ -8,18 +8,18 @@
     {"id": "d01c", "fixture": "01-hero-entrance.html", "level": "required", "accept": ["reduced-motion", "keyboard"], "anchor": "autoplay muted loop", "why": "Looping background video with no pause control (WCAG 2.2.2) and no reduced-motion handling."},
     {"id": "d01d", "fixture": "01-hero-entrance.html", "level": "required", "accept": ["performance"], "anchor": "window.addEventListener(\"scroll\"", "why": "Non-passive scroll handler writes style on every event without requestAnimationFrame."},
 
-    {"id": "d02a", "fixture": "02-feature-cards.html", "level": "required", "accept": ["performance"], "anchor": "transition: top .3s, width .3s", "why": "Hover animates layout properties top and width instead of transform."},
+    {"id": "d02a", "fixture": "02-feature-cards.html", "level": "required", "accept": ["performance"], "anchor": ".card:hover { top: -8px;", "why": "Hover lift animates the layout properties top and width (transition on the .card rule) instead of transform."},
     {"id": "d02b", "fixture": "02-feature-cards.html", "level": "required", "accept": ["performance"], "anchor": "will-change: transform, opacity, top, width", "why": "Permanent will-change on 24 cards, including layout properties."},
     {"id": "d02c", "fixture": "02-feature-cards.html", "level": "required", "accept": ["performance"], "anchor": "const box = card.getBoundingClientRect()", "why": "Layout thrash: reads geometry and writes width per card inside a scroll handler."},
     {"id": "d02d", "fixture": "02-feature-cards.html", "level": "required", "accept": ["touch", "keyboard"], "anchor": ".card:hover .more { opacity: 1; }", "why": "'Learn more' is only visible on hover: invisible on touch and when focused by keyboard."},
     {"id": "d02e", "fixture": "02-feature-cards.html", "level": "optional", "accept": ["performance"], "anchor": "progress.style.width", "why": "Progress bar animates width rather than scaleX."},
 
     {"id": "d03a", "fixture": "03-modal.html", "level": "required", "accept": ["interruption"], "anchor": "setTimeout(() => backdrop.classList.remove(\"open\"), 350)", "why": "Uncancelled timeouts: open, close, reopen within 350 ms leaves the modal hidden or half-visible."},
-    {"id": "d03b", "fixture": "03-modal.html", "level": "required", "accept": ["keyboard"], "anchor": "function openModal()", "why": "Focus is not moved into the dialog or returned on close; no Escape; no dialog role.", "window": 5},
+    {"id": "d03b", "fixture": "03-modal.html", "level": "required", "accept": ["keyboard"], "anchor": ["function openModal()", "document.getElementById(\"close\").addEventListener"], "why": "Focus is not moved into the dialog or returned on close; no Escape; no dialog role.", "window": 5},
     {"id": "d03c", "fixture": "03-modal.html", "level": "required", "accept": ["keyboard"], "anchor": "button:focus { outline: none; }", "why": "Removes the visible focus indicator."},
     {"id": "d03d", "fixture": "03-modal.html", "level": "optional", "accept": ["reduced-motion"], "anchor": "transition: transform .35s, opacity .35s", "why": "Small scale transition without a reduced-motion branch."},
 
-    {"id": "d04a", "fixture": "04-stats-panel.html", "level": "required", "accept": ["cleanup"], "anchor": "function tick()", "why": "requestAnimationFrame loop is never cancelled; each remount starts another loop that keeps writing to a detached node."},
+    {"id": "d04a", "fixture": "04-stats-panel.html", "level": "required", "accept": ["cleanup", "performance"], "anchor": "function tick()", "why": "requestAnimationFrame loop is never cancelled; each remount starts another loop that keeps writing to a detached node.", "window": 5},
     {"id": "d04b", "fixture": "04-stats-panel.html", "level": "required", "accept": ["cleanup"], "anchor": "const io = new IntersectionObserver", "why": "Observer is never disconnected; a new one is created on every mount."},
     {"id": "d04c", "fixture": "04-stats-panel.html", "level": "required", "accept": ["cleanup"], "anchor": "window.addEventListener(\"resize\"", "why": "Resize listener added on every mount and never removed."},
     {"id": "d04d", "fixture": "04-stats-panel.html", "level": "required", "accept": ["reduced-motion"], "anchor": "n += 137", "why": "Counter changes forever with no stop, pause, or reduced-motion path (WCAG 2.2.2)."},
@@ -28,7 +28,21 @@
     {"id": "d05b", "fixture": "05-carousel.html", "level": "required", "accept": ["touch"], "anchor": ".carousel:hover .controls { opacity: 1; }", "why": "Controls appear only on hover."},
     {"id": "d05c", "fixture": "05-carousel.html", "level": "required", "accept": ["keyboard"], "anchor": "<div class=\"dot\" data-i=\"0\">", "why": "Dots are divs with click handlers: not focusable, no names, unusable by keyboard."},
     {"id": "d05d", "fixture": "05-carousel.html", "level": "required", "accept": ["reduced-motion", "interruption"], "anchor": "setInterval(() => go(index + 1), 3000)", "why": "Auto-rotation never pauses (hover, focus, swipe, reduced motion) and has no stop control."},
+    {"id": "d05e", "fixture": "05-carousel.html", "level": "optional", "accept": ["reduced-motion"], "anchor": ".track { display: flex; transition: transform .5s ease; }", "why": "Slide transition has no reduced-motion branch; minor next to the autoplay."},
+    {"id": "d05f", "fixture": "05-carousel.html", "level": "optional", "accept": ["performance"], "anchor": "track.addEventListener(\"touchstart\"", "why": "touchstart listener is not marked passive."},
 
-    {"id": "d06a", "fixture": "06-faq.html", "level": "optional", "accept": ["reduced-motion", "performance", "interruption"], "anchor": ".answer { opacity: 0;", "why": "Control page. The fade never actually runs when <details> opens; noting that is accurate, not a defect."}
+    {"id": "d06a", "fixture": "06-faq.html", "level": "optional", "accept": ["reduced-motion", "performance", "interruption"], "anchor": ".answer { opacity: 0;", "why": "Control page. The fade never actually runs when <details> opens; noting that is accurate, not a defect."},
+
+    {"id": "d07a", "fixture": "07-pricing-toggle.html", "level": "required", "accept": ["performance"], "anchor": "transition: max-height .4s ease", "why": "Expanding details animates max-height, which re-runs layout every frame; use grid-template-rows, a transform reveal, or no animation."},
+    {"id": "d07b", "fixture": "07-pricing-toggle.html", "level": "required", "accept": ["reduced-motion"], "anchor": "* { animation: none !important; }", "why": "The reduced-motion block only turns off CSS animations; every motion on the page is a transition (max-height, the scale, transition: all), so nothing changes for the user."},
+    {"id": "d07c", "fixture": "07-pricing-toggle.html", "level": "required", "accept": ["interruption"], "anchor": ["function tween(el, from, to)", "tween(p, Number(p.textContent)"], "why": "Each click starts a new requestAnimationFrame tween without cancelling the running one, and reads its start value from the half-tweened text; fast clicks leave competing loops and a wrong final price."},
+    {"id": "d07d", "fixture": "07-pricing-toggle.html", "level": "required", "accept": ["reduced-motion"], "anchor": ["function tween(el, from, to)", "tween(p, Number(p.textContent)"], "why": "The JavaScript number tween never checks prefers-reduced-motion, and the CSS media query cannot reach it."},
+    {"id": "d07e", "fixture": "07-pricing-toggle.html", "level": "optional", "accept": ["performance"], "anchor": "transition: all .4s ease", "why": "transition: all animates whatever changes on the card, including layout properties."},
+
+    {"id": "d08a", "fixture": "08-sticky-nav.html", "level": "required", "accept": ["reduced-motion"], "anchor": "html { scroll-behavior: smooth; }", "why": "Smooth scrolling for in-page links with no prefers-reduced-motion override."},
+    {"id": "d08b", "fixture": "08-sticky-nav.html", "level": "required", "accept": ["performance"], "anchor": "transition: height .25s, transform .25s", "why": "Compacting the sticky header animates height, which relayouts the page under it on every frame while scrolling."},
+    {"id": "d08c", "fixture": "08-sticky-nav.html", "level": "required", "accept": ["keyboard"], "anchor": "header.hidden { transform: translateY(-100%); }", "why": "The hidden header keeps its links in the tab order and does not come back on focus, so keyboard users tab onto links they cannot see."},
+    {"id": "d08d", "fixture": "08-sticky-nav.html", "level": "required", "accept": ["cleanup"], "anchor": "if (wide.matches) window.addEventListener", "why": "The scroll listener is added when the viewport becomes wide but never removed when it becomes narrow, so the hide-on-scroll header keeps running on small screens. (Repeat adds of the same function are deduplicated, so it does not accumulate.)"},
+    {"id": "d08e", "fixture": "08-sticky-nav.html", "level": "optional", "accept": ["reduced-motion"], "anchor": "header { position: sticky;", "why": "Header hide and compact transitions have no reduced-motion branch."}
   ]
 }

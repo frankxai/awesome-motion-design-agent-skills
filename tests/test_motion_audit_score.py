@@ -55,10 +55,38 @@ class ScoreTests(unittest.TestCase):
         r = scorer.score([far, wrong], self.key)
         self.assertEqual((r["recall"], r["falsePositives"]), (0.0, 2))
 
-    def test_duplicate_report_counts_once(self):
+    def test_duplicate_report_counts_once_and_is_not_a_false_positive(self):
         f = perfect(self.key)[0]
         r = scorer.score([f, dict(f)], self.key)
-        self.assertEqual((len(r["found"]), r["falsePositives"]), (1, 1))
+        self.assertEqual((len(r["found"]), r["duplicates"], r["falsePositives"], r["precision"]), (1, 1, 0, 1.0))
+
+    def test_best_fit_matching_beats_first_fit(self):
+        # Line 10 fits both card defects, line 14 fits only the hover one. First-fit would
+        # give line 10 to the hover defect and leave line 14 unmatched.
+        both = {"fixture": "02-feature-cards.html", "line": 10, "category": "performance", "summary": "x"}
+        hover_only = {"fixture": "02-feature-cards.html", "line": 14, "category": "performance", "summary": "x"}
+        r = scorer.score([both, hover_only], self.key)
+        self.assertTrue({"d02a", "d02b"} <= set(r["found"]))
+        self.assertEqual(r["falsePositives"], 0)
+
+    def test_report_order_does_not_change_score(self):
+        a = {"fixture": "04-stats-panel.html", "line": 35, "category": "cleanup", "summary": "rAF loop"}
+        b = {"fixture": "04-stats-panel.html", "line": 37, "category": "cleanup", "summary": "observer"}
+        first, second = scorer.score([a, b], self.key), scorer.score([b, a], self.key)
+        self.assertEqual(first, second)
+        self.assertTrue({"d04a", "d04b"} <= set(first["found"]))
+
+    def test_any_listed_anchor_matches(self):
+        d = next(d for d in self.key["defects"] if d["id"] == "d07c")
+        self.assertEqual(len(d["lines"]), 2)
+        for line in d["lines"]:
+            r = scorer.score([{"fixture": d["fixture"], "line": line, "category": "interruption", "summary": "x"}], self.key)
+            self.assertIn("d07c", r["found"])
+
+    def test_fixture_filter_limits_the_key(self):
+        key = scorer.load_key(ROOT, ["01", "02"])
+        self.assertEqual({d["fixture"][:2] for d in key["defects"]}, {"01", "02"})
+        self.assertEqual(scorer.score(perfect(key), key)["recall"], 1.0)
 
     def test_control_false_positive_is_counted(self):
         r = scorer.score([{"fixture": "06-faq.html", "line": 1, "category": "keyboard", "summary": "x"}], self.key)
