@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Motion audit findings",
+  "type": "object",
+  "required": ["findings"],
+  "additionalProperties": false,
+  "properties": {
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fixture", "line", "category", "summary"],
+        "properties": {
+          "fixture": {"type": "string"},
+          "line": {"type": "integer", "minimum": 1},
+          "category": {"enum": ["reduced-motion", "performance", "interruption", "cleanup", "touch", "keyboard"]},
+          "severity": {"enum": ["low", "medium", "high"]},
+          "summary": {"type": "string"},
+          "fix": {"type": "string"}
+        }
+      }
+    }
+  }
+}

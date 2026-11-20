@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing</title>
+  <style>
+    body { margin: 0; font: 17px/1.5 system-ui, sans-serif; }
+    .switch { display: inline-flex; gap: .5rem; align-items: center; margin: 2rem 1.5rem 0; }
+    .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.5rem; padding: 3rem 1.5rem; }
+    .plan { border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; transition: all .4s ease; }
+    .plan.featured { transform: scale(1.04); }
+    .plan .extras { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .plan.open .extras { max-height: 20rem; }
+    .price { font-size: 2.5rem; font-variant-numeric: tabular-nums; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="switch">
+    <span>Monthly</span>
+    <button id="billing" aria-pressed="false">Yearly</button>
+  </div>
+  <section class="plans">
+    <article class="plan"><h2>Solo</h2><p class="price" data-m="12" data-y="120">12</p><button class="toggle">Details</button><ul class="extras"><li>One seat</li><li>Email support</li></ul></article>
+    <article class="plan featured"><h2>Team</h2><p class="price" data-m="40" data-y="400">40</p><button class="toggle">Details</button><ul class="extras"><li>Five seats</li><li>Priority support</li></ul></article>
+  </section>
+  <script>
+    const billing = document.getElementById("billing");
+    let yearly = false;
+
+    function tween(el, from, to) {
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min((now - start) / 600, 1);
+        el.textContent = Math.round(from + (to - from) * t);
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    billing.addEventListener("click", () => {
+      yearly = !yearly;
+      billing.setAttribute("aria-pressed", String(yearly));
+      document.querySelectorAll(".price").forEach((p) => {
+        tween(p, Number(p.textContent), Number(yearly ? p.dataset.y : p.dataset.m));
+      });
+    });
+
+    document.querySelectorAll(".toggle").forEach((b) => b.addEventListener("click", () => {
+      b.closest(".plan").classList.toggle("open");
+    }));
+  </script>
+</body>
+</html>

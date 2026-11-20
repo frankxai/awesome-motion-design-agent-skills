@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docs</title>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font: 17px/1.5 system-ui, sans-serif; }
+    header { position: sticky; top: 0; height: 88px; background: #fff; border-bottom: 1px solid #ddd; transition: height .25s, transform .25s; }
+    header.compact { height: 56px; }
+    header.hidden { transform: translateY(-100%); }
+    header a { display: inline-block; padding: 1rem; }
+    header a:focus-visible { outline: 3px solid #2457ff; outline-offset: 2px; }
+    section { min-height: 90vh; padding: 2rem 1.5rem; }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <a href="#install">Install</a><a href="#usage">Usage</a><a href="#api">API</a>
+  </header>
+  <section id="install"><h2>Install</h2><p>Run the installer.</p></section>
+  <section id="usage"><h2>Usage</h2><p>Import and call it.</p></section>
+  <section id="api"><h2>API</h2><p>Three functions.</p></section>
+  <script>
+    const header = document.getElementById("top");
+    let lastY = 0;
+    let queued = false;
+
+    function onScroll() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        const y = scrollY;
+        header.classList.toggle("compact", y > 40);
+        header.classList.toggle("hidden", y > lastY && y > 200);
+        lastY = y;
+        queued = false;
+      });
+    }
+
+    const wide = matchMedia("(min-width: 800px)");
+    function setup() {
+      if (wide.matches) window.addEventListener("scroll", onScroll, { passive: true });
+    }
+    wide.addEventListener("change", setup);
+    setup();
+  </script>
+</body>
+</html>

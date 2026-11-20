@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hero entrance</title>
+  <style>
+    body { margin: 0; font: 18px/1.5 system-ui, sans-serif; color: #111; background: #fafafa; }
+    .hero { min-height: 90vh; display: grid; place-content: center; text-align: center; overflow: hidden; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 4.5rem); margin: 0; animation: rise 1.4s cubic-bezier(.2, .8, .2, 1) both; }
+    .hero p { animation: rise 1.4s .3s cubic-bezier(.2, .8, .2, 1) both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(80px) scale(.9); } to { opacity: 1; transform: none; } }
+    .bg-loop { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; }
+    .layer { position: absolute; left: 0; right: 0; height: 40vh; background: radial-gradient(circle, #d7e3ff, transparent 70%); }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <video class="bg-loop" src="ambient.mp4" autoplay muted loop playsinline></video>
+    <div class="layer" id="parallax"></div>
+    <h1>Ship motion that explains</h1>
+    <p>Static hierarchy first. Movement second.</p>
+  </section>
+  <main style="padding: 4rem 1.5rem; max-width: 40rem; margin: auto;">
+    <p>Body copy continues here so the page can scroll.</p>
+    <p style="height: 150vh;"></p>
+  </main>
+  <script>
+    const layer = document.getElementById("parallax");
+    window.addEventListener("scroll", () => {
+      layer.style.transform = `translateY(${window.scrollY * 0.6}px)`;
+    });
+  </script>
+</body>
+</html>
