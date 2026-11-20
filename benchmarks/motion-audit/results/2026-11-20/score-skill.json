@@ -1,0 +1,100 @@
+{
+  "summary": {
+    "runs": 3,
+    "recallMean": 0.93,
+    "recallMin": 0.895,
+    "recallMax": 0.947
+  },
+  "runs": {
+    "benchmarks/motion-audit/results/2026-11-20/skill-1.json": {
+      "recall": 0.947,
+      "precision": 0.864,
+      "found": [
+        "d01a",
+        "d01b",
+        "d01c",
+        "d01d",
+        "d02a",
+        "d02c",
+        "d02d",
+        "d03a",
+        "d03b",
+        "d03c",
+        "d04a",
+        "d04b",
+        "d04c",
+        "d04d",
+        "d05a",
+        "d05b",
+        "d05c",
+        "d05d"
+      ],
+      "missed": [
+        "d02b"
+      ],
+      "falsePositives": 3,
+      "controlFalsePositives": 0,
+      "findings": 22
+    },
+    "benchmarks/motion-audit/results/2026-11-20/skill-2.json": {
+      "recall": 0.895,
+      "precision": 0.783,
+      "found": [
+        "d01a",
+        "d01b",
+        "d01c",
+        "d01d",
+        "d02a",
+        "d02c",
+        "d02d",
+        "d03a",
+        "d03b",
+        "d03c",
+        "d04b",
+        "d04c",
+        "d04d",
+        "d05a",
+        "d05b",
+        "d05c",
+        "d05d"
+      ],
+      "missed": [
+        "d02b",
+        "d04a"
+      ],
+      "falsePositives": 5,
+      "controlFalsePositives": 0,
+      "findings": 23
+    },
+    "benchmarks/motion-audit/results/2026-11-20/skill-3.json": {
+      "recall": 0.947,
+      "precision": 0.833,
+      "found": [
+        "d01a",
+        "d01b",
+        "d01c",
+        "d01d",
+        "d02a",
+        "d02c",
+        "d02d",
+        "d03a",
+        "d03b",
+        "d03c",
+        "d04a",
+        "d04b",
+        "d04c",
+        "d04d",
+        "d05a",
+        "d05b",
+        "d05c",
+        "d05d"
+      ],
+      "missed": [
+        "d02b"
+      ],
+      "falsePositives": 4,
+      "controlFalsePositives": 0,
+      "findings": 24
+    }
+  }
+}

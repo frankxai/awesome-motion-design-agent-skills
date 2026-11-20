@@ -1,0 +1,99 @@
+{
+  "summary": {
+    "runs": 3,
+    "recallMean": 0.965,
+    "recallMin": 0.947,
+    "recallMax": 1.0
+  },
+  "runs": {
+    "benchmarks/motion-audit/results/2026-11-20/baseline-1.json": {
+      "recall": 1.0,
+      "precision": 0.84,
+      "found": [
+        "d01a",
+        "d01b",
+        "d01c",
+        "d01d",
+        "d02a",
+        "d02b",
+        "d02c",
+        "d02d",
+        "d03a",
+        "d03b",
+        "d03c",
+        "d04a",
+        "d04b",
+        "d04c",
+        "d04d",
+        "d05a",
+        "d05b",
+        "d05c",
+        "d05d"
+      ],
+      "missed": [],
+      "falsePositives": 4,
+      "controlFalsePositives": 0,
+      "findings": 25
+    },
+    "benchmarks/motion-audit/results/2026-11-20/baseline-2.json": {
+      "recall": 0.947,
+      "precision": 0.833,
+      "found": [
+        "d01a",
+        "d01b",
+        "d01c",
+        "d01d",
+        "d02a",
+        "d02b",
+        "d02c",
+        "d02d",
+        "d03a",
+        "d03b",
+        "d03c",
+        "d04b",
+        "d04c",
+        "d04d",
+        "d05a",
+        "d05b",
+        "d05c",
+        "d05d"
+      ],
+      "missed": [
+        "d04a"
+      ],
+      "falsePositives": 4,
+      "controlFalsePositives": 0,
+      "findings": 24
+    },
+    "benchmarks/motion-audit/results/2026-11-20/baseline-3.json": {
+      "recall": 0.947,
+      "precision": 0.826,
+      "found": [
+        "d01a",
+        "d01b",
+        "d01c",
+        "d01d",
+        "d02a",
+        "d02c",
+        "d02d",
+        "d03a",
+        "d03b",
+        "d03c",
+        "d04a",
+        "d04b",
+        "d04c",
+        "d04d",
+        "d05a",
+        "d05b",
+        "d05c",
+        "d05d"
+      ],
+      "missed": [
+        "d02b"
+      ],
+      "falsePositives": 4,
+      "controlFalsePositives": 0,
+      "findings": 23
+    }
+  }
+}
