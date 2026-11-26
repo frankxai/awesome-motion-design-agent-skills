@@ -1,5 +1,9 @@
 # Awesome Motion Design Agent Skills [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+<!-- yarkr:badges:start -->
+[![Indexed on Yarkr](https://api.yarkr.com/functions/v1/api/api/v1/badges/repos/frankxai/awesome-motion-design-agent-skills/version.svg)](https://yarkr.com/arks/frankxai/awesome-motion-design-agent-skills)
+<!-- yarkr:badges:end -->
+
 <!-- fleet:hero:start -->
 <p align="center"><img src="assets/banner.png" width="100%" alt="Awesome Motion Design Agent Skills — Interface motion, cinematic web and programmatic video — installable in one line."></p>
 <!-- fleet:hero:end -->
@@ -45,6 +49,40 @@ npx --yes skills list
 Scan any third-party pack with `NVIDIA/SkillSpector` before it reaches a live profile.
 
 <!-- fleet:install:end -->
+
+<!-- yarkr:install:start -->
+## Install with Yarkr
+
+This repo is indexed on [Yarkr](https://yarkr.com/arks/frankxai/awesome-motion-design-agent-skills) as the ark [frankxai/awesome-motion-design-agent-skills](https://yarkr.com/arks/frankxai/awesome-motion-design-agent-skills), so its skills install into Claude Code, Codex, Cursor and other agent harnesses with one command.
+
+### CLI
+
+Install the whole ark, which Yarkr keeps equal to this repo:
+
+```bash
+npx yarkr-cli sync frankxai/awesome-motion-design-agent-skills
+```
+
+Or add individual skills:
+
+```bash
+npx yarkr-cli add skill:frankxai/awesome-motion-design-agent-skills/generative-media-director
+npx yarkr-cli add skill:frankxai/awesome-motion-design-agent-skills/motion-director
+npx yarkr-cli add skill:frankxai/awesome-motion-design-agent-skills/remotion-video-agent
+```
+
+No Node.js? `curl -fsSL https://yarkr.com/install.sh | sh` (macOS, Linux) or `irm https://yarkr.com/install.ps1 | iex` (Windows PowerShell) installs `yarkr` as a standalone binary; then type `yarkr` in place of `npx yarkr-cli`.
+
+### MCP
+
+Connect your agent to the ark over MCP:
+
+```bash
+npx yarkr-cli mcp add frankxai/awesome-motion-design-agent-skills
+```
+
+Or point any MCP client at `https://api.yarkr.com/functions/v1/api/mcp/o/frankxai/awesome-motion-design-agent-skills`.
+<!-- yarkr:install:end -->
 
 ## Choose your workflow
 
