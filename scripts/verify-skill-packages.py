@@ -147,12 +147,48 @@ def validate_release_archives(root, archives):
     return errors
 
 
+def build_archives(skill_root, destination):
+    """Create byte-reproducible ZIPs; source checks must pass before calling."""
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if destination.exists():
+        raise ValueError("choose a new directory for built archives")
+    with tempfile.TemporaryDirectory(dir=destination.parent) as temp:
+        staging = Path(temp) / "archives"
+        staging.mkdir()
+        for name in sorted(SKILLS | {"all-skills"}):
+            folders = SKILLS if name == "all-skills" else {name}
+            with zipfile.ZipFile(staging / f"{name}.zip", "w") as archive:
+                for folder in sorted(folders):
+                    for file in sorted((skill_root / folder).rglob("*")):
+                        if file.is_file():
+                            info = zipfile.ZipInfo(file.relative_to(skill_root).as_posix())
+                            info.create_system = 3
+                            # Files are tiny Markdown payloads. Stored ZIPs remove zlib
+                            # version, checkout timestamp and umask from their identity.
+                            mode = 0o755 if file.stat().st_mode & 0o111 else 0o644
+                            info.external_attr = (stat.S_IFREG | mode) << 16
+                            archive.writestr(info, file.read_bytes())
+        staging.rename(destination)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--archives", type=Path, help="Also verify the six actual ZIPs produced for release")
+    parser.add_argument("--build", type=Path, help="Build and verify deterministic archives in a new directory")
     args = parser.parse_args()
+    if args.build and args.archives:
+        parser.error("choose either --build or --archives")
     errors = validate_repository(args.root.resolve())
+    if args.build and not errors:
+        destination = args.build.resolve()
+        if destination.is_relative_to(args.root.resolve() / "skills"):
+            parser.error("build destination must be outside the skills tree")
+        try:
+            build_archives(args.root.resolve() / "skills", destination)
+        except (ValueError, OSError) as error:
+            parser.error(str(error))
+        args.archives = destination
     if args.archives:
         errors.extend(validate_release_archives(args.root.resolve(), args.archives.resolve()))
     print("\n".join(errors) if errors else "OK: five standalone skill payloads, four canonical references" + (", and six actual release archives" if args.archives else ""))

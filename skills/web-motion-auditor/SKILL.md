@@ -36,7 +36,7 @@ description: Use when reviewing web animations, UI transitions, scroll effects, 
 | Reduced motion | Content, hierarchy, and state remain clear; large movement has a designed alternative |
 | Interruption | Open then close mid-transition; repeat rapidly; verify the latest state, focus, and cleanup |
 | Navigation and resize | No orphan overlays, pinned scroll, duplicate listeners, or stale transforms |
-| Failure | Failed media or unavailable JavaScript preserves required content and controls |
+| Failure | Disable JavaScript before loading the page, then fail a required media request separately. Record which content and actions remain available in each case. |
 | Performance | Measure on the target environment; separate traces, frame captures, and subjective observations |
 
 ## Report

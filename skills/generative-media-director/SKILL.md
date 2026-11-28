@@ -109,14 +109,5 @@ Avoid:
 
 ## Output Shape
 
-Return:
-
-- creative diagnosis
-- recommended workflow
-- provider routing
-- still-frame prompt
-- video prompt
-- finishing plan
-- QA checklist
-- provenance template
+For a completed job, deliver the files, their provenance records and observed QA. For a blocked job, deliver the reusable prompt, source-frame requirements, next command or provider action, and the exact missing authorization or capability. Write only the prompts needed for the requested medium.
 

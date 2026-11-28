@@ -1,0 +1,37 @@
+{
+  "sourceRevision": "e7dc6e2e728c918ffcea5edb2d7c94e2a6f7785d",
+  "target": "claude-code",
+  "runtime": "2.1.328 (Claude Code)",
+  "installerVersion": "1.9.0",
+  "before": [],
+  "installed": [
+    {
+      "name": "generative-media-director",
+      "entrypoint": ".claude/skills/generative-media-director/SKILL.md",
+      "sha256": "66bdf29d1944d7ab3d58d84a679d4dccfe1f1475ae7b8a9f0ce110d25768ded4"
+    },
+    {
+      "name": "motion-director",
+      "entrypoint": ".claude/skills/motion-director/SKILL.md",
+      "sha256": "c388511f3c11402c11a54b149f3fa315d36448e08fe49ecf276fb909d8ba0d90"
+    },
+    {
+      "name": "remotion-video-agent",
+      "entrypoint": ".claude/skills/remotion-video-agent/SKILL.md",
+      "sha256": "7a6c13f0b1f9215a43082fd155c87e8a93303af619b7f33186a192997261be42"
+    },
+    {
+      "name": "site-motion-excellence-director",
+      "entrypoint": ".claude/skills/site-motion-excellence-director/SKILL.md",
+      "sha256": "eee70c63133246bc70609c28159a39277bc00e14e741351aaff37137232f7bbc"
+    },
+    {
+      "name": "web-motion-auditor",
+      "entrypoint": ".claude/skills/web-motion-auditor/SKILL.md",
+      "sha256": "ef20142e0e2caf2a1631621749d27b4d49d69c2ef5ac8150c5e47a06c9bb769b"
+    }
+  ],
+  "afterTargetedRemoval": [],
+  "afterCleanup": [],
+  "modelTurns": 0
+}

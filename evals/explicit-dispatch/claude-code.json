@@ -1,0 +1,68 @@
+{
+  "sourceRevision": "e7dc6e2e728c918ffcea5edb2d7c94e2a6f7785d",
+  "runtime": "2.1.328 (Claude Code)",
+  "installer": "1.9.0",
+  "transport": "loopback HTTP Messages fixture, synthetic SSE response",
+  "comparison": "complete Markdown body after removing frontmatter and outer whitespace",
+  "bodySha256": {
+    "generative-media-director": "6ab85023481697cfa59e07f12d5dd05c432370050624a8f1f05ec4cbcaeac2fd",
+    "motion-director": "86a975bf24c25c54acf26e9d414cdede39918e0ef8a630c59544cee3d0b3f9c0",
+    "remotion-video-agent": "ba5ea7ad6b88e3e49759fa86131571bc0a8bd328372e6988f0730c182987f10f",
+    "site-motion-excellence-director": "11f8a0f278b653c53d8cf615c026d4cc0a9db3d4c329bec665e8bd5b9d2d7ed1",
+    "web-motion-auditor": "f5eb8dcd176a2612ecb3db64c70956c3c74d418ab7fa86728f89fa59d7fe419a"
+  },
+  "runs": [
+    {
+      "command": null,
+      "completeBodiesPerRequest": [
+        []
+      ],
+      "passed": true
+    },
+    {
+      "command": "/generative-media-director",
+      "completeBodiesPerRequest": [
+        [
+          "generative-media-director"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "command": "/motion-director",
+      "completeBodiesPerRequest": [
+        [
+          "motion-director"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "command": "/remotion-video-agent",
+      "completeBodiesPerRequest": [
+        [
+          "remotion-video-agent"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "command": "/site-motion-excellence-director",
+      "completeBodiesPerRequest": [
+        [
+          "site-motion-excellence-director"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "command": "/web-motion-auditor",
+      "completeBodiesPerRequest": [
+        [
+          "web-motion-auditor"
+        ]
+      ],
+      "passed": true
+    }
+  ]
+}
