@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testimonial carousel</title>
+  <style>
+    html, body { margin: 0; touch-action: none; font: 17px/1.5 system-ui, sans-serif; }
+    .carousel { position: relative; overflow: hidden; max-width: 40rem; margin: 3rem auto; }
+    .track { display: flex; transition: transform .5s ease; }
+    .slide { flex: 0 0 100%; padding: 2rem; box-sizing: border-box; }
+    .controls { position: absolute; inset: auto 0 0 0; display: flex; justify-content: space-between; opacity: 0; transition: opacity .2s; }
+    .carousel:hover .controls { opacity: 1; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #bbb; display: inline-block; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="carousel" id="carousel">
+    <div class="track" id="track">
+      <blockquote class="slide">"It cut our review time in half." — Team A</blockquote>
+      <blockquote class="slide">"Setup took one afternoon." — Team B</blockquote>
+      <blockquote class="slide">"We stopped shipping janky scroll." — Team C</blockquote>
+    </div>
+    <div class="controls">
+      <div class="dot" data-i="0"></div><div class="dot" data-i="1"></div><div class="dot" data-i="2"></div>
+    </div>
+  </div>
+  <main style="padding: 0 1.5rem; height: 150vh;"><p>More content below the carousel.</p></main>
+  <script>
+    const track = document.getElementById("track");
+    let index = 0;
+    const go = (i) => { index = (i + 3) % 3; track.style.transform = `translateX(-${index * 100}%)`; };
+    document.querySelectorAll(".dot").forEach((d) => d.addEventListener("click", () => go(+d.dataset.i)));
+    setInterval(() => go(index + 1), 3000);
+    let startX = 0;
+    track.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; });
+    track.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
+    });
+  </script>
+</body>
+</html>

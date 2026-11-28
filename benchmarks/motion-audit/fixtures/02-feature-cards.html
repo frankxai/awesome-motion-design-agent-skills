@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feature cards</title>
+  <style>
+    body { margin: 0; font: 17px/1.5 system-ui, sans-serif; background: #fff; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; padding: 3rem 1.5rem; }
+    .card { position: relative; top: 0; padding: 1.5rem; border: 1px solid #ddd; border-radius: 12px; will-change: transform, opacity, top, width; transition: top .3s, width .3s, box-shadow .3s; }
+    .card:hover { top: -8px; box-shadow: 0 12px 30px rgba(0, 0, 0, .12); }
+    .card .more { opacity: 0; transition: opacity .2s; }
+    .card:hover .more { opacity: 1; }
+    .progress { position: fixed; top: 0; left: 0; height: 4px; background: #2457ff; width: 0; }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <section class="grid" id="grid"></section>
+  <script>
+    const grid = document.getElementById("grid");
+    for (let i = 1; i <= 24; i++) {
+      grid.insertAdjacentHTML("beforeend",
+        `<article class="card"><h2>Feature ${i}</h2><p>Short description.</p><a class="more" href="#f${i}">Learn more</a></article>`);
+    }
+    const cards = [...document.querySelectorAll(".card")];
+    const progress = document.getElementById("progress");
+    window.addEventListener("scroll", () => {
+      for (const card of cards) {
+        const box = card.getBoundingClientRect();
+        card.style.width = box.top < innerHeight ? "100%" : "96%";
+      }
+      progress.style.width = (scrollY / (document.body.scrollHeight - innerHeight)) * 100 + "%";
+    });
+  </script>
+</body>
+</html>

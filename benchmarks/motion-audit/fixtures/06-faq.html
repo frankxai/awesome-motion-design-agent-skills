@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ disclosure</title>
+  <style>
+    body { margin: 0; font: 17px/1.5 system-ui, sans-serif; }
+    main { max-width: 40rem; margin: auto; padding: 3rem 1.5rem; }
+    details { border-bottom: 1px solid #ddd; padding: .75rem 0; }
+    summary { cursor: pointer; font-weight: 600; }
+    summary:focus-visible { outline: 3px solid #2457ff; outline-offset: 3px; }
+    .answer { opacity: 0; transform: translateY(-4px); transition: opacity .18s ease-out, transform .18s ease-out; }
+    details[open] .answer { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .answer { transition: none; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Questions</h1>
+    <details>
+      <summary>Does it work without JavaScript?</summary>
+      <p class="answer">Yes. The disclosure is native HTML; the fade is decoration.</p>
+    </details>
+    <details>
+      <summary>Can I turn the animation off?</summary>
+      <p class="answer">Yes. Your system setting is respected.</p>
+    </details>
+  </main>
+</body>
+</html>
